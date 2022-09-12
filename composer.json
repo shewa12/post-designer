@@ -1,0 +1,15 @@
+{
+    "name": "shewa/post-designer",
+    "autoload": {
+        "psr-4": {
+            "PostDesigner\\": "includes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "shewa12",
+            "email": "shewa12kpi@gmail.com"
+        }
+    ],
+    "require": {}
+}
