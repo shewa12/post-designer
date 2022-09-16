@@ -222,7 +222,7 @@ module.exports = window["wp"]["i18n"];
   \*********************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"post-designer/carousel","version":"0.1.0","title":"Carousel","category":"widgets","icon":"smiley","description":"Design any kind of Posts","supports":{"html":false},"textdomain":"blocky","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"post-designer/carousel","version":"0.1.0","title":"Carousel","category":"post-designer","icon":"smiley","description":"Design any kind of Posts","supports":{"html":false},"textdomain":"blocky","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

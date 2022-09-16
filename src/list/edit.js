@@ -7,7 +7,7 @@ import { __ } from '@wordpress/i18n';
 
 /**
  * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
+ * It provides all the necessary props like the className name.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
@@ -30,9 +30,42 @@ import './editor.scss';
  * @return {WPElement} Element to render.
  */
 export default function Edit() {
+	const blockProps = { ...useBlockProps() };
 	return (
-		<p { ...useBlockProps() }>
-			{ __( 'Blocky – hello from the editor!', 'blocky' ) }
-		</p>
+		<div {...blockProps}>
+			<div className="tutor-card tutor-course-card">
+				<div className="tutor-course-thumbnail">
+					<a href="" className="tutor-d-block">
+						<div className="tutor-ratio tutor-ratio-16x9">
+							<img className="tutor-card-image-top" src="http://localhost/pmpro/wp-content/uploads/2022/08/logo-1.jpg" alt="" loading="lazy" />
+						</div>
+					</a>
+				</div>
+				<div className="tutor-card-body">
+					<h3 className="tutor-course-name tutor-fs-5 tutor-fw-medium" title="Woocommerce Auto Cancel">
+						<a href="<?php the_permalink(); ?>" target="_parent">
+							Course title
+						</a>
+					</h3>
+
+					<div className="tutor-meta tutor-mt-12 tutor-mb-20">
+						<div>
+							<span className="tutor-meta-icon tutor-icon-user-line" area-hidden="true"></span>
+							<span className="tutor-meta-value"></span>
+						</div>
+						<div>
+							<span className="tutor-icon-clock-line tutor-meta-icon" area-hidden="true"></span>
+							<span className="tutor-meta-value"></span>
+						</div>
+					</div>
+				</div>
+				<div className="tutor-card-footer">
+					<a href="<?php the_permalink(); ?>" className="tutor-btn tutor-btn-outline-primary tutor-btn-md tutor-btn-block " target="_self">
+						View Details
+					</a>
+				</div>
+			</div>
+
+		</div>
 	);
 }

@@ -4,7 +4,7 @@
 	"name": "post-designer/carousel",
 	"version": "0.1.0",
 	"title": "Carousel",
-	"category": "widgets",
+	"category": "post-designer",
 	"icon": "smiley",
 	"description": "Design any kind of Posts",
 	"supports": {

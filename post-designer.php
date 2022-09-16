@@ -66,6 +66,9 @@ if ( ! class_exists( 'PostDesigner' ) ) {
 		 * @return array  contains plugin meta data
 		 */
 		public static function plugin_data(): array {
+			if ( ! function_exists( 'get_plugin_data' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/plugin.php';
+			}
 			$plugin_data = get_plugin_data(
 				__FILE__
 			);

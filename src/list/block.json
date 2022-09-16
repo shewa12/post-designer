@@ -4,7 +4,7 @@
 	"name": "post-designer/list",
 	"version": "0.1.0",
 	"title": "Post Lists",
-	"category": "widgets",
+	"category": "post-designer",
 	"icon": "smiley",
 	"description": "Design any kind of Posts",
 	"supports": {

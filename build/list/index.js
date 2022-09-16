@@ -29,7 +29,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
+ * It provides all the necessary props like the className name.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
@@ -53,7 +53,49 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 function Edit() {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Blocky – hello from the editor!', 'blocky'));
+  const blockProps = { ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)()
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tutor-card tutor-course-card"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tutor-course-thumbnail"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "",
+    className: "tutor-d-block"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tutor-ratio tutor-ratio-16x9"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    className: "tutor-card-image-top",
+    src: "http://localhost/pmpro/wp-content/uploads/2022/08/logo-1.jpg",
+    alt: "",
+    loading: "lazy"
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tutor-card-body"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "tutor-course-name tutor-fs-5 tutor-fw-medium",
+    title: "Woocommerce Auto Cancel"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "<?php the_permalink(); ?>",
+    target: "_parent"
+  }, "Course title")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tutor-meta tutor-mt-12 tutor-mb-20"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "tutor-meta-icon tutor-icon-user-line",
+    "area-hidden": "true"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "tutor-meta-value"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "tutor-icon-clock-line tutor-meta-icon",
+    "area-hidden": "true"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "tutor-meta-value"
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "tutor-card-footer"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "<?php the_permalink(); ?>",
+    className: "tutor-btn tutor-btn-outline-primary tutor-btn-md tutor-btn-block ",
+    target: "_self"
+  }, "View Details"))));
 }
 
 /***/ }),
@@ -222,7 +264,7 @@ module.exports = window["wp"]["i18n"];
   \*****************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"post-designer/list","version":"0.1.0","title":"Post Lists","category":"widgets","icon":"smiley","description":"Design any kind of Posts","supports":{"html":false},"textdomain":"blocky","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"post-designer/list","version":"0.1.0","title":"Post Lists","category":"post-designer","icon":"smiley","description":"Design any kind of Posts","supports":{"html":false},"textdomain":"blocky","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
