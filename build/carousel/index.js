@@ -100,6 +100,8 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
+  attributes: _block_json__WEBPACK_IMPORTED_MODULE_4__.attributes,
+
   /**
    * @see ./edit.js
    */
@@ -222,7 +224,7 @@ module.exports = window["wp"]["i18n"];
   \*********************************/
 /***/ (function(module) {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"post-designer/carousel","version":"0.1.0","title":"Carousel","category":"post-designer","icon":"smiley","description":"Design any kind of Posts","supports":{"html":false},"textdomain":"blocky","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"post-designer/carousel","version":"0.1.0","title":"Carousel","category":"post-designer","icon":"smiley","description":"Design any kind of Posts","supports":{"html":false},"textdomain":"blocky","attributes":{"postType":{"type":"string","default":"post"},"author":{"type":"string","default":""},"categories":{"type":"string","default":""},"tags":{"type":"string","default":""},"dateFrom":{"type":"string","default":""},"dateTo":{"type":"string","default":""}},"editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

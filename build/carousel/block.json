@@ -11,6 +11,32 @@
     "html": false
   },
   "textdomain": "blocky",
+  "attributes": {
+    "postType": {
+      "type": "string",
+      "default": "post"
+    },
+    "author": {
+      "type": "string",
+      "default": ""
+    },
+    "categories": {
+      "type": "string",
+      "default": ""
+    },
+    "tags": {
+      "type": "string",
+      "default": ""
+    },
+    "dateFrom": {
+      "type": "string",
+      "default": ""
+    },
+    "dateTo": {
+      "type": "string",
+      "default": ""
+    }
+  },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css"

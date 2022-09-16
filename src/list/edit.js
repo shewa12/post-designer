@@ -29,9 +29,12 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit({attributes, setAttributes}) {
 	const blockProps = { ...useBlockProps() };
+	const {postType, author, categories, tags, dateFrom, dateTo} = attributes;
+	
 	return (
+		
 		<div {...blockProps}>
 			<div className="tutor-card tutor-course-card">
 				<div className="tutor-course-thumbnail">
@@ -60,7 +63,7 @@ export default function Edit() {
 					</div>
 				</div>
 				<div className="tutor-card-footer">
-					<a href="<?php the_permalink(); ?>" className="tutor-btn tutor-btn-outline-primary tutor-btn-md tutor-btn-block " target="_self">
+					<a href="<?php the_permalink(); ?>" className="tutor-btn tutor-btn-outline-primary tutor-btn-md tutor-btn-block " target="_self" onClick={() => {setAttributes({postType: 'abc'})}}>
 						View Details
 					</a>
 				</div>
