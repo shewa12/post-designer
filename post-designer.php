@@ -13,6 +13,7 @@
  * @package           post-designer
  */
 
+use PostDesigner\API\Routes;
 use PostDesigner\Blocks\Blocks;
 
 if ( ! class_exists( 'PostDesigner' ) ) {
@@ -132,6 +133,7 @@ if ( ! class_exists( 'PostDesigner' ) ) {
 		 */
 		public function load_packages() {
 			new Blocks();
+			new Routes();
 		}
 	}
 	// trigger.

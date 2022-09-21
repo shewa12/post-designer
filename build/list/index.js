@@ -120,51 +120,148 @@ function Edit(_ref) {
     multiple: true,
     onChange: value => {}
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "tutor-card tutor-course-card"
+    className: "pd-row",
+    style: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      gap: '20px'
+    }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "tutor-course-thumbnail"
+    className: "pd-card pd-course-card"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-course-thumbnail"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#",
-    className: "tutor-d-block"
+    className: "pd-d-block"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "tutor-ratio tutor-ratio-16x9"
+    className: "pd-ratio pd-ratio-16x9"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    className: "tutor-card-image-top",
+    className: "pd-card-image-top",
     src: "http://localhost/pmpro/wp-content/uploads/2022/08/logo-1.jpg",
     alt: "",
     loading: "lazy"
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "tutor-card-body"
+    className: "pd-card-body"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
-    className: "tutor-course-name tutor-fs-5 tutor-fw-medium",
+    className: "pd-course-name pd-fs-5 pd-fw-medium",
     title: "Woocommerce Auto Cancel"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#",
     target: "_parent"
   }, "Course title")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "tutor-meta tutor-mt-12 tutor-mb-20"
+    className: "pd-meta pd-mt-12 pd-mb-20"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "tutor-meta-icon tutor-icon-user-line",
+    className: "pd-meta-icon pd-icon-user-line",
     "area-hidden": "true"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "tutor-meta-value"
+    className: "pd-meta-value"
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "tutor-icon-clock-line tutor-meta-icon",
+    className: "pd-icon-clock-line pd-meta-icon",
     "area-hidden": "true"
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "tutor-meta-value"
+    className: "pd-meta-value"
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "tutor-card-footer"
+    className: "pd-card-footer"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#",
-    className: "tutor-btn tutor-btn-outline-primary tutor-btn-md tutor-btn-block ",
+    className: "pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block ",
     target: "_self",
     onClick: () => {
       setAttributes({
         postType: 'abc'
       });
     }
-  }, "View Details"))));
+  }, "View Details"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-card pd-course-card"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-course-thumbnail"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#",
+    className: "pd-d-block"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-ratio pd-ratio-16x9"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    className: "pd-card-image-top",
+    src: "http://localhost/pmpro/wp-content/uploads/2022/08/logo-1.jpg",
+    alt: "",
+    loading: "lazy"
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-card-body"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "pd-course-name pd-fs-5 pd-fw-medium",
+    title: "Woocommerce Auto Cancel"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#",
+    target: "_parent"
+  }, "Course title")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-meta pd-mt-12 pd-mb-20"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "pd-meta-icon pd-icon-user-line",
+    "area-hidden": "true"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "pd-meta-value"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "pd-icon-clock-line pd-meta-icon",
+    "area-hidden": "true"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "pd-meta-value"
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-card-footer"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#",
+    className: "pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block ",
+    target: "_self",
+    onClick: () => {
+      setAttributes({
+        postType: 'abc'
+      });
+    }
+  }, "View Details"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-card pd-course-card"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-course-thumbnail"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#",
+    className: "pd-d-block"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-ratio pd-ratio-16x9"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    className: "pd-card-image-top",
+    src: "http://localhost/pmpro/wp-content/uploads/2022/08/logo-1.jpg",
+    alt: "",
+    loading: "lazy"
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-card-body"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "pd-course-name pd-fs-5 pd-fw-medium",
+    title: "Woocommerce Auto Cancel"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#",
+    target: "_parent"
+  }, "Course title")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-meta pd-mt-12 pd-mb-20"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "pd-meta-icon pd-icon-user-line",
+    "area-hidden": "true"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "pd-meta-value"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "pd-icon-clock-line pd-meta-icon",
+    "area-hidden": "true"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "pd-meta-value"
+  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-card-footer"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#",
+    className: "pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block ",
+    target: "_self",
+    onClick: () => {
+      setAttributes({
+        postType: 'abc'
+      });
+    }
+  }, "View Details")))));
 }
 
 /***/ }),

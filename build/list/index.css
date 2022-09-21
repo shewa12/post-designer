@@ -6,8 +6,8 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.wp-block-create-block-blocky {
-  border: 1px dotted #f00;
+.wp-block-post-designer-list .pd-course-card {
+  border: 1px solid #e3e3e3;
 }
 
 /*# sourceMappingURL=index.css.map*/
