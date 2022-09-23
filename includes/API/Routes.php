@@ -46,13 +46,13 @@ class Routes {
 	 */
 	public static function register_routes() {
 		foreach ( self::endpoints() as $endpoint ) {
-            tutor_log( $endpoint['callback'] );
 			register_rest_route(
 				self::NAMESPACE,
 				$endpoint['endpoint'] . $endpoint['url_params'],
 				array(
-					'methods'  => $endpoint['method'],
-					'callback' => $endpoint['callback'],
+					'methods'             => $endpoint['method'],
+					'callback'            => $endpoint['callback'],
+					'permission_callback' => $endpoint['permission_callback'],
 				)
 			);
 		}
@@ -68,10 +68,18 @@ class Routes {
 	public static function endpoints() {
 		return array(
 			array(
-				'endpoint'   => 'get-posts',
-				'url_params' => '',
-				'method'     => 'GET',
-				'callback'   => array( Posts::class, 'get' ),
+				'endpoint'            => 'get-posts',
+				'url_params'          => '',
+				'method'              => 'GET',
+				'callback'            => array( Posts::class, 'get_posts' ),
+				'permission_callback' => array( Posts::class, 'permission' ),
+			),
+			array(
+				'endpoint'            => 'get-terms',
+				'url_params'          => '',
+				'method'              => 'GET',
+				'callback'            => array( Posts::class, 'get_terms' ),
+				'permission_callback' => array( Posts::class, 'permission' ),
 			),
 		);
 	}
