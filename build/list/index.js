@@ -2482,10 +2482,38 @@ const postDesigner = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
 
 /***/ }),
 
-/***/ "./src/list/components/PostCard.js":
-/*!*****************************************!*\
-  !*** ./src/list/components/PostCard.js ***!
-  \*****************************************/
+/***/ "./src/components/Placeholder.js":
+/*!***************************************!*\
+  !*** ./src/components/Placeholder.js ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+
+const PostPlaceholder = () => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Placeholder, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please wait...', 'post-designer')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Spinner, null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PostPlaceholder);
+
+/***/ }),
+
+/***/ "./src/components/PostCard.js":
+/*!************************************!*\
+  !*** ./src/components/PostCard.js ***!
+  \************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2569,7 +2597,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/list/editor.scss");
-/* harmony import */ var _components_PostCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/PostCard */ "./src/list/components/PostCard.js");
+/* harmony import */ var _components_PostCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/PostCard */ "./src/components/PostCard.js");
+/* harmony import */ var _components_Placeholder__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Placeholder */ "./src/components/Placeholder.js");
 
 
 
@@ -2578,6 +2607,8 @@ const {
   useState,
   useEffect
 } = wp.element;
+
+ // Custom components
 
 
 
@@ -2598,6 +2629,7 @@ function Edit(_ref) {
     dateTo
   } = attributes;
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const renderPostList = posts.map(post => {
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_PostCard__WEBPACK_IMPORTED_MODULE_6__["default"], {
       post: post
@@ -2612,6 +2644,8 @@ function Edit(_ref) {
       } else {
         alert(response.statusText);
       }
+
+      setLoading(false);
     };
 
     getPosts();
@@ -2701,7 +2735,7 @@ function Edit(_ref) {
       justifyContent: 'space-between',
       gap: '20px'
     }
-  }, renderPostList));
+  }, loading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Placeholder__WEBPACK_IMPORTED_MODULE_7__["default"], null) : renderPostList));
 }
 
 /***/ }),

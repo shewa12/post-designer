@@ -21,7 +21,9 @@ import {
 } from '@wordpress/components'
 
 import './editor.scss';
-import PostCard from './components/PostCard';
+// Custom components
+import PostCard from '../components/PostCard';
+import PostPlaceholder from '../components/Placeholder';
 
 
 export default function Edit({attributes, setAttributes}) {
@@ -29,6 +31,7 @@ export default function Edit({attributes, setAttributes}) {
 	const getPostsEndPoint = 'get-posts';
 	const {postType, author, categories, tags, dateFrom, dateTo} = attributes;
 	const [posts, setPosts] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	const renderPostList = posts.map((post) => {
 		return <PostCard post={post}/>
@@ -42,11 +45,12 @@ export default function Edit({attributes, setAttributes}) {
 			} else {
 				alert(response.statusText)
 			}
+			setLoading(false)
 		}
 		getPosts();
 	}, []);
 	return (
-		
+
 		<div {...blockProps}>
 			<InspectorControls key={"settings"}>
 				<Panel>
@@ -130,7 +134,7 @@ export default function Edit({attributes, setAttributes}) {
 
 			</InspectorControls>
 			<div className='pd-row' style={{display: 'flex', justifyContent: 'space-between', gap: '20px'}}>
-				{renderPostList}
+				{ loading ? <PostPlaceholder /> : renderPostList }
 			</div>
 		</div>
 	);
