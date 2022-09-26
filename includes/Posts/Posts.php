@@ -34,9 +34,34 @@ class Posts {
 		$args      = array(
 			'post_type' => 'post',
 		);
+		$posts     = array();
 		$the_query = new WP_Query( $args );
 		if ( $the_query->have_posts() ) {
-			return $the_query->posts;
+			while ( $the_query->have_posts() ) {
+				$the_query->the_post();
+				$author = array(
+					'ID'           => get_the_author_meta( 'ID' ),
+					'user_email'   => get_the_author_meta( 'user_email' ),
+					'first_name'   => get_the_author_meta( 'first_name' ),
+					'last_name'    => get_the_author_meta( 'last_name' ),
+					'display_name' => get_the_author_meta( 'display_name' ),
+					'description'  => get_the_author_meta( 'description' ),
+					'avatar'       => get_avatar_url( get_the_author_meta( 'ID' ) ),
+				);
+				$post   = array(
+					'ID'           => get_the_ID(),
+					'post_title'   => get_the_title(),
+					'post_content' => get_the_content(),
+					'post_date'    => get_the_date( get_option( 'date_format' ) ),
+					'thumbnail'    => get_the_post_thumbnail_url(),
+					'author'       => $author,
+					'categories'   => get_the_category_list( ',' ),
+					'tags'         => get_the_tag_list( '<span class="pd-post-tag">', ',', '<span>' ),
+				);
+				array_push( $posts, $post );
+			}
+			wp_reset_postdata();
+			return $posts;
 		} else {
 			return array();
 		}

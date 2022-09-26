@@ -6,9 +6,6 @@
 .wp-block-post-designer-list {
 	.pd-card-row {
 		display: grid;
-		img {
-			max-width: 100%;
-		}
 		&.pd-1-col {
 			grid-template-columns: repeat(1, 1fr);
 			gap: 10px;
@@ -56,8 +53,16 @@
 		.pd-card {
 			border: 1px solid #e3e3e3;
 			border-radius: 10px;
+			& img {
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+			}
 			.pd-card-body {
 				padding: 10px;
+				.pd-post-meta, .pd-post-categories, .pd-post-categories a {
+					font-style: italic;
+					font-size: 13px;
+				}
 			}
 			.pd-card-footer {
 				padding: 10px;

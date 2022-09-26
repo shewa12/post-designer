@@ -1,12 +1,14 @@
 import { __ } from '@wordpress/i18n';
 
 const PostCard = ({post}) => {
+    console.log(post);
+    const { ID, display_name, avatar, user_login, description } = post.author;
     return(
 	    <div className="pd-card">
 	        <div className="pd-post-thumbnail">
 	            <a href="#" className="pd-d-block">
 	                <div className="pd-ratio pd-ratio-16x9">
-	                    <img className="pd-card-image-top" src="post.jpeg" alt="" loading="lazy" />
+	                    <img className="pd-card-image-top" src={post.thumbnail} alt="" loading="lazy" />
 	                </div>
 	            </a>
 	        </div>
@@ -22,11 +24,8 @@ const PostCard = ({post}) => {
 					</span>
 				</div>
 				<div className="pd-post-categories">
-					<span>In: </span>
-					<a href="#">Technology</a>,
-					<a href="#">Development</a>,
-					<a href="#">Software</a>,
-					<a href="#">Dev Ops</a>
+					<span>{ __( 'In:', 'post-designer' ) } </span>
+					<div dangerouslySetInnerHTML={ { __html: post.categories } }></div>
 				</div>
 				<div className="pd-post-content">
 					<p dangerouslySetInnerHTML={ {__html: post.post_content} }>
@@ -40,12 +39,14 @@ const PostCard = ({post}) => {
 	        <div className="pd-card-footer">
 				<div className="pd-post-author">
 					<a href="#" className="pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block " target="_self">
-						<img src="author.png" alt="" />
+						<img src={ avatar } alt={ display_name } />
 					</a>
 					<div className="pd-post-author-info">
-						<strong>SK Ahmed</strong>
+						<strong>
+                            { display_name ? display_name : user_login }
+                        </strong>
 						<p>
-						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+						{ description }
 						</p>
 					</div>
 				</div>
