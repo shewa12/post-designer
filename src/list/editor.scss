@@ -3,9 +3,75 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-
 .wp-block-post-designer-list {
-	.pd-course-card {
-		border: 1px solid #e3e3e3;
+	.pd-card-row {
+		display: grid;
+		img {
+			max-width: 100%;
+		}
+		&.pd-1-col {
+			grid-template-columns: repeat(1, 1fr);
+			gap: 10px;
+		}
+		&.pd-1-col {
+			grid-template-columns: repeat(1, 1fr);
+			gap: 10px;
+		}
+		&.pd-2-col {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 10px;
+		}
+		&.pd-3-col {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 10px;
+		}
+		&.pd-4-col {
+			grid-template-columns: repeat(4, 4fr);
+			gap: 10px;
+		}
+		&.pd-5-col {
+			grid-template-columns: repeat(5, 1fr);
+			gap: 10px;
+		}
+		&.pd-6-col {
+			grid-template-columns: repeat(6, 1fr);
+			gap: 10px;
+		}
+		&.pd-7-col {
+			grid-template-columns: repeat(7, 1fr);
+			gap: 10px;
+		}
+		&.pd-8-col {
+			grid-template-columns: repeat(8, 1fr);
+			gap: 10px;
+		}
+		&.pd-9-col {
+			grid-template-columns: repeat(9, 1fr);
+			gap: 10px;
+		}
+		&.pd-10-col {
+			grid-template-columns: repeat(10, 1fr);
+			gap: 10px;
+		}
+		.pd-card {
+			border: 1px solid #e3e3e3;
+			border-radius: 10px;
+			.pd-card-body {
+				padding: 10px;
+			}
+			.pd-card-footer {
+				padding: 10px;
+			}
+			.pd-post-author {
+				display: flex;
+				column-gap: 20px;
+			}
+			.pd-post-author img {
+				max-width: 50px;
+				max-height: 50px;
+				border: 1px solid #e3e3e3;
+				border-radius: 100%;
+			}
+		}
 	}
 }

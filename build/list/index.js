@@ -2520,14 +2520,19 @@ const PostPlaceholder = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 
 
-const PostCard = props => {
-  console.log(props.post);
+
+const PostCard = _ref => {
+  let {
+    post
+  } = _ref;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pd-card pd-course-card"
+    className: "pd-card"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pd-course-thumbnail"
+    className: "pd-post-thumbnail"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#",
     className: "pd-d-block"
@@ -2535,41 +2540,51 @@ const PostCard = props => {
     className: "pd-ratio pd-ratio-16x9"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     className: "pd-card-image-top",
-    src: "http://localhost/pmpro/wp-content/uploads/2022/08/logo-1.jpg",
+    src: "post.jpeg",
     alt: "",
     loading: "lazy"
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pd-card-body"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
-    className: "pd-course-name pd-fs-5 pd-fw-medium",
+    className: "pd-post-title",
     title: "Woocommerce Auto Cancel"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#",
     target: "_parent"
-  }, "Course title")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pd-meta pd-mt-12 pd-mb-20"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "pd-meta-icon pd-icon-user-line",
-    "area-hidden": "true"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "pd-meta-value"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "pd-icon-clock-line pd-meta-icon",
-    "area-hidden": "true"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "pd-meta-value"
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, post.post_title)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-post-meta"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Post Date:', 'post-designer'), " ", post.post_date)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-post-categories"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, "In: "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#"
+  }, "Technology"), ",", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#"
+  }, "Development"), ",", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#"
+  }, "Software"), ",", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#"
+  }, "Dev Ops")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-post-content"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    dangerouslySetInnerHTML: {
+      __html: post.post_content
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "#"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Read more...', 'post-designer')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "pd-card-footer"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-post-author"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "#",
     className: "pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block ",
-    target: "_self",
-    onClick: () => {
-      setAttributes({
-        postType: 'abc'
-      });
-    }
-  }, "View Details")));
+    target: "_self"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: "author.png",
+    alt: ""
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "pd-post-author-info"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "SK Ahmed"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (PostCard);
@@ -2650,7 +2665,7 @@ function Edit(_ref) {
 
     getPosts();
   }, []);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
+  return loading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Placeholder__WEBPACK_IMPORTED_MODULE_7__["default"], null) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, {
     key: "settings"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Panel, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Post Type', 'post-designer'),
@@ -2729,13 +2744,8 @@ function Edit(_ref) {
     multiple: true,
     onChange: value => {}
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "pd-row",
-    style: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      gap: '20px'
-    }
-  }, loading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Placeholder__WEBPACK_IMPORTED_MODULE_7__["default"], null) : renderPostList));
+    className: "pd-card-row pd-3-col"
+  }, renderPostList));
 }
 
 /***/ }),

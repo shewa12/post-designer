@@ -50,7 +50,8 @@ export default function Edit({attributes, setAttributes}) {
 		getPosts();
 	}, []);
 	return (
-
+		loading ?
+		<PostPlaceholder /> :
 		<div {...blockProps}>
 			<InspectorControls key={"settings"}>
 				<Panel>
@@ -133,8 +134,8 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 			</InspectorControls>
-			<div className='pd-row' style={{display: 'flex', justifyContent: 'space-between', gap: '20px'}}>
-				{ loading ? <PostPlaceholder /> : renderPostList }
+			<div className='pd-card-row pd-3-col'>
+				{ renderPostList }
 			</div>
 		</div>
 	);

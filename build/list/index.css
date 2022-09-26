@@ -1,1 +1,81 @@
-.wp-block-post-designer-list .pd-course-card{border:1px solid #e3e3e3}
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/list/editor.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-post-designer-list .pd-card-row {
+  display: grid;
+}
+.wp-block-post-designer-list .pd-card-row img {
+  max-width: 100%;
+}
+.wp-block-post-designer-list .pd-card-row.pd-1-col {
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row.pd-1-col {
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row.pd-2-col {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row.pd-3-col {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row.pd-4-col {
+  grid-template-columns: repeat(4, 4fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row.pd-5-col {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row.pd-6-col {
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row.pd-7-col {
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row.pd-8-col {
+  grid-template-columns: repeat(8, 1fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row.pd-9-col {
+  grid-template-columns: repeat(9, 1fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row.pd-10-col {
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+}
+.wp-block-post-designer-list .pd-card-row .pd-card {
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+}
+.wp-block-post-designer-list .pd-card-row .pd-card .pd-card-body {
+  padding: 10px;
+}
+.wp-block-post-designer-list .pd-card-row .pd-card .pd-card-footer {
+  padding: 10px;
+}
+.wp-block-post-designer-list .pd-card-row .pd-card .pd-post-author {
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.wp-block-post-designer-list .pd-card-row .pd-card .pd-post-author img {
+  max-width: 50px;
+  max-height: 50px;
+  border: 1px solid #e3e3e3;
+  border-radius: 100%;
+}
+
+/*# sourceMappingURL=index.css.map*/
