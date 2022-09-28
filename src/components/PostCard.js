@@ -28,7 +28,7 @@ const PostCard = ({post}) => {
 					<div dangerouslySetInnerHTML={ { __html: post.categories } }></div>
 				</div>
 				<div className="pd-post-content">
-					<p dangerouslySetInnerHTML={ {__html: post.post_content} }>
+					<p dangerouslySetInnerHTML={ {__html: post.post_excerpt} }>
                         
 					</p>
 					<a href="#">

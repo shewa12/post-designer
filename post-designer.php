@@ -78,9 +78,9 @@ if ( ! class_exists( 'PostDesigner' ) ) {
 			self::$plugin_data['plugin_url']  = plugin_dir_url( __FILE__ );
 			self::$plugin_data['plugin_path'] = plugin_dir_path( __FILE__ );
 			self::$plugin_data['base_name']   = plugin_basename( __FILE__ );
-			self::$plugin_data['templates']   = plugin_dir_path( __FILE__ ) . 'templates';
-			self::$plugin_data['views']       = plugin_dir_path( __FILE__ ) . 'views';
-			self::$plugin_data['assets']      = plugin_dir_url( __FILE__ ) . 'assets';
+			self::$plugin_data['templates']   = trailingslashit( plugin_dir_path( __FILE__ ) . 'templates' );
+			self::$plugin_data['views']       = trailingslashit( plugin_dir_path( __FILE__ ) . 'views' );
+			self::$plugin_data['assets']      = trailingslashit( plugin_dir_url( __FILE__ ) . 'assets' );
 			self::$plugin_data['base_name']   = plugin_basename( __FILE__ );
 			// set ENV DEV | PROD.
 			self::$plugin_data['env'] = 'DEV';
