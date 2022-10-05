@@ -29,7 +29,7 @@ import PostPlaceholder from '../components/Placeholder';
 export default function Edit({attributes, setAttributes}) {
 	const blockProps = { ...useBlockProps() };
 	const getPostsEndPoint = 'get-posts';
-	const {postType, author, categories, tags, dateFrom, dateTo} = attributes;
+	const {postType, taxonomies, author, categories, tags, dateFrom, dateTo} = attributes;
 	const [posts, setPosts] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -37,17 +37,23 @@ export default function Edit({attributes, setAttributes}) {
 		return <PostCard post={post}/>
 	});
 
-	useEffect(() => {
-		const getPosts = async () => {
-			const response = await postDesigner.get(getPostsEndPoint,{});
-			if (response.statusText === 'OK') {
-				setPosts(response.data);
-			} else {
-				alert(response.statusText)
-			}
-			setLoading(false)
+	/**
+	 * Get post lists
+	 */
+	const getPosts = async () => {
+		const response = await postDesigner.get(getPostsEndPoint,{});
+		if (response.statusText === 'OK') {
+			setPosts(response.data);
+		} else {
+			alert(response.statusText)
 		}
+		setLoading(false)
+	}
+
+	useEffect(() => {
+
 		getPosts();
+		
 	}, []);
 	return (
 		loading ?
@@ -88,7 +94,7 @@ export default function Edit({attributes, setAttributes}) {
 					</PanelBody>
 				</Panel>
 				<Panel>
-					<PanelBody title={ __( 'Sorting & Filtering', 'post-designer' ) } initialOpen={ false }>
+					<PanelBody title={ __( 'Sorting', 'post-designer' ) } initialOpen={ false }>
 						<SelectControl
 							label={ __( 'Order By ', 'post-designer' ) }
 							value={ '' }
@@ -108,28 +114,11 @@ export default function Edit({attributes, setAttributes}) {
 							] }
 							onChange={ ( value ) => {} }
 						/>
-						<SelectControl
-							label={ __( 'Categories', 'post-designer' ) }
-							value={ '' }
-							options={ [
-								{ label: __( 'ID', 'post-designer' ), value: 'ID' },
-								{ label: __( 'Title', 'post-designer' ), value: 'post_title' },
-								{ label: __( 'Date', 'post-designer' ), value: 'post_date' },
-							] }
-							multiple= { true }
-							onChange={ ( value ) => {} }
-						/>
-						<SelectControl
-							label={ __( 'Authors', 'post-designer' ) }
-							value={ '' }
-							options={ [
-								{ label: __( 'ID', 'post-designer' ), value: 'ID' },
-								{ label: __( 'Title', 'post-designer' ), value: 'post_title' },
-								{ label: __( 'Date', 'post-designer' ), value: 'post_date' },
-							] }
-							multiple={ true }
-							onChange={ ( value ) => {} }
-						/>
+					</PanelBody>
+				</Panel>
+				<Panel>
+					<PanelBody title={ __( 'Query', 'post-designer' ) }>
+
 					</PanelBody>
 				</Panel>
 

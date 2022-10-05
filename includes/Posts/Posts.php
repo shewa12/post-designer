@@ -32,10 +32,10 @@ class Posts {
 	 * @return array
 	 */
 	public static function get_posts(): array {
-		$args      = array(
+		$args                  = array(
 			'post_type' => 'post',
 		);
-		$plugin_data = PostDesigner::plugin_data();
+		$plugin_data           = PostDesigner::plugin_data();
 		$thumbnail_placeholder = $plugin_data['assets'] . 'images/thumbnail.svg';
 
 		$posts     = array();
@@ -126,6 +126,43 @@ class Posts {
 		);
 
 		return wp_get_object_terms( $posts_in_post_type, $taxonomy, array( 'ids' ) );
+	}
+
+	/**
+	 * Get available post types
+	 *
+	 * @since v1.0.0
+	 *
+	 * @return array
+	 */
+	public static function get_post_types(): array {
+		return get_post_types();
+	}
+
+	/**
+	 * Get post taxonomies by post post type
+	 *
+	 * @since v1.0.0
+	 *
+	 * @param WP_REST_Request $request query params.
+	 *
+	 * @return mixed
+	 */
+	public static function get_post_taxonomies( WP_REST_Request $request ) {
+		$rules = array(
+			'post-type' => 'required',
+		);
+		$data = array(
+			'post-type' => $request['post-type'],
+		);
+
+		$validate = Validation::validate( $rules, $data );
+
+		if ( $validate->success ) {
+			return get_object_taxonomies( $data['post-type'] );
+		} else {
+			return rest_ensure_response( $validate->errors );
+		}
 	}
 
 	/**

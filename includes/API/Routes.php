@@ -81,6 +81,20 @@ class Routes {
 				'callback'            => array( Posts::class, 'get_terms' ),
 				'permission_callback' => array( Posts::class, 'permission' ),
 			),
+			array(
+				'endpoint'            => 'get-post-types',
+				'url_params'          => '',
+				'method'              => 'GET',
+				'callback'            => array( Posts::class, 'get_post_types' ),
+				'permission_callback' => array( Posts::class, 'permission' ),
+			),
+			array(
+				'endpoint'            => 'get-post-taxonomies',
+				'url_params'          => '',
+				'method'              => 'GET',
+				'callback'            => array( Posts::class, 'get_post_taxonomies' ),
+				'permission_callback' => array( Posts::class, 'permission' ),
+			),
 		);
 	}
 }

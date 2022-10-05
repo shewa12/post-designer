@@ -16,6 +16,10 @@
 			"type": "string",
 			"default" : "post"
 		},
+		"taxonomies": {
+			"type": "array",
+			"default": []
+		},
 		"author": {
 			"type": "string",
 			"default": ""
