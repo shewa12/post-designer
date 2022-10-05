@@ -24,14 +24,18 @@ import './editor.scss';
 // Custom components
 import PostCard from '../components/PostCard';
 import PostPlaceholder from '../components/Placeholder';
-
+import EndPoints from '../API/EndPoints';
 
 export default function Edit({attributes, setAttributes}) {
+	// Attributes
 	const blockProps = { ...useBlockProps() };
-	const getPostsEndPoint = 'get-posts';
 	const {postType, taxonomies, author, categories, tags, dateFrom, dateTo} = attributes;
-	const [posts, setPosts] = useState([]);
+
+	// States
 	const [loading, setLoading] = useState(true);
+	const [posts, setPosts] = useState([]);
+	const [postTypes, setPostTypes] = useState([]);
+	const [postTypeState, setPostTypeState] = useState(postType)
 
 	const renderPostList = posts.map((post) => {
 		return <PostCard post={post}/>
@@ -41,7 +45,12 @@ export default function Edit({attributes, setAttributes}) {
 	 * Get post lists
 	 */
 	const getPosts = async () => {
-		const response = await postDesigner.get(getPostsEndPoint,{});
+		setLoading(true);
+		const response = await postDesigner.get(EndPoints.getPosts,{
+			params: {
+				post_type: postType
+			}
+		});
 		if (response.statusText === 'OK') {
 			setPosts(response.data);
 		} else {
@@ -50,11 +59,30 @@ export default function Edit({attributes, setAttributes}) {
 		setLoading(false)
 	}
 
-	useEffect(() => {
+	/**
+	 * Get all registered post types
+	 */
+	const getPostTypes = async () => {
+		setLoading(true);
+		const response = await postDesigner.get(EndPoints.getPostTypes, {});
+		if (response.statusText === 'OK') {
+			setPostTypes(response.data)
+		} else {
+			alert(response.statusText);
+		}
+		setLoading(false);
+	}
 
+	useEffect(() => {
 		getPosts();
-		
+
+	}, [postType]);
+
+	useEffect(() => {
+		getPostTypes();
+
 	}, []);
+
 	return (
 		loading ?
 		<PostPlaceholder /> :
@@ -62,11 +90,14 @@ export default function Edit({attributes, setAttributes}) {
 			<InspectorControls key={"settings"}>
 				<Panel>
 					<PanelBody title={__('Post Type', 'post-designer')} initialOpen={ true }>
-							<select>
-								<option>A</option>
-								<option>B</option>
-								<option>C</option>
-							</select>
+					<SelectControl
+						value={ postType }
+						options={ postTypes }
+						onChange={ ( postType ) => {
+							setAttributes({postType: postType});
+							setPostTypeState(postType)
+						} }
+					/>
 					</PanelBody>
 				</Panel>
 				<Panel>
@@ -118,7 +149,7 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 				<Panel>
 					<PanelBody title={ __( 'Query', 'post-designer' ) }>
-
+							
 					</PanelBody>
 				</Panel>
 

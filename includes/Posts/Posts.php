@@ -14,6 +14,7 @@ use PostDesigner\Validation\Validation;
 use WP_Query;
 use WP_REST_Request;
 use WP_REST_Response;
+use WP_REST_Server;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -29,12 +30,16 @@ class Posts {
 	 *
 	 * @since v1.0.0
 	 *
+	 * @param WP_REST_Request $request post arguments.
+	 *
 	 * @return array
 	 */
-	public static function get_posts(): array {
-		$args                  = array(
-			'post_type' => 'post',
+	public static function get_posts( WP_REST_Request $request ): array {
+		$query_params = $request->get_query_params();
+		$args         = array(
+			'post_type' => $query_params['post_type'],
 		);
+
 		$plugin_data           = PostDesigner::plugin_data();
 		$thumbnail_placeholder = $plugin_data['assets'] . 'images/thumbnail.svg';
 
@@ -136,7 +141,18 @@ class Posts {
 	 * @return array
 	 */
 	public static function get_post_types(): array {
-		return get_post_types();
+		$post_types = get_post_types();
+		$types      = array();
+		foreach ( $post_types as $key => $type ) {
+			array_push(
+				$types,
+				array(
+					'label' => $key,
+					'value' => $type,
+				)
+			);
+		}
+		return $types;
 	}
 
 	/**
