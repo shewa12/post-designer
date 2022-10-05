@@ -149,17 +149,15 @@ class Posts {
 	 * @return mixed
 	 */
 	public static function get_post_taxonomies( WP_REST_Request $request ) {
-		$rules = array(
+		$rules        = array(
 			'post-type' => 'required',
 		);
-		$data = array(
-			'post-type' => $request['post-type'],
-		);
+		$query_params = $request->get_query_params();
 
-		$validate = Validation::validate( $rules, $data );
+		$validate = Validation::validate( $rules, $query_params );
 
 		if ( $validate->success ) {
-			return get_object_taxonomies( $data['post-type'] );
+			return get_object_taxonomies( $query_params['post-type'] );
 		} else {
 			return rest_ensure_response( $validate->errors );
 		}
