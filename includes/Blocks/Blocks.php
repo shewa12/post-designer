@@ -44,7 +44,12 @@ class Blocks {
 			'carousel',
 		);
 		foreach ( $array_blocks as $block ) {
-			register_block_type( $plugin_data['plugin_path'] . 'build/' . $block );
+			register_block_type(
+				$plugin_data['plugin_path'] . 'build/' . $block,
+				array(
+					'render_callback' => __CLASS__ . "::render_{$block}",
+				)
+			);
 		}
 	}
 
@@ -68,5 +73,16 @@ class Blocks {
 		return $block_categories;
 	}
 
-
+	/**
+	 * Render list block on the frontend
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $attrs attributes of block.
+	 *
+	 * @return string
+	 */
+	public static function render_list( $attrs ) {
+		return 'hello....';
+	}
 }
