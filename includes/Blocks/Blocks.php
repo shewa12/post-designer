@@ -20,12 +20,15 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Blocks {
 
+	private static $plugin_data;
+
 	/**
 	 * Register hooks
 	 *
 	 * @since v1.0.0
 	 */
 	public function __construct() {
+		self::$plugin_data = PostDesigner::plugin_data();
 		add_action( 'init', __CLASS__ . '::register_blocks' );
 		add_filter( 'block_categories_all', __CLASS__ . '::filter_block_categories', 10, 2 );
 	}
@@ -38,14 +41,13 @@ class Blocks {
 	 * @return void
 	 */
 	public static function register_blocks() {
-		$plugin_data  = PostDesigner::plugin_data();
 		$array_blocks = array(
 			'list',
 			'carousel',
 		);
 		foreach ( $array_blocks as $block ) {
 			register_block_type(
-				$plugin_data['plugin_path'] . 'build/' . $block,
+				self::$plugin_data['plugin_path'] . 'build/' . $block,
 				array(
 					'render_callback' => __CLASS__ . "::render_{$block}",
 				)
@@ -83,6 +85,17 @@ class Blocks {
 	 * @return string
 	 */
 	public static function render_list( $attrs ) {
-		return 'hello....';
+		$post_list_template = trailingslashit( self::$plugin_data['templates'] ) . 'post-list.php';
+		ob_start();
+		if ( file_exists( $post_list_template ) ) {
+			include $post_list_template;
+		} else {
+			echo esc_html( $post_list_template ) . esc_html__( 'not found', 'post-designer' );
+		}
+
+		return apply_filters(
+			'post_designer_list_template',
+			ob_get_clean()
+		);
 	}
 }
