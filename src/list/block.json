@@ -16,6 +16,14 @@
 			"type": "string",
 			"default" : "post"
 		},
+		"postPerPage": {
+			"type": "number",
+			"default": 10
+		},
+		"noPagination": {
+			"type": "boolean",
+			"default": false
+		},
 		"taxonomies": {
 			"type": "array",
 			"default": []

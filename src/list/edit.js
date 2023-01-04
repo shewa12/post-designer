@@ -18,6 +18,7 @@ import {
 	SelectControl,
 	CheckboxControl,
 	__experimentalText as Text,
+	__experimentalDivider as Divider,
 } from '@wordpress/components'
 
 import './editor.scss';
@@ -29,7 +30,7 @@ import EndPoints from '../API/EndPoints';
 export default function Edit({attributes, setAttributes}) {
 	// Attributes
 	const blockProps = { ...useBlockProps() };
-	const {postType, taxonomies, author, categories, tags, dateFrom, dateTo} = attributes;
+	const {postType,postPerPage, noPagination, taxonomies, author, categories, tags, dateFrom, dateTo} = attributes;
 
 	// States
 	const [loading, setLoading] = useState(true);
@@ -73,6 +74,16 @@ export default function Edit({attributes, setAttributes}) {
 		setLoading(false);
 	}
 
+	// Update post per page
+	const updatePostPerPage = (value) => {
+		setAttributes({postPerPage: value})
+	}
+
+	// Toggle pagination
+	const toggleNoPagination = (state) => {
+		setAttributes({noPagination: state})
+	}
+
 	useEffect(() => {
 		getPosts();
 
@@ -84,9 +95,11 @@ export default function Edit({attributes, setAttributes}) {
 	}, []);
 
 	return (
+		
 		loading ?
 		<PostPlaceholder /> :
 		<div {...blockProps}>
+		{console.log('acb'+attributes.postPerPage)}
 			<InspectorControls key={"settings"}>
 				<Panel>
 					<PanelBody title={__('Post Type', 'post-designer')} initialOpen={ true }>
@@ -105,46 +118,51 @@ export default function Edit({attributes, setAttributes}) {
 						<PanelRow>
 							<NumberControl
 								isShiftStepEnabled={ true }
-								onChange={ () => {}}
-								shiftStep={ 10 }
-								value={ 10}
+								onChange={ updatePostPerPage }
+								shiftStep={ 1 }
+								value={ postPerPage }
 								label= {__('Posts per page', 'post-designer')}
 								labelPosition={'top'}
 							/>
 						</PanelRow>
+						<Divider />
 						<PanelRow>
 							<ToggleControl
 								label={ __( 'No Pagination', 'post-designer' ) }
 								help={ __( 'On only if you want to display all posts together', 'post-designer' ) }
-								checked={ false }
-								onChange={ () => {
-									
-								} }
+								checked={ noPagination }
+								onChange={ toggleNoPagination }
 							/>
 						</PanelRow>
 					</PanelBody>
 				</Panel>
 				<Panel>
 					<PanelBody title={ __( 'Sorting', 'post-designer' ) } initialOpen={ false }>
-						<SelectControl
-							label={ __( 'Order By ', 'post-designer' ) }
-							value={ '' }
-							options={ [
-								{ label: __( 'ID', 'post-designer' ), value: 'ID' },
-								{ label: __( 'Title', 'post-designer' ), value: 'post_title' },
-								{ label: __( 'Date', 'post-designer' ), value: 'post_date' },
-							] }
-							onChange={ ( value ) => {} }
-						/>
-						<RadioControl
-							label={ __( 'Order', 'post-designer' ) }
-							selected={ '' }
-							options={ [
-								{ label: 'DESC', value: 'DESC' },
-								{ label: 'ASC', value: 'ASC' },
-							] }
-							onChange={ ( value ) => {} }
-						/>
+						<PanelRow>
+							<RadioControl
+								label={ __( 'Order By', 'post-designer' ) }
+								selected={ '' }
+								options={ [
+									{ label: 'ID', value: 'ID' },
+									{ label: 'Title', value: 'Title' },
+									{ label: 'Date', value: 'Date' },
+								] }
+								onChange={ ( value ) => {} }
+							/>
+						</PanelRow>
+						<Divider />
+						<PanelRow>
+							<RadioControl
+								label={ __( 'Order', 'post-designer' ) }
+								selected={ '' }
+								options={ [
+									{ label: 'Latest', value: 'DESC' },
+									{ label: 'Oldest', value: 'ASC' },
+									{ label: 'Random', value: 'RAND' },
+								] }
+								onChange={ ( value ) => {} }
+							/>
+						</PanelRow>
 					</PanelBody>
 				</Panel>
 				<Panel>
