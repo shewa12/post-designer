@@ -141,9 +141,16 @@ class Posts {
 	 * @return array
 	 */
 	public static function get_post_types(): array {
-		$post_types = get_post_types();
+		$args = array(
+			'public' => true,
+		);
+
+		$post_types = get_post_types( $args );
 		$types      = array();
 		foreach ( $post_types as $key => $type ) {
+			if ( 'page' === $type || 'attachment' === $type ) {
+				continue;
+			}
 			array_push(
 				$types,
 				array(

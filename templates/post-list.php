@@ -8,11 +8,9 @@
  * @since 1.0.0
  */
 
-echo '<pre>';
-print_r( $attrs );
 ?>
 <div class="wp-block-post-designer-list">
-	<div className='pd-card-row pd-3-col'>
+	<div class='pd-card-row pd-3-col'>
 		<?php require trailingslashit( __DIR__ ) . 'card/card.php'; ?>
 	</div>
 </div>
