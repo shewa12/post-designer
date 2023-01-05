@@ -24,6 +24,14 @@
 			"type": "boolean",
 			"default": false
 		},
+		"orderBy": {
+			"type": "string",
+			"default": "ID"
+		},
+		"order": {
+			"type": "string",
+			"default": "DESC"
+		},
 		"taxonomies": {
 			"type": "array",
 			"default": []

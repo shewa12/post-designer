@@ -27,10 +27,13 @@ import PostCard from '../components/PostCard';
 import PostPlaceholder from '../components/Placeholder';
 import EndPoints from '../API/EndPoints';
 
+// Utilities
+import defaultOrders, { defaultOrderBy }  from '../utilities/Utilities';
+
 export default function Edit({attributes, setAttributes}) {
 	// Attributes
 	const blockProps = { ...useBlockProps() };
-	const {postType,postPerPage, noPagination, taxonomies, author, categories, tags, dateFrom, dateTo} = attributes;
+	const {postType, postPerPage, noPagination, order, orderBy, taxonomies, author, categories, tags, dateFrom, dateTo} = attributes;
 
 	// States
 	const [loading, setLoading] = useState(true);
@@ -74,14 +77,21 @@ export default function Edit({attributes, setAttributes}) {
 		setLoading(false);
 	}
 
-	// Update post per page
+	// Manage attributes
 	const updatePostPerPage = (value) => {
 		setAttributes({postPerPage: value})
 	}
 
-	// Toggle pagination
 	const toggleNoPagination = (state) => {
 		setAttributes({noPagination: state})
+	}
+
+	const updateOrders = (selected) => {
+		setAttributes({order: selected})
+	}
+
+	const updateOrdersBy = (selected) => {
+		setAttributes({orderBy: selected})
 	}
 
 	useEffect(() => {
@@ -115,54 +125,38 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 				<Panel>
 					<PanelBody title={__('Pagination', 'post-designer')} initialOpen={ false }>
-						<PanelRow>
-							<NumberControl
-								isShiftStepEnabled={ true }
-								onChange={ updatePostPerPage }
-								shiftStep={ 1 }
-								value={ postPerPage }
-								label= {__('Posts per page', 'post-designer')}
-								labelPosition={'top'}
-							/>
-						</PanelRow>
+						<NumberControl
+							isShiftStepEnabled={ true }
+							onChange={ updatePostPerPage }
+							shiftStep={ 1 }
+							value={ postPerPage }
+							label= {__('Posts per page', 'post-designer')}
+							labelPosition={'top'}
+						/>
 						<Divider />
-						<PanelRow>
-							<ToggleControl
-								label={ __( 'No Pagination', 'post-designer' ) }
-								help={ __( 'On only if you want to display all posts together', 'post-designer' ) }
-								checked={ noPagination }
-								onChange={ toggleNoPagination }
-							/>
-						</PanelRow>
+						<ToggleControl
+							label={ __( 'No Pagination', 'post-designer' ) }
+							help={ __( 'On only if you want to display all posts together', 'post-designer' ) }
+							checked={ noPagination }
+							onChange={ toggleNoPagination }
+						/>
 					</PanelBody>
 				</Panel>
 				<Panel>
 					<PanelBody title={ __( 'Sorting', 'post-designer' ) } initialOpen={ false }>
-						<PanelRow>
-							<RadioControl
-								label={ __( 'Order By', 'post-designer' ) }
-								selected={ '' }
-								options={ [
-									{ label: 'ID', value: 'ID' },
-									{ label: 'Title', value: 'Title' },
-									{ label: 'Date', value: 'Date' },
-								] }
-								onChange={ ( value ) => {} }
-							/>
-						</PanelRow>
+						<RadioControl
+							label={ __( 'Order By', 'post-designer' ) }
+							selected={ orderBy }
+							options={ defaultOrderBy }
+							onChange={ updateOrdersBy }
+						/>
 						<Divider />
-						<PanelRow>
-							<RadioControl
-								label={ __( 'Order', 'post-designer' ) }
-								selected={ '' }
-								options={ [
-									{ label: 'Latest', value: 'DESC' },
-									{ label: 'Oldest', value: 'ASC' },
-									{ label: 'Random', value: 'RAND' },
-								] }
-								onChange={ ( value ) => {} }
-							/>
-						</PanelRow>
+						<RadioControl
+							label={ __( 'Order', 'post-designer' ) }
+							selected={ order }
+							options={ defaultOrders }
+							onChange={ updateOrders }
+						/>
 					</PanelBody>
 				</Panel>
 				<Panel>
