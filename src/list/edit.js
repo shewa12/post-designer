@@ -25,59 +25,29 @@ import './editor.scss';
 // Custom components
 import PostCard from '../components/PostCard';
 import PostPlaceholder from '../components/Placeholder';
-import EndPoints from '../API/EndPoints';
 
 // Utilities
 import defaultOrders, { defaultOrderBy }  from '../utilities/Utilities';
+import usePostDesigner from '../hooks/usePostDesigner';
 
 export default function Edit({attributes, setAttributes}) {
 	// Attributes
 	const blockProps = { ...useBlockProps() };
 	const {postType, postPerPage, noPagination, order, orderBy, taxonomies, terms, author, dateFrom, dateTo} = attributes;
 
-	// States
-	const [loading, setLoading] = useState(true);
-	const [posts, setPosts] = useState([]);
-	const [postTypes, setPostTypes] = useState([]);
-	const [postTypeState, setPostTypeState] = useState(postType)
+	// Hooks
+	const { postTypes, posts, loading } =  usePostDesigner(postType);
 
+	
 	const renderPostList = posts.map((post) => {
 		return <PostCard post={post}/>
 	});
 
-	/**
-	 * Get post lists
-	 */
-	const getPosts = async () => {
-		setLoading(true);
-		const response = await postDesigner.get(EndPoints.getPosts,{
-			params: {
-				post_type: postType
-			}
-		});
-		if (response.statusText === 'OK') {
-			setPosts(response.data);
-		} else {
-			alert(response.statusText)
-		}
-		setLoading(false)
-	}
-
-	/**
-	 * Get all registered post types
-	 */
-	const getPostTypes = async () => {
-		setLoading(true);
-		const response = await postDesigner.get(EndPoints.getPostTypes, {});
-		if (response.statusText === 'OK') {
-			setPostTypes(response.data)
-		} else {
-			alert(response.statusText);
-		}
-		setLoading(false);
-	}
-
 	// Manage attributes
+	const updatePostType = (value) => {
+		setAttributes({postType: value})
+	}
+
 	const updatePostPerPage = (value) => {
 		setAttributes({postPerPage: value})
 	}
@@ -94,32 +64,18 @@ export default function Edit({attributes, setAttributes}) {
 		setAttributes({orderBy: selected})
 	}
 
-	useEffect(() => {
-		getPosts();
-
-	}, [postType]);
-
-	useEffect(() => {
-		getPostTypes();
-
-	}, []);
-
 	return (
 		
 		loading ?
 		<PostPlaceholder /> :
 		<div {...blockProps}>
-		{console.log('acb'+attributes.postPerPage)}
 			<InspectorControls key={"settings"}>
 				<Panel>
 					<PanelBody title={__('Post Type', 'post-designer')} initialOpen={ true }>
 					<SelectControl
 						value={ postType }
 						options={ postTypes }
-						onChange={ ( postType ) => {
-							setAttributes({postType: postType});
-							setPostTypeState(postType)
-						} }
+						onChange={ updatePostType }
 					/>
 					</PanelBody>
 				</Panel>

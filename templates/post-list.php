@@ -8,6 +8,8 @@
  * @since 1.0.0
  */
 
+echo '<pre>';
+print_r( $attrs );
 ?>
 <div class="wp-block-post-designer-list">
 	<div class='pd-card-row pd-3-col'>
