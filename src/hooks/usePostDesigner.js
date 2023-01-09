@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import postDesigner from "../API/Instance";
 import EndPoints from "../API/EndPoints";
 
-function usePostDesigner(postType) {
+function usePostDesigner(attributes, setAttributes) {
+	// Attributes
+	const {postType, postPerPage, noPagination, order, orderBy, taxonomies, terms, authors, dateFrom, dateTo} = attributes;
+
+	// States
 	const [postTypes, setPostTypes] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
@@ -37,6 +41,27 @@ function usePostDesigner(postType) {
 		setLoading(false)
 	}
 
+	// Manage attributes
+	const updatePostType = (value) => {
+		setAttributes({postType: value})
+	}
+
+	const updatePostPerPage = (value) => {
+		setAttributes({postPerPage: value})
+	}
+
+	const toggleNoPagination = (state) => {
+		setAttributes({noPagination: state})
+	}
+
+	const updateOrders = (selected) => {
+		setAttributes({order: selected})
+	}
+
+	const updateOrdersBy = (selected) => {
+		setAttributes({orderBy: selected})
+	}	
+
 	useEffect(() => {
 		getPostTypes();
 	}, []);
@@ -46,9 +71,24 @@ function usePostDesigner(postType) {
 	}, [postType]);
 
 	return {
+		postType,
+		postPerPage,
+		noPagination, 
+		order, 
+		orderBy, 
+		taxonomies,
+		terms, 
+		authors, 
+		dateFrom, 
+		dateTo,
 		postTypes,
 		posts,
-		loading
+		loading,
+		updatePostType,
+		updatePostPerPage,
+		updateOrders,
+		updateOrdersBy,
+		toggleNoPagination
 	};
 }
 

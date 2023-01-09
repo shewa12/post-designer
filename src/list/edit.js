@@ -1,12 +1,9 @@
 
 import { __ } from '@wordpress/i18n';
-import postDesigner from '../API/Instance';
 import {
 	useBlockProps,
 	InspectorControls,
 } from '@wordpress/block-editor';
-
-const { useState, useEffect } = wp.element;
 
 import {
 	Panel,
@@ -28,45 +25,45 @@ import PostPlaceholder from '../components/Placeholder';
 
 // Utilities
 import defaultOrders, { defaultOrderBy }  from '../utilities/Utilities';
+
+// Custom hooks
 import usePostDesigner from '../hooks/usePostDesigner';
 
 export default function Edit({attributes, setAttributes}) {
-	// Attributes
-	const blockProps = { ...useBlockProps() };
-	const {postType, postPerPage, noPagination, order, orderBy, taxonomies, terms, author, dateFrom, dateTo} = attributes;
 
-	// Hooks
-	const { postTypes, posts, loading } =  usePostDesigner(postType);
+	const blockProps = { ...useBlockProps() };
+
+	// Attributes from hook
+	const { 
+		postType,
+		postPerPage,
+		noPagination, 
+		order, 
+		orderBy, 
+		taxonomies,
+		terms, 
+		authors, 
+		dateFrom, 
+		dateTo,
+		postTypes,
+		posts,
+		loading,
+		updatePostType,
+		updatePostPerPage,
+		updateOrders,
+		updateOrdersBy,
+		toggleNoPagination
+	} =  usePostDesigner(attributes, setAttributes);
 
 	
 	const renderPostList = posts.map((post) => {
 		return <PostCard post={post}/>
 	});
 
-	// Manage attributes
-	const updatePostType = (value) => {
-		setAttributes({postType: value})
-	}
-
-	const updatePostPerPage = (value) => {
-		setAttributes({postPerPage: value})
-	}
-
-	const toggleNoPagination = (state) => {
-		setAttributes({noPagination: state})
-	}
-
-	const updateOrders = (selected) => {
-		setAttributes({order: selected})
-	}
-
-	const updateOrdersBy = (selected) => {
-		setAttributes({orderBy: selected})
-	}
 
 	return (
-		
 		loading ?
+		
 		<PostPlaceholder /> :
 		<div {...blockProps}>
 			<InspectorControls key={"settings"}>
