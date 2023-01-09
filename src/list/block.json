@@ -36,15 +36,11 @@
 			"type": "array",
 			"default": []
 		},
+		"terms": {
+			"type": "string",
+			"default": []
+		},
 		"author": {
-			"type": "string",
-			"default": ""
-		},
-		"categories": {
-			"type": "string",
-			"default": ""
-		},
-		"tags": {
 			"type": "string",
 			"default": ""
 		},

@@ -33,7 +33,7 @@ import defaultOrders, { defaultOrderBy }  from '../utilities/Utilities';
 export default function Edit({attributes, setAttributes}) {
 	// Attributes
 	const blockProps = { ...useBlockProps() };
-	const {postType, postPerPage, noPagination, order, orderBy, taxonomies, author, categories, tags, dateFrom, dateTo} = attributes;
+	const {postType, postPerPage, noPagination, order, orderBy, taxonomies, terms, author, dateFrom, dateTo} = attributes;
 
 	// States
 	const [loading, setLoading] = useState(true);
