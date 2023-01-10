@@ -16,6 +16,7 @@ import {
 	CheckboxControl,
 	__experimentalText as Text,
 	__experimentalDivider as Divider,
+	TabPanel,
 } from '@wordpress/components'
 
 import './editor.scss';
@@ -114,7 +115,14 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 				<Panel>
 					<PanelBody title={ __( 'Query', 'post-designer' ) }>
-							
+					<TabPanel
+						className="my-tab-panel"
+						activeClass="active-tab"
+						onSelect={ (tabName) => {  console.log( 'Selecting tab', tabName ); } }
+						tabs={ taxonomies }
+					>
+						{ ( tab ) => <p>{ tab.title }</p> }
+					</TabPanel>
 					</PanelBody>
 				</Panel>
 

@@ -30,7 +30,7 @@ function usePostDesigner(attributes, setAttributes) {
 		setLoading(true);
 		const response = await postDesigner.get(EndPoints.getPosts,{
 			params: {
-				post_type: postType
+				'post-type': postType
 			}
 		});
 		if (response.statusText === 'OK') {
@@ -40,6 +40,23 @@ function usePostDesigner(attributes, setAttributes) {
 		}
 		setLoading(false)
 	}
+
+	// Get taxonomies
+	const getTaxonomies = async () => {
+		setLoading(true);
+		const response = await postDesigner.get(EndPoints.getPostTaxonomies,{
+			params: {
+				'post-type': postType
+			}
+		});
+		if (response.statusText === 'OK') {
+			setAttributes({taxonomies: response.data});
+		} else {
+			alert(response.statusText)
+		}
+		setLoading(false)
+	}
+
 
 	// Manage attributes
 	const updatePostType = (value) => {
@@ -68,6 +85,7 @@ function usePostDesigner(attributes, setAttributes) {
 
 	useEffect(() => {
 		getPosts();
+		getTaxonomies();
 	}, [postType]);
 
 	return {

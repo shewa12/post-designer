@@ -37,7 +37,7 @@ class Posts {
 	public static function get_posts( WP_REST_Request $request ): array {
 		$query_params = $request->get_query_params();
 		$args         = array(
-			'post_type' => $query_params['post_type'],
+			'post_type' => $query_params['post-type'],
 		);
 
 		$plugin_data           = PostDesigner::plugin_data();
@@ -192,7 +192,7 @@ class Posts {
 					$response,
 					array(
 						'name'  => $taxonomy->name,
-						'label' => $taxonomy->label,
+						'title' => $taxonomy->label,
 					)
 				);
 			}
