@@ -53,7 +53,7 @@ export default function Edit({attributes, setAttributes}) {
 		updateOrders,
 		updateOrdersBy,
 		toggleNoPagination
-	} =  usePostDesigner(attributes, setAttributes);
+	} = usePostDesigner(attributes, setAttributes);
 
 	
 	const renderPostList = posts.map((post) => {

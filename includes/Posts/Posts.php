@@ -163,7 +163,7 @@ class Posts {
 	}
 
 	/**
-	 * Get post taxonomies by post post type
+	 * Get post taxonomies by post type
 	 *
 	 * @since v1.0.0
 	 *
@@ -180,7 +180,23 @@ class Posts {
 		$validate = Validation::validate( $rules, $query_params );
 
 		if ( $validate->success ) {
-			return get_object_taxonomies( $query_params['post-type'] );
+			$args       = array(
+				'object_type' => array( $query_params['post-type'] ),
+				'public'      => true,
+				'show_ui'     => true,
+			);
+			$taxonomies = get_taxonomies( $args, 'object' );
+			$response   = array();
+			foreach ( $taxonomies as $taxonomy ) {
+				array_push(
+					$response,
+					array(
+						'name'  => $taxonomy->name,
+						'label' => $taxonomy->label,
+					)
+				);
+			}
+			return $response;
 		} else {
 			return rest_ensure_response( $validate->errors );
 		}
