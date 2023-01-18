@@ -85,6 +85,12 @@
 				border: 1px solid #e3e3e3;
 				border-radius: 100%;
 			}
+			.pd-post-categories {
+				div {
+					display: flex;
+					flex-wrap: wrap;
+				}
+			}
 		}
 		.pd-ratio-16x9 {
 			padding-top: 56.25%;
@@ -107,4 +113,19 @@
 			height: 100% !important;
 		}
 	}
+
+	.Select.is-open {
+		z-index: 1000 !important;
+	}
+}
+
+.pd-gb-label {
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 1.4;
+	text-transform: uppercase;
+	box-sizing: border-box;
+	display: block;
+	padding-top: 0px;
+	padding-bottom: 10px;
 }

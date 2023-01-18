@@ -42,6 +42,7 @@ export default function Edit({attributes, setAttributes}) {
 		order, 
 		orderBy, 
 		taxonomies,
+		taxonomy,
 		terms, 
 		authors, 
 		dateFrom, 
@@ -50,17 +51,18 @@ export default function Edit({attributes, setAttributes}) {
 		posts,
 		loading,
 		updatePostType,
+		termsTemplate,
 		updatePostPerPage,
 		updateOrders,
 		updateOrdersBy,
-		toggleNoPagination
+		toggleNoPagination,
+		updateTaxonomy
 	} = usePostDesigner(attributes, setAttributes);
 
 	
 	const renderPostList = posts.map((post) => {
 		return <PostCard post={post}/>
 	});
-
 
 	return (
 		loading ?
@@ -77,6 +79,22 @@ export default function Edit({attributes, setAttributes}) {
 					/>
 					</PanelBody>
 				</Panel>
+				<Panel>
+					<PanelBody title={ __( 'Query', 'post-designer' ) }>
+					<SelectControl
+						label={ __('Taxonomy', 'post-designer') }
+						value={ taxonomy ? taxonomy : taxonomies[0].value }
+						options={ taxonomies }
+						onChange={ updateTaxonomy }
+					/>
+					<Divider></Divider>
+						<label className='pd-gb-label'>
+							{__('Term', 'post-designer')}
+						</label>
+						{ termsTemplate() }
+					</PanelBody>
+				</Panel>
+
 				<Panel>
 					<PanelBody title={__('Pagination', 'post-designer')} initialOpen={ false }>
 						<NumberControl
@@ -111,18 +129,6 @@ export default function Edit({attributes, setAttributes}) {
 							options={ defaultOrders }
 							onChange={ updateOrders }
 						/>
-					</PanelBody>
-				</Panel>
-				<Panel>
-					<PanelBody title={ __( 'Query', 'post-designer' ) }>
-					<TabPanel
-						className="my-tab-panel"
-						activeClass="active-tab"
-						onSelect={ (tabName) => {  console.log( 'Selecting tab', tabName ); } }
-						tabs={ taxonomies }
-					>
-						{ ( tab ) => <p>{ tab.title }</p> }
-					</TabPanel>
 					</PanelBody>
 				</Panel>
 

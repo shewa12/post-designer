@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import postDesigner from "../API/Instance";
 import EndPoints from "../API/EndPoints";
+import Select from 'react-select'
+import { __ } from '@wordpress/i18n';
 
 function usePostDesigner(attributes, setAttributes) {
 	// Attributes
-	const {postType, postPerPage, noPagination, order, orderBy, taxonomies, terms, authors, dateFrom, dateTo} = attributes;
+	const {postType, postPerPage, noPagination, order, orderBy, taxonomies, taxonomy, terms, selectedTerms, authors, dateFrom, dateTo} = attributes;
 
 	// States
 	const [postTypes, setPostTypes] = useState([]);
@@ -51,10 +53,47 @@ function usePostDesigner(attributes, setAttributes) {
 		});
 		if (response.statusText === 'OK') {
 			setAttributes({taxonomies: response.data});
+			setAttributes({taxonomy: response.data[0].value})
 		} else {
 			alert(response.statusText)
 		}
 		setLoading(false)
+	}
+
+	const getTerms = async () => {
+		// if (!taxonomy) {
+		// 	return;
+		// }
+		setLoading(true);
+		const response = await postDesigner.get(EndPoints.getTerms,{
+			params: {
+				'post-type': postType,
+				'taxonomy': taxonomy
+			}
+		});
+
+		if (response.statusText === 'OK') {
+			let updatedArr = response.data.map(obj => Object.assign({}, obj, {value: obj.term_id, label: obj.name}));
+			setAttributes({terms: updatedArr});
+		} else {
+			alert(response.statusText)
+		}
+		setLoading(false)
+	}
+
+	const termsTemplate = () => {
+		const options = terms;
+		return (
+			<Select
+				menuPortalTarget={document.body}
+				styles={{ menuPortal: base => ({ ...base, zIndex: 9999, border: 0 }) }}
+					options={options} isMulti='true'
+				onChange={(terms) => {
+					setAttributes({selectedTerms: terms})
+				}}
+				value={selectedTerms}
+			/>
+		);
 	}
 
 
@@ -79,6 +118,17 @@ function usePostDesigner(attributes, setAttributes) {
 		setAttributes({orderBy: selected})
 	}	
 
+	const updateTaxonomy = (selected) => {
+		setAttributes({taxonomy: selected});
+		setAttributes({selectedTerms: []});
+		console.log(selectedTerms);
+	}	
+
+	// Get terms
+	useEffect(() => {
+		getTerms();
+	}, [taxonomy]);
+
 	useEffect(() => {
 		getPostTypes();
 	}, []);
@@ -95,6 +145,7 @@ function usePostDesigner(attributes, setAttributes) {
 		order, 
 		orderBy, 
 		taxonomies,
+		taxonomy,
 		terms, 
 		authors, 
 		dateFrom, 
@@ -103,10 +154,12 @@ function usePostDesigner(attributes, setAttributes) {
 		posts,
 		loading,
 		updatePostType,
+		termsTemplate,
 		updatePostPerPage,
 		updateOrders,
 		updateOrdersBy,
-		toggleNoPagination
+		toggleNoPagination,
+		updateTaxonomy
 	};
 }
 

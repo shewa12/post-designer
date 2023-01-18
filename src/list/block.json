@@ -36,8 +36,16 @@
 			"type": "array",
 			"default": []
 		},
+		"taxonomy": {
+			"type": "string",
+			"default": ""
+		},
 		"terms": {
 			"type": "string",
+			"default": []
+		},
+		"selectedTerms": {
+			"type": "array",
 			"default": []
 		},
 		"authors": {

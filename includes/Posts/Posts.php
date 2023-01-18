@@ -191,8 +191,8 @@ class Posts {
 				array_push(
 					$response,
 					array(
-						'name'  => $taxonomy->name,
-						'title' => $taxonomy->label,
+						'value'  => $taxonomy->name,
+						'label' => $taxonomy->label,
 					)
 				);
 			}
