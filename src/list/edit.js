@@ -98,8 +98,9 @@ export default function Edit({attributes, setAttributes}) {
 					/>
 					</PanelBody>
 				</Panel>
+
 				<Panel>
-					<PanelBody title={ __( 'Query', 'post-designer' ) }>
+					<PanelBody title={ __( 'Query', 'post-designer' ) } initialOpen={ false }>
 					<SelectControl
 						label={ __('Taxonomy', 'post-designer') }
 						value={ taxonomy ? taxonomy : taxonomies[0].value }
@@ -111,6 +112,22 @@ export default function Edit({attributes, setAttributes}) {
 							{__('Term', 'post-designer')}
 						</label>
 						{ termsTemplate() }
+					
+					<Divider></Divider>
+					{/* sorting */}
+					<RadioControl
+						label={ __( 'Order By', 'post-designer' ) }
+						selected={ orderBy }
+						options={ defaultOrderBy }
+						onChange={ updateOrdersBy }
+					/>
+					<Divider></Divider>
+					<RadioControl
+						label={ __( 'Order', 'post-designer' ) }
+						selected={ order }
+						options={ defaultOrders }
+						onChange={ updateOrders }
+					/>
 					</PanelBody>
 				</Panel>
 
@@ -130,23 +147,6 @@ export default function Edit({attributes, setAttributes}) {
 							help={ __( 'On only if you want to display all posts together', 'post-designer' ) }
 							checked={ noPagination }
 							onChange={ toggleNoPagination }
-						/>
-					</PanelBody>
-				</Panel>
-				<Panel>
-					<PanelBody title={ __( 'Sorting', 'post-designer' ) } initialOpen={ false }>
-						<RadioControl
-							label={ __( 'Order By', 'post-designer' ) }
-							selected={ orderBy }
-							options={ defaultOrderBy }
-							onChange={ updateOrdersBy }
-						/>
-						<Divider />
-						<RadioControl
-							label={ __( 'Order', 'post-designer' ) }
-							selected={ order }
-							options={ defaultOrders }
-							onChange={ updateOrders }
 						/>
 					</PanelBody>
 				</Panel>
