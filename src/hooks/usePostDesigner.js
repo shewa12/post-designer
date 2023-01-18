@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 
 function usePostDesigner(attributes, setAttributes) {
 	// Attributes
-	const {postType, postPerPage, noPagination, order, orderBy, taxonomies, taxonomy, terms, selectedTerms, authors, dateFrom, dateTo} = attributes;
+	const {postType, postPerPage, noPagination, order, orderBy, taxonomies, taxonomy, terms, selectedTerms, authors, dateFrom, dateTo, layout, columnPerRow} = attributes;
 
 	// States
 	const [postTypes, setPostTypes] = useState([]);
@@ -121,8 +121,16 @@ function usePostDesigner(attributes, setAttributes) {
 	const updateTaxonomy = (selected) => {
 		setAttributes({taxonomy: selected});
 		setAttributes({selectedTerms: []});
-		console.log(selectedTerms);
 	}	
+
+	const updateLayout = (selected) => {
+		setAttributes({layout: selected});
+	}
+
+	const updateColumnPerRow = (selected) => {
+		setAttributes({columnPerRow: selected});
+	}
+
 
 	// Get terms
 	useEffect(() => {
@@ -153,13 +161,17 @@ function usePostDesigner(attributes, setAttributes) {
 		postTypes,
 		posts,
 		loading,
+		layout,
+		columnPerRow,
 		updatePostType,
 		termsTemplate,
 		updatePostPerPage,
 		updateOrders,
 		updateOrdersBy,
 		toggleNoPagination,
-		updateTaxonomy
+		updateTaxonomy,
+		updateLayout,
+		updateColumnPerRow,
 	};
 }
 

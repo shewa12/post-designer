@@ -59,6 +59,14 @@
 		"dateTo": {
 			"type": "string",
 			"default": ""
+		},
+		"layout": {
+			"type": "string",
+			"default": "card"
+		},
+		"columnPerRow": {
+			"type": "integer",
+			"default": 3
 		}
 	},
 	"editorScript": "file:./index.js",

@@ -25,7 +25,7 @@ import PostCard from '../components/PostCard';
 import PostPlaceholder from '../components/Placeholder';
 
 // Utilities
-import defaultOrders, { defaultOrderBy }  from '../utilities/Utilities';
+import defaultOrders, { showColumnPerRow, defaultOrderBy, layouts }  from '../utilities/Utilities';
 
 // Custom hooks
 import usePostDesigner from '../hooks/usePostDesigner';
@@ -50,13 +50,17 @@ export default function Edit({attributes, setAttributes}) {
 		postTypes,
 		posts,
 		loading,
+		layout,
+		columnPerRow,
 		updatePostType,
 		termsTemplate,
 		updatePostPerPage,
 		updateOrders,
 		updateOrdersBy,
 		toggleNoPagination,
-		updateTaxonomy
+		updateTaxonomy,
+		updateLayout,
+		updateColumnPerRow,
 	} = usePostDesigner(attributes, setAttributes);
 
 	
@@ -71,11 +75,26 @@ export default function Edit({attributes, setAttributes}) {
 		<div {...blockProps}>
 			<InspectorControls key={"settings"}>
 				<Panel>
-					<PanelBody title={__('Post Type', 'post-designer')} initialOpen={ true }>
+					<PanelBody title={__('General', 'post-designer')} initialOpen={ true }>
 					<SelectControl
+						label={ __('Post Type', 'post-designer') }
 						value={ postType }
 						options={ postTypes }
 						onChange={ updatePostType }
+					/>
+					<Divider></Divider>
+					<SelectControl
+						label={ __('Layouts', 'post-designer') }
+						value={ layout }
+						options={ layouts }
+						onChange={ updateLayout }
+					/>
+					<Divider></Divider>
+					<SelectControl
+						label={ __('Column per Row', 'post-designer') }
+						value={ columnPerRow }
+						options={ showColumnPerRow }
+						onChange={ updateColumnPerRow }
 					/>
 					</PanelBody>
 				</Panel>
