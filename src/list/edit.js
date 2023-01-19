@@ -44,7 +44,8 @@ export default function Edit({attributes, setAttributes}) {
 		taxonomies,
 		taxonomy,
 		terms, 
-		authors, 
+		authors,
+		postAuthors,
 		dateFrom, 
 		dateTo,
 		postTypes,
@@ -54,6 +55,7 @@ export default function Edit({attributes, setAttributes}) {
 		columnPerRow,
 		updatePostType,
 		termsTemplate,
+		authorsTemplate,
 		updatePostPerPage,
 		updateOrders,
 		updateOrdersBy,
@@ -101,9 +103,14 @@ export default function Edit({attributes, setAttributes}) {
 
 				<Panel>
 					<PanelBody title={ __( 'Query', 'post-designer' ) } initialOpen={ false }>
+					<label className='pd-gb-label'>
+							{__('Authors', 'post-designer')}
+					</label>
+					{ authorsTemplate() }
+					<Divider></Divider>
 					<SelectControl
 						label={ __('Taxonomy', 'post-designer') }
-						value={ taxonomy ? taxonomy : taxonomies[0].value }
+						value={ taxonomy ? taxonomy : taxonomies.length ? taxonomies[0].value: '' }
 						options={ taxonomies }
 						onChange={ updateTaxonomy }
 					/>

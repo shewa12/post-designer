@@ -191,12 +191,42 @@ class Posts {
 				array_push(
 					$response,
 					array(
-						'value'  => $taxonomy->name,
+						'value' => $taxonomy->name,
 						'label' => $taxonomy->label,
 					)
 				);
 			}
 			return $response;
+		} else {
+			return rest_ensure_response( $validate->errors );
+		}
+	}
+
+	/**
+	 * Get authors by post type
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param WP_REST_Request $request post type.
+	 *
+	 * @return array | WP_REST_Response
+	 */
+	public static function get_post_authors( WP_REST_Request $request ) {
+		$rules        = array(
+			'post-type' => 'required',
+		);
+		$query_params = $request->get_query_params();
+
+		$validate = Validation::validate( $rules, $query_params );
+
+		if ( $validate->success ) {
+			$args  = array(
+				'post_type'  => sanitize_text_field( $query_params['post-type'] ),
+				'fields'     => array( 'ID', 'display_name' ),
+				'capability' => array( 'edit_posts' ),
+			);
+			$users = get_users( $args );
+			return is_array( $users ) ? $users : array();
 		} else {
 			return rest_ensure_response( $validate->errors );
 		}

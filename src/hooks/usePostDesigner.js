@@ -12,6 +12,7 @@ function usePostDesigner(attributes, setAttributes) {
 	const [postTypes, setPostTypes] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
+	const [postAuthors, setPostAuthors] = useState([]); 
 
 	/**
 	 * Get all registered post types
@@ -20,6 +21,23 @@ function usePostDesigner(attributes, setAttributes) {
 		const response = await postDesigner.get(EndPoints.getPostTypes, {});
 		if (response.statusText === "OK") {
 			setPostTypes(response.data);
+		} else {
+			alert(response.statusText);
+		}
+	};
+
+	/**
+	 * Get post authors
+	 */
+	const getPostAuthors = async () => {
+		const response = await postDesigner.get(EndPoints.getPostAuthors, {
+			params: {'post-type': postType}
+		});
+
+		if (response.statusText === "OK") {
+			let updatedArr = response.data.map(obj => Object.assign({}, obj, {value: obj.id, label: obj.display_name}));
+			setPostAuthors(updatedArr);
+			
 		} else {
 			alert(response.statusText);
 		}
@@ -53,7 +71,7 @@ function usePostDesigner(attributes, setAttributes) {
 		});
 		if (response.statusText === 'OK') {
 			setAttributes({taxonomies: response.data});
-			setAttributes({taxonomy: response.data[0].value})
+			setAttributes({taxonomy: response.data.length ? response.data[0].value : ''})
 		} else {
 			alert(response.statusText)
 		}
@@ -92,6 +110,20 @@ function usePostDesigner(attributes, setAttributes) {
 					setAttributes({selectedTerms: terms})
 				}}
 				value={selectedTerms}
+			/>
+		);
+	}
+	const authorsTemplate = () => {
+		const options = postAuthors;
+		return (
+			<Select
+				menuPortalTarget={document.body}
+				styles={{ menuPortal: base => ({ ...base, zIndex: 9999, border: 0 }) }}
+					options={options} isMulti='true'
+				onChange={(authors) => {
+					setAttributes({authors: authors})
+				}}
+				value={authors}
 			/>
 		);
 	}
@@ -143,6 +175,7 @@ function usePostDesigner(attributes, setAttributes) {
 
 	useEffect(() => {
 		getPosts();
+		getPostAuthors();
 		getTaxonomies();
 	}, [postType]);
 
@@ -163,8 +196,11 @@ function usePostDesigner(attributes, setAttributes) {
 		loading,
 		layout,
 		columnPerRow,
+		postAuthors,
+		authors,
 		updatePostType,
 		termsTemplate,
+		authorsTemplate,
 		updatePostPerPage,
 		updateOrders,
 		updateOrdersBy,

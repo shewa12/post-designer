@@ -95,6 +95,13 @@ class Routes {
 				'callback'            => array( Posts::class, 'get_post_taxonomies' ),
 				'permission_callback' => array( Posts::class, 'permission' ),
 			),
+			array(
+				'endpoint'            => 'get-post-authors',
+				'url_params'          => '',
+				'method'              => 'GET',
+				'callback'            => array( Posts::class, 'get_post_authors' ),
+				'permission_callback' => array( Posts::class, 'permission' ),
+			),
 		);
 	}
 }

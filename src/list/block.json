@@ -16,6 +16,10 @@
 			"type": "string",
 			"default" : "post"
 		},
+		"authors": {
+			"type": "array",
+			"default": []
+		},
 		"postPerPage": {
 			"type": "number",
 			"default": 10
@@ -46,10 +50,6 @@
 		},
 		"selectedTerms": {
 			"type": "array",
-			"default": []
-		},
-		"authors": {
-			"type": "string",
 			"default": []
 		},
 		"dateFrom": {
