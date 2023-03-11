@@ -29,6 +29,7 @@ import defaultOrders, { showColumnPerRow, defaultOrderBy, layouts }  from '../ut
 
 // Custom hooks
 import usePostDesigner from '../hooks/usePostDesigner';
+import Pagination from '../components/Pagination';
 
 export default function Edit({attributes, setAttributes}) {
 
@@ -162,6 +163,7 @@ export default function Edit({attributes, setAttributes}) {
 			<div className='pd-card-row pd-3-col'>
 				{ renderPostList }
 			</div>
+			<Pagination />
 		</div>
 	);
 }

@@ -1,0 +1,30 @@
+.pd-pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  
+    button {
+      padding: 5px 10px;
+      border: none;
+      background-color: #f4f4f4;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #e6e6e6;
+      }
+  
+      &.active {
+        background-color: #2569f0;
+        color: #f4f4f4;
+      }
+  
+      &.prev {
+        margin-right: 10px;
+      }
+  
+      &.next {
+        margin-left: 10px;
+      }
+    }
+  }
+  
