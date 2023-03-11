@@ -160,7 +160,7 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 			</InspectorControls>
-			<div className='pd-card-row pd-3-col'>
+			<div className={`pd-card-row pd-${columnPerRow}-col`}>
 				{ renderPostList }
 			</div>
 			<Pagination />
