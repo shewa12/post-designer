@@ -36,9 +36,35 @@ class Posts {
 	 */
 	public static function get_posts( WP_REST_Request $request ): array {
 		$query_params = $request->get_query_params();
-		$args         = array(
-			'post_type' => $query_params['post-type'],
+
+		$args = array(
+			'post_type' => sanitize_text_field( $query_params['post-type'] ),
 		);
+
+		// Set authors arg.
+		if ( ! empty( $query_params['authors'] ) ) {
+			$args['author'] = sanitize_text_field( $query_params['authors'] );
+		}
+
+		// Set taxonomy & terms args.
+		if ( ! empty( $query_params['terms'] ) ) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => sanitize_text_field( $query_params['taxonomy'] ),
+					'field'    => 'term_id',
+					'terms'    => explode( ',', sanitize_text_field( $query_params['terms'] ) ),
+				),
+			);
+		}
+
+		// Set orders args.
+		$args['order']    = sanitize_text_field( $query_params['order'] );
+		$args['order_by'] = sanitize_text_field( $query_params['order_by'] );
+
+		// Set pagination args.
+		$args['nopaging']       = 'true' === $query_params['no_pagination'] ? true : false;
+		$args['posts_per_page'] = sanitize_text_field( $query_params['post_per_page'] );
+		$args['paged']          = sanitize_text_field( $query_params['paged'] );
 
 		$plugin_data           = PostDesigner::plugin_data();
 		$thumbnail_placeholder = $plugin_data['assets'] . 'images/thumbnail.svg';
@@ -76,6 +102,9 @@ class Posts {
 				);
 				array_push( $posts, $post );
 			}
+			$post['found_posts']   = $the_query->found_posts;
+			$post['max_num_pages'] = $the_query->max_num_pages;
+
 			wp_reset_postdata();
 			return $posts;
 		} else {

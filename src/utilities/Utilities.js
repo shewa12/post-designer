@@ -3,13 +3,15 @@ import { __ } from '@wordpress/i18n';
 const defaultOrders = [
     { label: __('Latest', 'post-designer'), value: 'DESC' },
     { label: __('Oldest', 'post-designer'), value: 'ASC' },
-    { label: __('Random', 'post-designer'), value: 'RAND' },
+    
 ];
 
 const defaultOrderBy =  [
     { label: __('ID', 'post-designer'), value: 'ID' },
-    { label: __('Title', 'post-designer'), value: 'Title' },
-    { label: __('Date', 'post-designer'), value: 'Date' },
+    { label: __('Title', 'post-designer'), value: 'title' },
+    { label: __('Date', 'post-designer'), value: 'date' },
+    { label: __('Random', 'post-designer'), value: 'RAND' },
+    { label: __('Comments Count', 'post-designer'), value: 'comment_count' },
 ];
 
 // Default layouts & columns
