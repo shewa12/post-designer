@@ -159,8 +159,8 @@ function usePostDesigner(attributes, setAttributes) {
 		setAttributes({layout: selected});
 	}
 
-	const updateColumnPerRow = (selected) => {
-		setAttributes({columnPerRow: selected});
+	const updateColumnPerRow = (value) => {
+		setAttributes({columnPerRow: value});
 	}
 
 
@@ -180,24 +180,7 @@ function usePostDesigner(attributes, setAttributes) {
 	}, [postType]);
 
 	return {
-		postType,
-		postPerPage,
-		noPagination, 
-		order, 
-		orderBy, 
-		taxonomies,
-		taxonomy,
-		terms, 
-		authors, 
-		dateFrom, 
-		dateTo,
-		postTypes,
 		posts,
-		loading,
-		layout,
-		columnPerRow,
-		postAuthors,
-		authors,
 		updatePostType,
 		termsTemplate,
 		authorsTemplate,

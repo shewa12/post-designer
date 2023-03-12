@@ -65,7 +65,7 @@
 			"default": "card"
 		},
 		"columnPerRow": {
-			"type": "integer",
+			"type": "string",
 			"default": 3
 		}
 	},

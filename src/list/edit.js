@@ -37,6 +37,21 @@ export default function Edit({attributes, setAttributes}) {
 
 	// Attributes from hook
 	const { 
+		posts,
+		updatePostType,
+		termsTemplate,
+		authorsTemplate,
+		updatePostPerPage,
+		updateOrders,
+		updateOrdersBy,
+		toggleNoPagination,
+		updateTaxonomy,
+		updateLayout,
+		updateColumnPerRow,
+	} = usePostDesigner(attributes, setAttributes);
+
+	// Attributes
+	const {		
 		postType,
 		postPerPage,
 		noPagination, 
@@ -50,22 +65,9 @@ export default function Edit({attributes, setAttributes}) {
 		dateFrom, 
 		dateTo,
 		postTypes,
-		posts,
 		loading,
 		layout,
-		columnPerRow,
-		updatePostType,
-		termsTemplate,
-		authorsTemplate,
-		updatePostPerPage,
-		updateOrders,
-		updateOrdersBy,
-		toggleNoPagination,
-		updateTaxonomy,
-		updateLayout,
-		updateColumnPerRow,
-	} = usePostDesigner(attributes, setAttributes);
-
+		columnPerRow } = attributes;
 	
 	const renderPostList = posts.map((post) => {
 		return <PostCard post={post}/>
