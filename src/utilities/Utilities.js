@@ -10,7 +10,7 @@ const defaultOrderBy =  [
     { label: __('ID', 'post-designer'), value: 'ID' },
     { label: __('Title', 'post-designer'), value: 'title' },
     { label: __('Date', 'post-designer'), value: 'date' },
-    { label: __('Random', 'post-designer'), value: 'RAND' },
+    { label: __('Random', 'post-designer'), value: 'rand' },
     { label: __('Comments Count', 'post-designer'), value: 'comment_count' },
 ];
 

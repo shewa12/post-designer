@@ -29,6 +29,7 @@ function usePostDesigner(attributes, setAttributes) {
 	const [loading, setLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
 	const [postAuthors, setPostAuthors] = useState([]);
+	const [currentPage, setCurrentPage] = useState(1);
 
 	/**
 	 * Get all registered post types
@@ -66,11 +67,19 @@ function usePostDesigner(attributes, setAttributes) {
 	const getPosts = async () => {
 		setLoading(true);
 		let authorIds = authors.map((obj) => obj.id).join(",");
+		let termIds = selectedTerms.map(obj => obj.term_id).join(",");
 
 		const response = await postDesigner.get(EndPoints.getPosts, {
 			params: {
 				"post-type": postType,
 				authors: authorIds,
+				taxonomy: taxonomy,
+				terms: termIds,
+				order: order,
+				order_by: orderBy,
+				no_pagination: noPagination,
+				post_per_page: postPerPage,
+				paged: currentPage,
 			},
 		});
 		if (response.statusText === "OK") {
@@ -101,9 +110,6 @@ function usePostDesigner(attributes, setAttributes) {
 	};
 
 	const getTerms = async () => {
-		// if (!taxonomy) {
-		// 	return;
-		// }
 		setLoading(true);
 		const response = await postDesigner.get(EndPoints.getTerms, {
 			params: {
@@ -192,20 +198,27 @@ function usePostDesigner(attributes, setAttributes) {
 		setAttributes({ columnPerRow: value });
 	};
 
-	// Get terms
+	// Get terms.
 	useEffect(() => {
 		getTerms();
 	}, [taxonomy]);
 
+	// Get post types.
 	useEffect(() => {
 		getPostTypes();
 	}, []);
 
+	// Get posts, authors & taxonomies whenever post type get update.
 	useEffect(() => {
 		getPosts();
 		getPostAuthors();
 		getTaxonomies();
-	}, [postType, authors]);
+	}, [postType]);
+
+	// Get posts whenever these args get update.
+	useEffect(() => {
+		getPosts();
+	}, [authors, selectedTerms, taxonomy, order, orderBy, noPagination, postPerPage, currentPage]);
 
 	return {
 		posts,
