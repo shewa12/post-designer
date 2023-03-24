@@ -1,5 +1,6 @@
 
 import { __ } from '@wordpress/i18n';
+import { useState } from "react";
 import {
 	useBlockProps,
 	InspectorControls,
@@ -32,12 +33,15 @@ import usePostDesigner from '../hooks/usePostDesigner';
 import Pagination from '../components/Pagination';
 
 export default function Edit({attributes, setAttributes}) {
-
+	// States
 	const blockProps = { ...useBlockProps() };
 
 	// Attributes from hook
 	const { 
 		posts,
+		maxNumPages,
+		currentPage,
+		setCurrentPage,
 		updatePostType,
 		termsTemplate,
 		authorsTemplate,
@@ -69,9 +73,12 @@ export default function Edit({attributes, setAttributes}) {
 		layout,
 		columnPerRow } = attributes;
 	
-	const renderPostList = posts.map((post) => {
-		return <PostCard post={post}/>
-	});
+		
+	const renderPostList = () => {
+		return posts.map((post) => {
+			return <PostCard post={post}/>
+		})
+	};
 
 	return (
 		loading ?
@@ -163,9 +170,14 @@ export default function Edit({attributes, setAttributes}) {
 
 			</InspectorControls>
 			<div className={`pd-card-row pd-${columnPerRow}-col`}>
-				{ renderPostList }
+				{ renderPostList() }
 			</div>
-			<Pagination />
+
+			{
+				posts.length && maxNumPages > 1 ?
+				<Pagination pages={maxNumPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/> :
+				''
+			}
 		</div>
 	);
 }

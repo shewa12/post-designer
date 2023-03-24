@@ -30,6 +30,8 @@ function usePostDesigner(attributes, setAttributes) {
 	const [posts, setPosts] = useState([]);
 	const [postAuthors, setPostAuthors] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
+	const [maxNumPages, setMaxNumPages] = useState(1);
+
 
 	/**
 	 * Get all registered post types
@@ -83,7 +85,17 @@ function usePostDesigner(attributes, setAttributes) {
 			},
 		});
 		if (response.statusText === "OK") {
-			setPosts(response.data);
+			// Set pagination
+			let {data} = response;
+			let pagination = data.length ? data[data.length - 1]: null;
+		
+			setMaxNumPages(pagination? pagination.max_num_pages : 1);
+
+			// Remove pagination object
+			data.pop();
+
+			// Set posts
+			setPosts(data);
 		} else {
 			alert(response.statusText);
 		}
@@ -222,6 +234,10 @@ function usePostDesigner(attributes, setAttributes) {
 
 	return {
 		posts,
+		maxNumPages,
+		currentPage,
+		setCurrentPage,
+		setPosts,
 		updatePostType,
 		termsTemplate,
 		authorsTemplate,

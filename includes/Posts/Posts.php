@@ -102,9 +102,11 @@ class Posts {
 				);
 				array_push( $posts, $post );
 			}
-			$posts['found_posts']   = $the_query->found_posts;
-			$posts['max_num_pages'] = $the_query->max_num_pages;
 
+			$posts[] = array(
+				'found_posts' => $the_query->found_posts,
+				'max_num_pages' => $the_query->max_num_pages,
+			);
 			wp_reset_postdata();
 			return $posts;
 		} else {

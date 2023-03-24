@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 
 const PostCard = ({post}) => {
-    
+
     const { ID, display_name, avatar, user_login, description } = post.author;
     return(
 	    <div className="pd-card">

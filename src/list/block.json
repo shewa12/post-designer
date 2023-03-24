@@ -10,7 +10,7 @@
 	"supports": {
 		"html": false
 	},
-	"textdomain": "blocky",
+	"textdomain": "post-designer",
 	"attributes": {
 		"postType": {
 			"type": "string",
@@ -21,7 +21,7 @@
 			"default": []
 		},
 		"postPerPage": {
-			"type": "number",
+			"type": "string",
 			"default": 10
 		},
 		"noPagination": {
@@ -67,6 +67,10 @@
 		"columnPerRow": {
 			"type": "string",
 			"default": 3
+		},
+		"postTitleColor": {
+			"type": "string",
+			"default": "magenta"
 		}
 	},
 	"editorScript": "file:./index.js",
