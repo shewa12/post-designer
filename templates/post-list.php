@@ -8,12 +8,35 @@
  * @since 1.0.0
  */
 
-echo '<pre>';
-print_r( $attrs );
+use PostDesigner\Utilities\Utilities;
+
+$args      = Utilities::prepare_args( $attrs );
+$the_query = new WP_Query( $args );
+
+if ( $the_query->have_posts() ) :
 ?>
+
 <div class="wp-block-post-designer-list">
-	<div class='pd-card-row pd-3-col'>
-		<?php require trailingslashit( __DIR__ ) . 'card/card.php'; ?>
+
+	<div class='pd-card-row pd-<?php echo esc_attr( $attrs['columnPerRow'] ); ?>-col'>
+		<?php
+			while ( $the_query->have_posts() ) :
+			$the_query->the_post();
+		?>
+
+			<?php require trailingslashit( __DIR__ ) . 'card/card.php'; ?>
+
+		<?php endwhile; ?>
 	</div>
+	
 </div>
+
+<?php else : ?>
+	<p>
+		<?php esc_html_e( 'No posts found', 'post-designer' ); ?>
+	</p>
+<?php
+endif;
+wp_reset_postdata();
+?>
 

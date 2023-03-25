@@ -20,7 +20,7 @@ import {
 	TabPanel,
 } from '@wordpress/components'
 
-import './editor.scss';
+
 // Custom components
 import PostCard from '../components/PostCard';
 import PostPlaceholder from '../components/Placeholder';
@@ -31,6 +31,7 @@ import defaultOrders, { showColumnPerRow, defaultOrderBy, layouts }  from '../ut
 // Custom hooks
 import usePostDesigner from '../hooks/usePostDesigner';
 import Pagination from '../components/Pagination';
+import PDColorPalette from '../components/styles/ColorPalette';
 
 export default function Edit({attributes, setAttributes}) {
 	// States
@@ -165,6 +166,12 @@ export default function Edit({attributes, setAttributes}) {
 							checked={ noPagination }
 							onChange={ toggleNoPagination }
 						/>
+					</PanelBody>
+				</Panel>
+
+				<Panel>
+					<PanelBody title={__('Styles', 'post-designer')} initialOpen={ false }>
+						<PDColorPalette />
 					</PanelBody>
 				</Panel>
 

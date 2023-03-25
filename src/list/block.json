@@ -8,7 +8,8 @@
 	"icon": "smiley",
 	"description": "Design any kind of Posts",
 	"supports": {
-		"html": false
+		"html": true,
+		"anchor": true
 	},
 	"textdomain": "post-designer",
 	"attributes": {
@@ -68,9 +69,9 @@
 			"type": "string",
 			"default": 3
 		},
-		"postTitleColor": {
+		"titleColor": {
 			"type": "string",
-			"default": "magenta"
+			"default": "#fff"
 		}
 	},
 	"editorScript": "file:./index.js",

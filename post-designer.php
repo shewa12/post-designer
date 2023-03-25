@@ -15,6 +15,7 @@
 
 use PostDesigner\API\Routes;
 use PostDesigner\Blocks\Blocks;
+use PostDesigner\Utilities\Utilities;
 
 if ( ! class_exists( 'PostDesigner' ) ) {
 
@@ -134,6 +135,7 @@ if ( ! class_exists( 'PostDesigner' ) ) {
 		public function load_packages() {
 			new Blocks();
 			new Routes();
+			new Utilities();
 		}
 	}
 	// trigger.

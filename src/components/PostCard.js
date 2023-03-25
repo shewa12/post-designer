@@ -13,7 +13,7 @@ const PostCard = ({post}) => {
 	            </a>
 	        </div>
 	        <div className="pd-card-body">
-	            <h3 className="pd-post-title" title="Woocommerce Auto Cancel">
+	            <h3 className="pd-post-title" title={ post.post_title }>
 	                <a href="#" target="_parent">
 	                    { post.post_title }
 	                </a>

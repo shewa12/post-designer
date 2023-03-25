@@ -1,21 +1,37 @@
+<?php
+/**
+ * Card template
+ *
+ * @since v1.0.0
+ * @package PostDesigner\Templates
+ */
+
+$meta_data         = PostDesigner::plugin_data();
+$default_thumbnail = $meta_data['assets'] . 'images/thumbnail.svg';
+
+?>
 <div class="pd-card">
 	<div class="pd-post-thumbnail">
-		<a href="#" class="pd-d-block">
+		<a href="<?php the_permalink(); ?>" class="pd-d-block">
 			<div class="pd-ratio pd-ratio-16x9">
-				<img class="pd-card-image-top" src="" alt="image" loading="lazy" />
+				<?php if ( has_post_thumbnail() ) : ?>
+					<?php the_post_thumbnail(); ?>
+				<?php else : ?>
+					<img src="<?php echo esc_url( $default_thumbnail ); ?>" alt="<?php the_title(); ?>">
+				<?php endif; ?>
 			</div>
 		</a>
 	</div>
 	<div class="pd-card-body">
-		<h3 class="pd-post-title" title="Woocommerce Auto Cancel">
-			<a href="#" target="_parent">
-				Post Title
+		<h3 class="pd-post-title" title="<?php the_title(); ?>">
+			<a href="<?php the_permalink(); ?>" target="_parent">
+				<?php the_title(); ?>
 			</a>
 		</h3>
 		<div class="pd-post-meta">
 			<span>
 				<?php esc_html_e( 'Post Date:', 'post-designer' ); ?>
-				post.post_date
+				<?php the_time(); ?>
 			</span>
 		</div>
 		<div class="pd-post-categories">
@@ -23,14 +39,14 @@
 				<?php esc_html_e( 'In:', 'post-designer' ); ?>
 			</span>
 			<div>
-				category
+				<?php the_category( ',' ); ?>
 			</div>
 		</div>
 		<div class="pd-post-content">
 			<p>
-			  excerpt  
+			  <?php the_excerpt(); ?>  
 			</p>
-			<a href="#">
+			<a href="<?php the_permalink(); ?>">
 				<?php esc_html_e( 'Read more...', 'post-designer' ); ?>
 			</a>
 		</div>
@@ -38,15 +54,12 @@
 	<div class="pd-card-footer">
 		<div class="pd-post-author">
 			<a href="#" class="pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block " target="_self">
-				<img src="#" alt="display_name"/>
+				<img src="<?php get_avatar_url( get_the_author_meta( 'ID' ), array( 'size' => 50, 'default' => 'mysteryman' ) ); ?>" alt="<?php the_author(); ?>">
 			</a>
 			<div class="pd-post-author-info">
 				<strong>
-					display name or login
+					<?php the_author(); ?>
 				</strong>
-				<p>
-					description
-				</p>
 			</div>
 		</div>
 	</div>
