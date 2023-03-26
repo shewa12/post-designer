@@ -1,28 +1,29 @@
 .pd-pagination {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin: 50px 0;
   
-    button {
+    a, span {
       padding: 5px 10px;
       border: none;
       background-color: #f4f4f4;
       cursor: pointer;
-  
+      
       &:hover {
         background-color: #e6e6e6;
       }
   
-      &.active {
+      &.page-numbers.current {
         background-color: #2569f0;
         color: #f4f4f4;
+        cursor: default !important;
       }
   
-      &.prev {
+      &.prev.page-numbers {
         margin-right: 10px;
       }
   
-      &.next {
+      &.next.page-numbers {
         margin-left: 10px;
       }
     }

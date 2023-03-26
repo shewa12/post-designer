@@ -31,6 +31,7 @@ class Utilities {
         $args = array(
             'post_type'      => sanitize_text_field( $attrs['postType'] ),
             'posts_per_page' => sanitize_text_field( $attrs['postPerPage'] ),
+            'paged'          => get_query_var( 'paged', 1 ),
             'nopaging'       => sanitize_text_field( $attrs['noPagination'] ),
             'orderby'        => sanitize_text_field( $attrs['orderBy'] ),
             'order'          => sanitize_text_field( $attrs['order'] ),

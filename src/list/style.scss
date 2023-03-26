@@ -1,6 +1,8 @@
 /**
  * The following styles get applied both editor & frontend.
  */
+@import "../scss/pagination.scss";
+
 .wp-block-post-designer-list {
 	.pd-card-row {
 		display: grid;

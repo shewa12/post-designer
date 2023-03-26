@@ -10,7 +10,15 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
         let i = 1;
         let paginationMarkup = [];
         while (i <= pages) {
-            paginationMarkup.push(<button key={i} data-current-page={i} className={`page ${currentPage == i ? 'active' : ''}`} onClick={(e) => {setCurrentPage(e.target.dataset.currentPage)}}>{i}</button>);
+            // paginationMarkup.push(<a key={i} data-current-page={i} className={`page-numbers ${currentPage == i ? 'page-numbers current' : ''}`} onClick={(e) => {setCurrentPage(e.target.dataset.currentPage)}}>{i}</a>);
+            let markup = currentPage == i ?
+                <span key={i} data-current-page={i} className="page-numbers current">
+                    {i}
+                </span>:
+                <a key={i} data-current-page={i} className="page-numbers" onClick={(e) => {setCurrentPage(e.target.dataset.currentPage)}}>
+                    {i}
+                </a>;
+            paginationMarkup.push(markup);
             i++;
         }
         return paginationMarkup;
@@ -35,9 +43,9 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
     return (
        
         <div className="pd-pagination">
-            <button className="prev" ref={prevBtnRef} onClick={() => {setCurrentPage(currentPage - 1)}}>« Previous</button>
+            <a className="prev page-numbers" ref={prevBtnRef} onClick={() => {setCurrentPage(currentPage - 1)}}>« Previous</a>
             { pageMarkups() }
-            <button className="next" ref={nextBtnRef} onClick={() => {setCurrentPage(currentPage + 1)}}>Next »</button>
+            <a className="next page-numbers" ref={nextBtnRef} onClick={() => {setCurrentPage(currentPage + 1)}}>Next »</a>
         </div>
     );
 }

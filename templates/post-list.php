@@ -10,6 +10,8 @@
 
 use PostDesigner\Utilities\Utilities;
 
+global $wp_query;
+
 $args      = Utilities::prepare_args( $attrs );
 $the_query = new WP_Query( $args );
 
@@ -28,6 +30,23 @@ if ( $the_query->have_posts() ) :
 
 		<?php endwhile; ?>
 	</div>
+
+	<!-- pagination -->
+	<?php
+		$big = PHP_INT_MAX;
+		$pagination_args = array(
+			'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+			'format'    => '?paged=%#%',
+			'current'   => max( 1, get_query_var( 'paged' ) ),
+			'total'     => $the_query->max_num_pages
+		);
+
+		$wp_query->max_num_pages = $the_query->max_num_pages;
+	?>
+	<div class="pd-pagination">
+		<?php echo paginate_links( $args ); ?>
+	</div>
+	<!-- pagination end -->
 	
 </div>
 
