@@ -9,7 +9,7 @@
 $meta_data         = PostDesigner::plugin_data();
 $default_thumbnail = $meta_data['assets'] . 'images/thumbnail.svg';
 $author_avatar_url = get_avatar_url(
-	get_the_author_meta( "ID" ),
+	get_the_author_meta( 'ID' ),
 	array( 'size' => 50, 'default' => 'mysteryman' )
 );
 ?>
