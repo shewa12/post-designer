@@ -28,7 +28,9 @@ import defaultOrders, { showColumnPerRow, defaultOrderBy, layouts }  from '../ut
 import usePostDesigner from '../hooks/usePostDesigner';
 import PDColorPalette from '../components/styles/ColorPalette';
 
+// Slick slider
 import Slider from "react-slick";
+import "./edit.scss";
 
 export default function Edit({attributes, setAttributes}) {
 	// States
@@ -72,7 +74,7 @@ export default function Edit({attributes, setAttributes}) {
 		dots: true,
 		infinite: true,
 		speed: 500,
-		slidesToShow: 1,
+		slidesToShow: 2,
 		slidesToScroll: 1
 	};
 

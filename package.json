@@ -26,6 +26,7 @@
 		"@wordpress/icons": "^9.8.0",
 		"axios": "^0.27.2",
 		"react-select": "^5.7.0",
-		"react-slick": "^0.29.0"
+		"react-slick": "^0.29.0",
+		"slick-carousel": "^1.8.1"
 	}
 }
