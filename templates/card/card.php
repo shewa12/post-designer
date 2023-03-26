@@ -8,7 +8,10 @@
 
 $meta_data         = PostDesigner::plugin_data();
 $default_thumbnail = $meta_data['assets'] . 'images/thumbnail.svg';
-
+$author_avatar_url = get_avatar_url(
+	get_the_author_meta( "ID" ),
+	array( 'size' => 50, 'default' => 'mysteryman' )
+);
 ?>
 <div class="pd-card">
 	<div class="pd-post-thumbnail">
@@ -54,7 +57,7 @@ $default_thumbnail = $meta_data['assets'] . 'images/thumbnail.svg';
 	<div class="pd-card-footer">
 		<div class="pd-post-author">
 			<a href="#" class="pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block " target="_self">
-				<img src="<?php get_avatar_url( get_the_author_meta( 'ID' ), array( 'size' => 50, 'default' => 'mysteryman' ) ); ?>" alt="<?php the_author(); ?>">
+				<img src="<?php echo esc_url( $author_avatar_url ) ?>" alt="<?php the_author(); ?>">
 			</a>
 			<div class="pd-post-author-info">
 				<strong>
