@@ -15,6 +15,7 @@
 
 use PostDesigner\API\Routes;
 use PostDesigner\Blocks\Blocks;
+use PostDesigner\Enqueue\Enqueue;
 use PostDesigner\Utilities\Utilities;
 
 if ( ! class_exists( 'PostDesigner' ) ) {
@@ -136,6 +137,7 @@ if ( ! class_exists( 'PostDesigner' ) ) {
 			new Blocks();
 			new Routes();
 			new Utilities();
+			new Enqueue();
 		}
 	}
 	// trigger.

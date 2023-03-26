@@ -20,7 +20,7 @@ if ( $the_query->have_posts() ) :
 
 <div class="wp-block-post-designer-carousel">
 
-	<div class='pd-card-row pd-<?php echo esc_attr( $attrs['columnPerRow'] ); ?>-col'>
+	<div class='pd-card-row pd-slick-slider'>
 		<?php
 		while ( $the_query->have_posts() ) :
 			$the_query->the_post();

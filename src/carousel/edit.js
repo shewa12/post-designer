@@ -28,6 +28,8 @@ import defaultOrders, { showColumnPerRow, defaultOrderBy, layouts }  from '../ut
 import usePostDesigner from '../hooks/usePostDesigner';
 import PDColorPalette from '../components/styles/ColorPalette';
 
+import Slider from "react-slick";
+
 export default function Edit({attributes, setAttributes}) {
 	// States
 	const blockProps = { ...useBlockProps() };
@@ -66,7 +68,14 @@ export default function Edit({attributes, setAttributes}) {
 		layout,
 		columnPerRow } = attributes;
 	
-		
+	const sliderSettings = {
+		dots: true,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1
+	};
+
 	const renderPostList = () => {
 		return posts.map((post) => {
 			return <PostCard post={post}/>
@@ -168,8 +177,10 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 			</InspectorControls>
-			<div className={`pd-card-row pd-${columnPerRow}-col`}>
-				{ renderPostList() }
+			<div className={`pd-card-row`}>
+				<Slider {...sliderSettings}>
+					{ renderPostList() }
+				</Slider>
 			</div>
 
 		</div>

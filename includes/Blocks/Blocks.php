@@ -85,6 +85,8 @@ class Blocks {
 	 * @return string
 	 */
 	public static function render_list( $attrs ) {
+		self::excerpt_filter();
+
 		$post_list_template = trailingslashit( self::$plugin_data['templates'] ) . 'post-list.php';
 		ob_start();
 		if ( file_exists( $post_list_template ) ) {
@@ -109,6 +111,8 @@ class Blocks {
 	 * @return string
 	 */
 	public static function render_carousel( $attrs ) {
+		self::excerpt_filter();
+
 		$post_carousel_template = trailingslashit( self::$plugin_data['templates'] ) . 'post-carousel.php';
 		ob_start();
 		if ( file_exists( $post_carousel_template ) ) {
@@ -120,6 +124,35 @@ class Blocks {
 		return apply_filters(
 			'post_designer_carousel_template',
 			ob_get_clean()
+		);
+	}
+
+	/**
+	 * Filter excerpt length & read more text
+	 * 
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	public static function excerpt_filter() {
+		add_filter(
+			'excerpt_length',
+			function() {
+				return 20;
+			}
+		);
+
+		add_filter(
+			'excerpt_more',
+			function ( $more ) {
+				if ( ! is_single() ) {
+					$more = sprintf( '<a class="read-more" href="%1$s">%2$s</a>',
+						get_permalink( get_the_ID() ),
+						__( ' Read More...', 'post-designer' )
+					);
+				}
+				return $more;
+			}
 		);
 	}
 }

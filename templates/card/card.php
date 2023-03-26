@@ -49,9 +49,6 @@ $author_avatar_url = get_avatar_url(
 			<p>
 			  <?php the_excerpt(); ?>  
 			</p>
-			<a href="<?php the_permalink(); ?>">
-				<?php esc_html_e( 'Read more...', 'post-designer' ); ?>
-			</a>
 		</div>
 	</div>
 	<div class="pd-card-footer">
