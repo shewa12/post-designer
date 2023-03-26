@@ -8,8 +8,7 @@
 	"icon": "smiley",
 	"description": "Design any kind of Posts",
 	"supports": {
-		"html": true,
-		"anchor": true
+		"html": false
 	},
 	"textdomain": "post-designer",
 	"attributes": {

@@ -6,7 +6,7 @@
 	"title": "Carousel",
 	"category": "post-designer",
 	"icon": "smiley",
-	"description": "Design any kind of Posts",
+	"description": "Make a carousel by using Posts",
 	"supports": {
 		"html": false
 	},
@@ -16,17 +16,41 @@
 			"type": "string",
 			"default" : "post"
 		},
-		"author": {
+		"authors": {
+			"type": "array",
+			"default": []
+		},
+		"postPerPage": {
+			"type": "string",
+			"default": 10
+		},
+		"noPagination": {
+			"type": "boolean",
+			"default": false
+		},
+		"orderBy": {
+			"type": "string",
+			"default": "ID"
+		},
+		"order": {
+			"type": "string",
+			"default": "DESC"
+		},
+		"taxonomies": {
+			"type": "array",
+			"default": []
+		},
+		"taxonomy": {
 			"type": "string",
 			"default": ""
 		},
-		"categories": {
+		"terms": {
 			"type": "string",
-			"default": ""
+			"default": []
 		},
-		"tags": {
-			"type": "string",
-			"default": ""
+		"selectedTerms": {
+			"type": "array",
+			"default": []
 		},
 		"dateFrom": {
 			"type": "string",
@@ -35,6 +59,18 @@
 		"dateTo": {
 			"type": "string",
 			"default": ""
+		},
+		"layout": {
+			"type": "string",
+			"default": "card"
+		},
+		"columnPerRow": {
+			"type": "string",
+			"default": 3
+		},
+		"titleColor": {
+			"type": "string",
+			"default": "#fff"
 		}
 	},
 	"editorScript": "file:./index.js",

@@ -1,6 +1,5 @@
 
 import { __ } from '@wordpress/i18n';
-import { useState } from "react";
 import {
 	useBlockProps,
 	InspectorControls,
@@ -9,15 +8,12 @@ import {
 import {
 	Panel,
 	PanelBody,
-	PanelRow,
 	__experimentalNumberControl as NumberControl,
 	ToggleControl,
 	RadioControl,
 	SelectControl,
-	CheckboxControl,
 	__experimentalText as Text,
 	__experimentalDivider as Divider,
-	TabPanel,
 } from '@wordpress/components'
 
 
