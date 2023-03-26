@@ -98,4 +98,28 @@ class Blocks {
 			ob_get_clean()
 		);
 	}
+
+	/**
+	 * Render carousel block on the frontend
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $attrs attributes of block.
+	 *
+	 * @return string
+	 */
+	public static function render_carousel( $attrs ) {
+		$post_carousel_template = trailingslashit( self::$plugin_data['templates'] ) . 'post-carousel.php';
+		ob_start();
+		if ( file_exists( $post_carousel_template ) ) {
+			include $post_carousel_template;
+		} else {
+			echo esc_html( $post_carousel_template ) . esc_html__( 'not found', 'post-designer' );
+		}
+
+		return apply_filters(
+			'post_designer_carousel_template',
+			ob_get_clean()
+		);
+	}
 }
