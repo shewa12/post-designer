@@ -1,9 +1,15 @@
 .pd-card-row {
-    .slick-prev:before, .slick-next:before {
-        color: #000;
-    }
-}
-.pd-card-row .slick-track {
-    display: flex;
-    gap: 20px;
+	.slick-prev:before,
+	.slick-next:before {
+		color: #000;
+	}
+
+	.slick-slide {
+        height: inherit !important;
+	}
+
+	.slick-track {
+		display: flex;
+		gap: 20px;
+	}
 }

@@ -22,11 +22,11 @@
 		},
 		"postPerPage": {
 			"type": "string",
-			"default": 10
+			"default": 3
 		},
 		"noPagination": {
 			"type": "boolean",
-			"default": false
+			"default": true
 		},
 		"orderBy": {
 			"type": "string",
@@ -64,9 +64,45 @@
 			"type": "string",
 			"default": "card"
 		},
-		"columnPerRow": {
-			"type": "string",
-			"default": 3
+		"dots": {
+			"type": "boolean",
+			"default": true
+		},
+		"infinite": {
+			"type": "boolean",
+			"default": true
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": true
+		},
+		"centerMode": {
+			"type": "boolean",
+			"default": false
+		},
+		"speed": {
+			"type": "boolean",
+			"default": 500
+		},
+		"slidesToScroll": {
+			"type": "number",
+			"default": 1
+		},
+		"arrows": {
+			"type": "boolean",
+			"default": true
+		},
+		"focusOnSelect": {
+			"type": "boolean",
+			"default": true
+		},
+		"initialSlide": {
+			"type": "number",
+			"default": 0
+		},
+		"rtl": {
+			"type": "boolean",
+			"default": false
 		},
 		"titleColor": {
 			"type": "string",

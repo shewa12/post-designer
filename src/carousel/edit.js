@@ -22,7 +22,7 @@ import PostCard from '../components/PostCard';
 import PostPlaceholder from '../components/Placeholder';
 
 // Utilities
-import defaultOrders, { showColumnPerRow, defaultOrderBy, layouts }  from '../utilities/Utilities';
+import defaultOrders, { defaultOrderBy, layouts }  from '../utilities/Utilities';
 
 // Custom hooks
 import usePostDesigner from '../hooks/usePostDesigner';
@@ -45,21 +45,29 @@ export default function Edit({attributes, setAttributes}) {
 		updatePostPerPage,
 		updateOrders,
 		updateOrdersBy,
-		toggleNoPagination,
 		updateTaxonomy,
 		updateLayout,
-		updateColumnPerRow,
 	} = usePostDesigner(attributes, setAttributes);
 
 	// Attributes
 	const {		
 		postType,
-		postPerPage,
-		noPagination, 
+
 		order, 
 		orderBy, 
 		taxonomies,
 		taxonomy,
+		dots,
+		infinite,
+		autoplay,
+		centerMode,
+		speed,
+		postPerPage,
+		slidesToScroll,
+		arrows,
+		focusOnSelect,
+		initialSlide,
+		rtl,
 		terms, 
 		authors,
 		postAuthors,
@@ -68,14 +76,20 @@ export default function Edit({attributes, setAttributes}) {
 		postTypes,
 		loading,
 		layout,
-		columnPerRow } = attributes;
+		} = attributes;
 	
 	const sliderSettings = {
-		dots: true,
-		infinite: true,
-		speed: 500,
-		slidesToShow: 2,
-		slidesToScroll: 1
+		dots,
+		infinite,
+		autoplay,
+		centerMode,
+		speed,
+		slidesToShow: Number(postPerPage),
+		slidesToScroll,
+		arrows,
+		focusOnSelect,
+		initialSlide,
+		rtl,
 	};
 
 	const renderPostList = () => {
@@ -104,13 +118,6 @@ export default function Edit({attributes, setAttributes}) {
 						value={ layout }
 						options={ layouts }
 						onChange={ updateLayout }
-					/>
-					<Divider></Divider>
-					<SelectControl
-						label={ __('Column per Row', 'post-designer') }
-						value={ columnPerRow }
-						options={ showColumnPerRow }
-						onChange={ updateColumnPerRow }
 					/>
 					</PanelBody>
 				</Panel>
@@ -153,22 +160,18 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 				<Panel>
-					<PanelBody title={__('Pagination', 'post-designer')} initialOpen={ false }>
+					<PanelBody title={__('Carousel Settings', 'post-designer')} initialOpen={ false }>
+						{/* slide show per page */}
 						<NumberControl
 							isShiftStepEnabled={ true }
 							onChange={ updatePostPerPage }
 							shiftStep={ 1 }
 							value={ postPerPage }
-							label= {__('Posts per page', 'post-designer')}
+							label= {__('Slide to Show', 'post-designer')}
 							labelPosition={'top'}
 						/>
 						<Divider />
-						<ToggleControl
-							label={ __( 'No Pagination', 'post-designer' ) }
-							help={ __( 'On only if you want to display all posts together', 'post-designer' ) }
-							checked={ noPagination }
-							onChange={ toggleNoPagination }
-						/>
+
 					</PanelBody>
 				</Panel>
 

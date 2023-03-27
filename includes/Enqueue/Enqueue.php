@@ -71,6 +71,9 @@ class Enqueue {
                 display: flex;
                 gap: 20px;
             }
+            .pd-slick-slider .slick-slide {
+                height: inherit !important;
+            }
         ";
         wp_add_inline_style(
             'pd-slick-theme',
