@@ -97,8 +97,8 @@
 			"default": true
 		},
 		"initialSlide": {
-			"type": "number",
-			"default": 0
+			"type": "string",
+			"default": "0"
 		},
 		"rtl": {
 			"type": "boolean",

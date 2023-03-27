@@ -79,16 +79,16 @@ export default function Edit({attributes, setAttributes}) {
 		} = attributes;
 	
 	const sliderSettings = {
-		dots,
-		infinite,
-		autoplay,
-		centerMode,
-		speed,
 		slidesToShow: Number(postPerPage),
 		slidesToScroll,
+		infinite,
+		autoplay,
+		speed,
+		centerMode,
+		initialSlide,
+		dots,
 		arrows,
 		focusOnSelect,
-		initialSlide,
 		rtl,
 	};
 
@@ -170,7 +170,136 @@ export default function Edit({attributes, setAttributes}) {
 							label= {__('Slide to Show', 'post-designer')}
 							labelPosition={'top'}
 						/>
+
 						<Divider />
+
+						<NumberControl
+							isShiftStepEnabled={ true }
+							onChange={
+								(value) => { 
+									setAttributes({slidesToScroll: value}) 
+								} 
+							}
+							shiftStep={ 1 }
+							value={ slidesToScroll }
+							label= {__('Slide to Scroll', 'post-designer')}
+							labelPosition={'top'}
+						/>
+					
+						<Divider />
+
+						<NumberControl
+							isShiftStepEnabled={ true }
+							onChange={
+								(value) => { 
+									setAttributes({initialSlide: value}) 
+								} 
+							}
+							shiftStep={ 1 }
+							value={ initialSlide }
+							label= {__('First Slide', 'post-designer')}
+							labelPosition={'top'}
+						/>
+
+						<Divider />
+
+						<ToggleControl
+							label={ __( 'Infinite Loop', 'post-designer' ) }
+							help={ __( 'Let the carousel rotating infinitely', 'post-designer' ) }
+							checked={ infinite }
+							onChange={
+								(value) => {
+									setAttributes( { infinite: value } )
+								}
+							}
+						/>
+
+						<Divider />
+
+						<ToggleControl
+							label={ __( 'Auto Play', 'post-designer' ) }
+							checked={ autoplay }
+							onChange={
+								(value) => {
+									setAttributes( { autoplay: value } )
+								}
+							}
+						/>
+
+						<Divider />
+
+						<NumberControl
+							label= {__('Rotation Speed', 'post-designer')}
+							labelPosition={'top'}
+							isShiftStepEnabled={ true }
+							onChange={
+								(value) => { 
+									setAttributes({speed: value}) 
+								} 
+							}
+							shiftStep={ 100 }
+							value={ speed }
+						/>
+
+						<Divider />
+
+						<ToggleControl
+							label={ __( 'Center Slide', 'post-designer' ) }
+							checked={ centerMode }
+							onChange={
+								(value) => {
+									setAttributes( { centerMode: value } )
+								}
+							}
+						/>
+
+						<Divider />
+
+						<ToggleControl
+							label={ __( 'Show Dots', 'post-designer' ) }
+							checked={ dots }
+							onChange={
+								(value) => {
+									setAttributes( { dots: value } )
+								}
+							}
+						/>
+
+						<Divider />
+	
+						<ToggleControl
+							label={ __( 'Show Arrows', 'post-designer' ) }
+							checked={ arrows }
+							onChange={
+								(value) => {
+									setAttributes( { arrows: value } )
+								}
+							}
+						/>
+
+						<Divider />
+
+						<ToggleControl
+							label={ __( 'Focus on Select', 'post-designer' ) }
+							checked={ focusOnSelect }
+							onChange={
+								(value) => {
+									setAttributes( { focusOnSelect: value } )
+								}
+							}
+						/>
+
+						<Divider />
+
+						<ToggleControl
+							label={ __( 'RTL', 'post-designer' ) }
+							checked={ rtl }
+							onChange={
+								(value) => {
+									setAttributes( { rtl: value } )
+								}
+							}
+						/>
 
 					</PanelBody>
 				</Panel>
