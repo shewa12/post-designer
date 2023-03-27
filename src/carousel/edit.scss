@@ -1,14 +1,6 @@
 .pd-card-row {
     .slick-prev:before, .slick-next:before {
-        color:#fff;
-        :hover {
-            background-color: #000;
-            color:#fff;
-        }
-    }
-    .slick-next, .slick-prev {
-        background-color: #000;
-        border-radius: 100%;
+        color: #000;
     }
 }
 .pd-card-row .slick-track {
