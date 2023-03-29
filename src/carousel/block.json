@@ -106,7 +106,7 @@
 		},
 		"titleColor": {
 			"type": "string",
-			"default": "#fff"
+			"default": "#000"
 		}
 	},
 	"editorScript": "file:./index.js",

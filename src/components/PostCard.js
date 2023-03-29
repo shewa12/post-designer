@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 
-const PostCard = ({post}) => {
+const PostCard = ( {post, attributes} ) => {
 
     const { ID, display_name, avatar, user_login, description } = post.author;
     return(
@@ -14,7 +14,7 @@ const PostCard = ({post}) => {
 	        </div>
 	        <div className="pd-card-body">
 	            <h3 className="pd-post-title" title={ post.post_title }>
-	                <a href="#" target="_parent">
+	                <a href="#" target="_parent" style={ {color: attributes.titleColor} }>
 	                    { post.post_title }
 	                </a>
 	            </h3>

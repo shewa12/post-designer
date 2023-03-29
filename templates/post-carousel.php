@@ -41,4 +41,9 @@ if ( $the_query->have_posts() ) :
 	<?php
 endif;
 wp_reset_postdata();
+
 ?>
+<script>
+	var r = document.querySelector(':root');
+    r.style.setProperty('--pd-title-color','<?php echo $attrs['titleColor'];?>');
+</script>

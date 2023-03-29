@@ -26,7 +26,7 @@ import defaultOrders, { defaultOrderBy, layouts }  from '../utilities/Utilities'
 
 // Custom hooks
 import usePostDesigner from '../hooks/usePostDesigner';
-import PDColorPalette from '../components/styles/ColorPalette';
+import PDColorPalette from '../components/styles-component/ColorPalette';
 
 // Slick slider
 import Slider from "react-slick";
@@ -94,7 +94,7 @@ export default function Edit({attributes, setAttributes}) {
 
 	const renderPostList = () => {
 		return posts.map((post) => {
-			return <PostCard post={post}/>
+			return <PostCard post={post} attributes={attributes}/>
 		})
 	};
 
@@ -305,8 +305,8 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 				<Panel>
-					<PanelBody title={__('Styles', 'post-designer')} initialOpen={ false }>
-						<PDColorPalette />
+					<PanelBody title={__('Title', 'post-designer')} initialOpen={ false }>
+						<PDColorPalette titleColor={attributes.titleColor} setAttributes={setAttributes}/>
 					</PanelBody>
 				</Panel>
 

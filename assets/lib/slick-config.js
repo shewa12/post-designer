@@ -43,7 +43,6 @@ jQuery(function ($) {
 		],
 	};
 
-	console.log(settings);
 	$(".pd-slick-slider").slick(settings);
 });
 		// dots: true,

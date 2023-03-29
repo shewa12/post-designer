@@ -27,7 +27,6 @@ import defaultOrders, { showColumnPerRow, defaultOrderBy, layouts }  from '../ut
 // Custom hooks
 import usePostDesigner from '../hooks/usePostDesigner';
 import Pagination from '../components/Pagination';
-import PDColorPalette from '../components/styles/ColorPalette';
 
 export default function Edit({attributes, setAttributes}) {
 	// States
@@ -73,7 +72,7 @@ export default function Edit({attributes, setAttributes}) {
 		
 	const renderPostList = () => {
 		return posts.map((post) => {
-			return <PostCard post={post}/>
+			return <PostCard post={post} attributes={attributes}/>
 		})
 	};
 
@@ -167,7 +166,6 @@ export default function Edit({attributes, setAttributes}) {
 
 				<Panel>
 					<PanelBody title={__('Styles', 'post-designer')} initialOpen={ false }>
-						<PDColorPalette />
 					</PanelBody>
 				</Panel>
 
