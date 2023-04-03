@@ -2,9 +2,7 @@
  * The following styles get applied both editor & frontend.
  */
 @import "../scss/pagination.scss";
-:root {
-	--pd-title-color: #000;
-}
+@import "../scss/vars";
 
 .wp-block-post-designer-carousel {
 	.pd-card-row {
@@ -123,6 +121,14 @@
 		// Dynamic styles
 		.pd-post-title a {
 			color: var(--pd-title-color) !important;
+		}
+		.pd-post-meta {
+			.pd-post-meta-key {
+				color: var(--pd-meta-key-color) !important;
+			}
+			.pd-post-meta-value {
+				color: var(--pd-meta-value-color) !important;
+			}
 		}
 	}
 

@@ -107,6 +107,14 @@
 		"titleColor": {
 			"type": "string",
 			"default": "#000"
+		},
+		"metaKeyColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"metaValueColor": {
+			"type": "string",
+			"default": "#000"
 		}
 	},
 	"editorScript": "file:./index.js",

@@ -14,6 +14,8 @@ import {
 	SelectControl,
 	__experimentalText as Text,
 	__experimentalDivider as Divider,
+	ColorPalette,
+	BaseControl
 } from '@wordpress/components'
 
 
@@ -26,11 +28,11 @@ import defaultOrders, { defaultOrderBy, layouts }  from '../utilities/Utilities'
 
 // Custom hooks
 import usePostDesigner from '../hooks/usePostDesigner';
-import PDColorPalette from '../components/styles-component/ColorPalette';
 
 // Slick slider
 import Slider from "react-slick";
 import "./edit.scss";
+import { useEffect } from 'react';
 
 export default function Edit({attributes, setAttributes}) {
 	// States
@@ -97,6 +99,24 @@ export default function Edit({attributes, setAttributes}) {
 			return <PostCard post={post} attributes={attributes}/>
 		})
 	};
+
+	// Update styles
+	const {
+		titleColor,
+		metaKeyColor,
+		metaValueColor
+	} = attributes;
+
+	useEffect(() => {
+		var r = document.querySelector(':root');
+		setAttributes({titleColor: titleColor});
+		setAttributes({metaKeyColor: metaKeyColor});
+		setAttributes({metaValueColor: metaValueColor});
+		
+		r.style.setProperty('--pd-title-color', titleColor);
+		r.style.setProperty('--pd-meta-key-color', metaKeyColor);
+		r.style.setProperty('--pd-meta-value-color', metaValueColor);
+	  }, [titleColor, metaKeyColor, metaValueColor]);
 
 	return (
 		loading ?
@@ -306,7 +326,40 @@ export default function Edit({attributes, setAttributes}) {
 
 				<Panel>
 					<PanelBody title={__('Title', 'post-designer')} initialOpen={ false }>
-						<PDColorPalette titleColor={attributes.titleColor} setAttributes={setAttributes}/>
+						<BaseControl
+						label={ __('Color', 'post-designer') }
+						>
+							<ColorPalette
+								value={titleColor}
+								onChange= { (value) => { setAttributes({titleColor: value}) } }
+							/>
+						</BaseControl>
+					</PanelBody>
+				</Panel>
+
+				<Panel>
+					<PanelBody title={__('Meta Key', 'post-designer')} initialOpen={ false }>
+						<BaseControl
+						label={ __('Color', 'post-designer') }
+						>
+							<ColorPalette
+								value={metaKeyColor}
+								onChange= { (value) => { setAttributes({metaKeyColor: value}) } }
+							/>
+						</BaseControl>
+					</PanelBody>
+				</Panel>
+
+				<Panel>
+					<PanelBody title={__('Meta Value', 'post-designer')} initialOpen={ false }>
+						<BaseControl
+						label={ __('Color', 'post-designer') }
+						>
+							<ColorPalette
+								value={metaValueColor}
+								onChange= { (value) => { setAttributes({metaValueColor: value}) } }
+							/>
+						</BaseControl>
 					</PanelBody>
 				</Panel>
 
