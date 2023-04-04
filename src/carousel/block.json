@@ -104,17 +104,117 @@
 			"type": "boolean",
 			"default": false
 		},
+		"cardBackgroundColor": {
+			"type": "string",
+			"default": "#fff"
+		},
+		"cardBorder": {
+			"type": "string",
+			"default": "1px"
+		},
+		"cardBorderRadius": {
+			"type": "string",
+			"default": "10px"
+		},
+		"showThumbnail": {
+			"type": "boolean",
+			"default": true
+		},
+		"showTitle": {
+			"type": "boolean",
+			"default": true
+		},
 		"titleColor": {
 			"type": "string",
 			"default": "#000"
+		},
+		"titlePadding": {
+			"type": "number",
+			"default": 0
+		},
+		"titleFontSize": {
+			"type": "string",
+			"default": "inherit"
+		},
+		"showMeta": {
+			"type": "boolean",
+			"default": true
 		},
 		"metaKeyColor": {
 			"type": "string",
 			"default": "#000"
 		},
+		"metaKeyFontSize": {
+			"type": "string",
+			"default": "12px"
+		},
 		"metaValueColor": {
 			"type": "string",
 			"default": "#000"
+		},
+		"metaValueFontSize": {
+			"type": "string",
+			"default": "12px"
+		},
+		"showCategory": {
+			"type": "boolean",
+			"default": true
+		},
+		"categoryLabelColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"categoryLabelFontSize": {
+			"type": "string",
+			"default": "12px"
+		},
+		"categoryValueColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"categoryValueFontSize": {
+			"type": "string",
+			"default": "12px"
+		},
+		"showExcerpt": {
+			"type": "boolean",
+			"default": true
+		},
+		"excerptColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"excerptFontSize": {
+			"type": "string",
+			"default": "14px"
+		},
+		"readMoreColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"readMoreFontSize": {
+			"type": "string",
+			"default": "14px"
+		},
+		"showAvatar": {
+			"type": "boolean",
+			"default": true
+		},
+		"avatarSize": {
+			"type": "string",
+			"default": "50px"
+		},
+		"showAuthor": {
+			"type": "boolean",
+			"default": true
+		},
+		"authorNameColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"authorNameFontSize": {
+			"type": "string",
+			"default": "14px"
 		}
 	},
 	"editorScript": "file:./index.js",

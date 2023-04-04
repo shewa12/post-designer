@@ -15,7 +15,8 @@ import {
 	__experimentalText as Text,
 	__experimentalDivider as Divider,
 	ColorPalette,
-	BaseControl
+	BaseControl,
+	PanelRow
 } from '@wordpress/components'
 
 
@@ -102,7 +103,9 @@ export default function Edit({attributes, setAttributes}) {
 
 	// Update styles
 	const {
+		showTitle,
 		titleColor,
+		titlePadding,
 		metaKeyColor,
 		metaValueColor
 	} = attributes;
@@ -325,7 +328,22 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 				<Panel>
-					<PanelBody title={__('Title', 'post-designer')} initialOpen={ false }>
+					<PanelBody
+					title={ __('Title', 'post-designer') }
+					initialOpen={ false }>
+
+						<ToggleControl
+							checked={showTitle}
+							label={ __('Show Title', 'post-designer') }
+							onChange={
+								(value) => {
+									setAttributes({showTitle: value})
+								}
+							}
+						/>
+
+						<Divider/>
+
 						<BaseControl
 						label={ __('Color', 'post-designer') }
 						>
@@ -334,6 +352,17 @@ export default function Edit({attributes, setAttributes}) {
 								onChange= { (value) => { setAttributes({titleColor: value}) } }
 							/>
 						</BaseControl>
+
+						<Divider />
+
+						<RangeControl
+							initialPosition={ titlePadding }
+							label={ __('Padding', 'post-designer') }
+							max={100}
+							min={0}
+							onChange={() => {}}
+						/>
+
 					</PanelBody>
 				</Panel>
 
@@ -351,7 +380,7 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 				<Panel>
-					<PanelBody title={__('Meta Value', 'post-designer')} initialOpen={ false }>
+					<PanelBody title={ __('Meta Value', 'post-designer') } initialOpen={ false }>
 						<BaseControl
 						label={ __('Color', 'post-designer') }
 						>

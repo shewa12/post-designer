@@ -1,5 +1,29 @@
-:root {
-	--pd-title-color: #000;
-	--pd-meta-key-color: #000;
-	--pd-meta-value-color: #000;
-}
+    :root {
+        --pd-title-color: #000;
+        --pd-title-padding: 0px;
+        --pd-title-font-size: inherit,
+
+        --pd-meta-key-color: #000;
+        --pd-meta-key-font-size: 12px;
+
+        --pd-meta-value-color: #000;
+        --pd-meta-value-font-size: 12px;
+
+        --pd-category-label-color: #000;
+        --pd-category-label-font-size: 12px;
+
+        --pd-category-color: #000;
+        --pd-category-font-size: 12px;
+
+        --pd-excerpt-color: #000;
+        --pd-excerpt-font-size: 14px;
+
+        --pd-read-more-color: #000;
+        --pd-read-more-font-size: 14px;
+
+        --pd-avatar-size: 50px;
+        --pd-avatar-border: 1px;
+
+        --pd-author-name-color: #000;
+        --pd-author-name-font-size: 14px;
+    }
