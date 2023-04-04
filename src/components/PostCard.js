@@ -5,13 +5,17 @@ const PostCard = ( {post, attributes} ) => {
     const { ID, display_name, avatar, user_login, description } = post.author;
     return(
 	    <div className="pd-card">
-	        <div className="pd-post-thumbnail">
-	            <a href="#" className="pd-d-block">
-	                <div className="pd-ratio pd-ratio-16x9">
-	                    <img className="pd-card-image-top" src={post.thumbnail} alt="" loading="lazy" />
-	                </div>
-	            </a>
-	        </div>
+			{
+				attributes.showThumbnail ?
+				<div className="pd-post-thumbnail">
+					<a href="#" className="pd-d-block">
+						<div className="pd-ratio pd-ratio-16x9">
+							<img className="pd-card-image-top" src={post.thumbnail} alt="" loading="lazy" />
+						</div>
+					</a>
+				</div>
+				: ''
+			}
 	        <div className="pd-card-body">
 	            <h3 className="pd-post-title" title={ post.post_title }>
 	                <a href="#" target="_parent" style={ {color: attributes.titleColor} }>

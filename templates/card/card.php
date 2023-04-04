@@ -14,6 +14,8 @@ $author_avatar_url = get_avatar_url(
 );
 ?>
 <div class="pd-card">
+	
+	<?php if ( $attrs['showThumbnail'] ) : ?>
 	<div class="pd-post-thumbnail">
 		<a href="<?php the_permalink(); ?>" class="pd-d-block">
 			<div class="pd-ratio pd-ratio-16x9">
@@ -25,6 +27,8 @@ $author_avatar_url = get_avatar_url(
 			</div>
 		</a>
 	</div>
+	<?php endif; ?>
+
 	<div class="pd-card-body">
 		<h3 class="pd-post-title" title="<?php the_title(); ?>">
 			<a href="<?php the_permalink(); ?>" target="_parent">

@@ -332,6 +332,7 @@ export default function Edit({attributes, setAttributes}) {
 				{/* style controls */}
 				<Panel>
 					<PanelBody
+					initialOpen={ false }
 					title={ __('Card', 'post-designer') }
 					>
 
@@ -374,6 +375,24 @@ export default function Edit({attributes, setAttributes}) {
 								(value) => {
 									setAttributes({cardBorderRadius: value});
 									r.style.setProperty('--pd-card-border-radius', `${value}px`);
+								}
+							}
+						/>
+
+					</PanelBody>
+				</Panel>
+
+				<Panel>
+					<PanelBody
+					initialOpen={false}
+					title={ __('Thumbnail', 'post-designer') }
+					>
+						<ToggleControl
+							checked={attributes.showThumbnail}
+							label={ __('Show Thumbnail', 'post-designer') }
+							onChange={
+								(value) => {
+									setAttributes({showThumbnail: value})
 								}
 							}
 						/>
