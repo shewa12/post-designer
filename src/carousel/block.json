@@ -109,12 +109,12 @@
 			"default": "#fff"
 		},
 		"cardBorder": {
-			"type": "string",
-			"default": "1px"
+			"type": "number",
+			"default": 1
 		},
 		"cardBorderRadius": {
-			"type": "string",
-			"default": "10px"
+			"type": "number",
+			"default": 10
 		},
 		"showThumbnail": {
 			"type": "boolean",

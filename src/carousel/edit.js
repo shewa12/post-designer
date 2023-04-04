@@ -16,7 +16,7 @@ import {
 	__experimentalDivider as Divider,
 	ColorPalette,
 	BaseControl,
-	PanelRow
+	RangeControl
 } from '@wordpress/components'
 
 
@@ -36,6 +36,8 @@ import "./edit.scss";
 import { useEffect } from 'react';
 
 export default function Edit({attributes, setAttributes}) {
+	const r = document.querySelector(':root');
+
 	// States
 	const blockProps = { ...useBlockProps() };
 
@@ -111,15 +113,15 @@ export default function Edit({attributes, setAttributes}) {
 	} = attributes;
 
 	useEffect(() => {
-		var r = document.querySelector(':root');
-		setAttributes({titleColor: titleColor});
-		setAttributes({metaKeyColor: metaKeyColor});
-		setAttributes({metaValueColor: metaValueColor});
 		
-		r.style.setProperty('--pd-title-color', titleColor);
-		r.style.setProperty('--pd-meta-key-color', metaKeyColor);
-		r.style.setProperty('--pd-meta-value-color', metaValueColor);
-	  }, [titleColor, metaKeyColor, metaValueColor]);
+		r.style.setProperty('--pd-card-background-color', attributes.cardBackgroundColor);
+		r.style.setProperty('--pd-card-border', attributes.cardBorder);
+		r.style.setProperty('--pd-card-border-radius', attributes.cardBorderRadius);
+
+		r.style.setProperty('--pd-title-color', attributes.titleColor);
+		r.style.setProperty('--pd-meta-key-color', attributes.metaKeyColor);
+		r.style.setProperty('--pd-meta-value-color', attributes.metaValueColor);
+	  }, []);
 
 	return (
 		loading ?
@@ -320,6 +322,58 @@ export default function Edit({attributes, setAttributes}) {
 							onChange={
 								(value) => {
 									setAttributes( { rtl: value } )
+								}
+							}
+						/>
+
+					</PanelBody>
+				</Panel>
+				
+				{/* style controls */}
+				<Panel>
+					<PanelBody
+					title={ __('Card', 'post-designer') }
+					>
+
+						<BaseControl
+						label={ __('Background Color', 'post-designer') }
+						>
+							<ColorPalette
+							value={ attributes.cardBackgroundColor }
+							onChange={ ( color ) => {
+								console.log(`color: ${color}`);
+								setAttributes({cardBackgroundColor: color})
+								r.style.setProperty('--pd-card-background-color', color);
+							} }
+							/>
+						</BaseControl>
+
+						<Divider />
+
+						<RangeControl
+							initialPosition={attributes.cardBorder}
+							label={ __('Border', 'post-designer') } 
+							max={100}
+							min={0}
+							onChange={
+								(value) => {
+									setAttributes({cardBorder: value});
+									r.style.setProperty('--pd-card-border', `${value}px`);
+								}
+							}
+						/>
+
+						<Divider />
+
+						<RangeControl
+							initialPosition={attributes.cardBorderRadius}
+							label={ __('Border Radius', 'post-designer') } 
+							max={100}
+							min={0}
+							onChange={
+								(value) => {
+									setAttributes({cardBorderRadius: value});
+									r.style.setProperty('--pd-card-border-radius', `${value}px`);
 								}
 							}
 						/>

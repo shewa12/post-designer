@@ -45,5 +45,10 @@ wp_reset_postdata();
 ?>
 <script>
 	var r = document.querySelector(':root');
+
+    r.style.setProperty('--pd-card-background-color', '<?php echo $attrs['cardBackgroundColor']; ?>');
+    r.style.setProperty('--pd-card-border','<?php echo $attrs['cardBorder'] . 'px';?>');
+    r.style.setProperty('--pd-card-border-radius','<?php echo $attrs['cardBorderRadius'] . 'px';?>');
+
     r.style.setProperty('--pd-title-color','<?php echo $attrs['titleColor'];?>');
 </script>
