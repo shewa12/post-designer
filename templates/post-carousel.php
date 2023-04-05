@@ -42,13 +42,16 @@ if ( $the_query->have_posts() ) :
 endif;
 wp_reset_postdata();
 
+$title_padding = implode( ' ', array_values( $attrs['titlePadding'] ) );
 ?>
 <script>
 	var r = document.querySelector(':root');
 
-    r.style.setProperty('--pd-card-background-color', '<?php echo $attrs['cardBackgroundColor']; ?>');
-    r.style.setProperty('--pd-card-border','<?php echo $attrs['cardBorder'] . 'px';?>');
-    r.style.setProperty('--pd-card-border-radius','<?php echo $attrs['cardBorderRadius'] . 'px';?>');
+	r.style.setProperty('--pd-card-background-color', '<?php echo esc_attr( $attrs['cardBackgroundColor'] ); ?>');
+	r.style.setProperty('--pd-card-border','<?php echo esc_attr( $attrs['cardBorder'] ) . 'px'; ?>');
+	r.style.setProperty('--pd-card-border-radius','<?php echo esc_attr( $attrs['cardBorderRadius'] ) . 'px'; ?>');
 
-    r.style.setProperty('--pd-title-color','<?php echo $attrs['titleColor'];?>');
+	r.style.setProperty('--pd-title-color','<?php echo esc_attr( $attrs['titleColor'] ); ?>');
+	r.style.setProperty('--pd-title-padding','<?php echo esc_attr( $title_padding ); ?>');
+	r.style.setProperty('--pd-title-font-size','<?php echo esc_attr( $attrs['titleFontSize'] ) . 'px'; ?>');
 </script>

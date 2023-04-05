@@ -129,12 +129,17 @@
 			"default": "#000"
 		},
 		"titlePadding": {
-			"type": "number",
-			"default": 0
+			"type": "object",
+			"default": {
+				"top": "0px",
+				"left": "0px",
+				"right": "0px",
+				"bottom": "0px"
+			}
 		},
 		"titleFontSize": {
-			"type": "string",
-			"default": "inherit"
+			"type": "number",
+			"default": 24
 		},
 		"showMeta": {
 			"type": "boolean",

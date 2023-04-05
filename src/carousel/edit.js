@@ -16,7 +16,8 @@ import {
 	__experimentalDivider as Divider,
 	ColorPalette,
 	BaseControl,
-	RangeControl
+	RangeControl,
+	__experimentalBoxControl as BoxControl,
 } from '@wordpress/components'
 
 
@@ -103,22 +104,17 @@ export default function Edit({attributes, setAttributes}) {
 		})
 	};
 
-	// Update styles
-	const {
-		showTitle,
-		titleColor,
-		titlePadding,
-		metaKeyColor,
-		metaValueColor
-	} = attributes;
-
 	useEffect(() => {
-		
+		let titlePadding = Object.values(attributes.titlePadding);
+
 		r.style.setProperty('--pd-card-background-color', attributes.cardBackgroundColor);
 		r.style.setProperty('--pd-card-border', attributes.cardBorder);
 		r.style.setProperty('--pd-card-border-radius', attributes.cardBorderRadius);
 
 		r.style.setProperty('--pd-title-color', attributes.titleColor);
+		r.style.setProperty('--pd-title-font-size', `${attributes.titleFontSize}px`);
+		r.style.setProperty('--pd-title-padding', titlePadding);
+
 		r.style.setProperty('--pd-meta-key-color', attributes.metaKeyColor);
 		r.style.setProperty('--pd-meta-value-color', attributes.metaValueColor);
 	  }, []);
@@ -406,8 +402,8 @@ export default function Edit({attributes, setAttributes}) {
 					initialOpen={ false }>
 
 						<ToggleControl
-							checked={showTitle}
-							label={ __('Show Title', 'post-designer') }
+							checked={attributes.showTitle}
+							label={ __('Show', 'post-designer') }
 							onChange={
 								(value) => {
 									setAttributes({showTitle: value})
@@ -421,19 +417,37 @@ export default function Edit({attributes, setAttributes}) {
 						label={ __('Color', 'post-designer') }
 						>
 							<ColorPalette
-								value={titleColor}
-								onChange= { (value) => { setAttributes({titleColor: value}) } }
+								value={attributes.titleColor}
+								onChange= { (value) => { 
+									setAttributes({titleColor: value});
+									r.style.setProperty('--pd-title-color', value);
+								} }
 							/>
 						</BaseControl>
 
 						<Divider />
 
 						<RangeControl
-							initialPosition={ titlePadding }
-							label={ __('Padding', 'post-designer') }
+							initialPosition={ attributes.titleFontSize }
+							label={ __('Font Size', 'post-designer') }
 							max={100}
 							min={0}
-							onChange={() => {}}
+							onChange={ (value) => {
+								setAttributes({titleFontSize: value});
+								r.style.setProperty('--pd-title-font-size', `${value}px`);
+							} }
+						/>
+
+						<Divider />
+
+						<BoxControl
+							values={ attributes.titlePadding }
+							onChange={ ( nextValues ) => {
+								let values = Object.values(nextValues).filter(v => v)
+								
+								setAttributes({titlePadding: nextValues})
+								r.style.setProperty('--pd-title-padding', Object.values(values));
+							} }
 						/>
 
 					</PanelBody>
@@ -445,8 +459,11 @@ export default function Edit({attributes, setAttributes}) {
 						label={ __('Color', 'post-designer') }
 						>
 							<ColorPalette
-								value={metaKeyColor}
-								onChange= { (value) => { setAttributes({metaKeyColor: value}) } }
+								value={attributes.metaKeyColor}
+								onChange= { (value) => { 
+									setAttributes({metaKeyColor: value});
+									r.style.setProperty('--pd-meta-key-color', value);
+								} }
 							/>
 						</BaseControl>
 					</PanelBody>
@@ -458,8 +475,11 @@ export default function Edit({attributes, setAttributes}) {
 						label={ __('Color', 'post-designer') }
 						>
 							<ColorPalette
-								value={metaValueColor}
-								onChange= { (value) => { setAttributes({metaValueColor: value}) } }
+								value={attributes.metaValueColor}
+								onChange= { (value) => { 
+									setAttributes({metaValueColor: value});
+									r.style.setProperty('--pd-meta-value-color', value);
+								} }
 							/>
 						</BaseControl>
 					</PanelBody>

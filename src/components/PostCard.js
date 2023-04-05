@@ -5,6 +5,7 @@ const PostCard = ( {post, attributes} ) => {
     const { ID, display_name, avatar, user_login, description } = post.author;
     return(
 	    <div className="pd-card">
+
 			{
 				attributes.showThumbnail ?
 				<div className="pd-post-thumbnail">
@@ -17,11 +18,17 @@ const PostCard = ( {post, attributes} ) => {
 				: ''
 			}
 	        <div className="pd-card-body">
-	            <h3 className="pd-post-title" title={ post.post_title }>
-	                <a href="#" target="_parent" style={ {color: attributes.titleColor} }>
-	                    { post.post_title }
-	                </a>
-	            </h3>
+
+				{
+					attributes.showTitle ?
+					<h3 className="pd-post-title" title={ post.post_title }>
+						<a href="#" target="_parent" style={ {color: attributes.titleColor} }>
+							{ post.post_title }
+						</a>
+	            	</h3>
+				: ''
+				}
+
 				<div className="pd-post-meta">
 					<span className='pd-post-meta-key'>
 						{ __( 'Post Date: ', 'post-designer' ) }
