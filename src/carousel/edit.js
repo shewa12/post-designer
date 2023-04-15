@@ -466,7 +466,21 @@ export default function Edit({attributes, setAttributes}) {
 								} }
 							/>
 						</BaseControl>
+
+						<Divider/>
+
+						<RangeControl
+							initialPosition={ attributes.metaKeyFontSize }
+							label={ __('Font Size', 'post-designer') }
+							max={100}
+							min={0}
+							onChange={ (value) => {
+								setAttributes({metaKeyFontSize: value});
+								r.style.setProperty('--pd-meta-key-font-size', `${value}px`);
+							} }
+						/>
 					</PanelBody>
+
 				</Panel>
 
 				<Panel>
@@ -482,6 +496,19 @@ export default function Edit({attributes, setAttributes}) {
 								} }
 							/>
 						</BaseControl>
+
+						<Divider/>
+
+						<RangeControl
+							initialPosition={ attributes.metaValueFontSize }
+							label={ __('Font Size', 'post-designer') }
+							max={100}
+							min={0}
+							onChange={ (value) => {
+								setAttributes({metaValueFontSize: value});
+								r.style.setProperty('--pd-meta-value-font-size', `${value}px`);
+							} }
+						/>
 					</PanelBody>
 				</Panel>
 

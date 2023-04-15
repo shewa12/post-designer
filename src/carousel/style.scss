@@ -71,9 +71,11 @@
 				.pd-post-meta {
 					.pd-post-meta-key {
 						color: var(--pd-meta-key-color) !important;
+						font-size: var(--pd-meta-key-font-size) !important;
 					}
 					.pd-post-meta-value {
 						color: var(--pd-meta-value-color) !important;
+						font-size: var(--pd-meta-value-font-size) !important;
 					}
 				}
 				padding: 10px;

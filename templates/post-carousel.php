@@ -54,4 +54,10 @@ $title_padding = implode( ' ', array_values( $attrs['titlePadding'] ) );
 	r.style.setProperty('--pd-title-color','<?php echo esc_attr( $attrs['titleColor'] ); ?>');
 	r.style.setProperty('--pd-title-padding','<?php echo esc_attr( $title_padding ); ?>');
 	r.style.setProperty('--pd-title-font-size','<?php echo esc_attr( $attrs['titleFontSize'] ) . 'px'; ?>');
+
+	r.style.setProperty('--pd-meta-key-color','<?php echo esc_attr( $attrs['metaKeyColor'] ); ?>');
+	r.style.setProperty('--pd-meta-key-font-size','<?php echo esc_attr( $attrs['metaKeyFontSize'] ) . 'px'; ?>');
+
+	r.style.setProperty('--pd-meta-value-color','<?php echo esc_attr( $attrs['metaValueColor'] ); ?>');
+	r.style.setProperty('--pd-meta-value-font-size','<?php echo esc_attr( $attrs['metaValueFontSize'] ) . 'px'; ?>');
 </script>

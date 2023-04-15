@@ -40,8 +40,10 @@ $author_avatar_url = get_avatar_url(
 		<?php endif; ?>
 
 		<div class="pd-post-meta">
-			<span>
+			<span class='pd-post-meta-key'>
 				<?php esc_html_e( 'Post Date:', 'post-designer' ); ?>
+			</span>
+			<span class='pd-post-meta-value'>
 				<?php the_time(); ?>
 			</span>
 		</div>
