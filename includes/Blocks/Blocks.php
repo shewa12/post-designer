@@ -159,7 +159,7 @@ class Blocks {
 			'excerpt_more',
 			function ( $more ) {
 				if ( ! is_single() ) {
-					$more = sprintf( '<a class="read-more" href="%1$s">%2$s</a>',
+					$more = sprintf( '<a class="pd-read-more" href="%1$s">%2$s</a>',
 						get_permalink( get_the_ID() ),
 						__( ' Read More...', 'post-designer' )
 					);
