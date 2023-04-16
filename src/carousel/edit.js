@@ -512,6 +512,64 @@ export default function Edit({attributes, setAttributes}) {
 					</PanelBody>
 				</Panel>
 
+				<Panel>
+					<PanelBody title={ __('Category Label', 'post-designer') } initialOpen={false}>
+					<BaseControl
+						label={ __('Color', 'post-designer') }
+						>
+							<ColorPalette
+								value={attributes.categoryLabelColor}
+								onChange= { (value) => { 
+									setAttributes({categoryLabelColor: value});
+									r.style.setProperty('--pd-category-label-color', value);
+								} }
+							/>
+						</BaseControl>
+
+						<Divider/>
+
+						<RangeControl
+							initialPosition={ attributes.categoryLabelFontSize }
+							label={ __('Font Size', 'post-designer') }
+							max={100}
+							min={0}
+							onChange={ (value) => {
+								setAttributes({categoryLabelFontSize: value});
+								r.style.setProperty('--pd-category-label-font-size', `${value}px`);
+							} }
+						/>
+					</PanelBody>
+				</Panel>
+
+				<Panel>
+					<PanelBody title={ __('Category', 'post-designer') } initialOpen={false}>
+					<BaseControl
+						label={ __('Color', 'post-designer') }
+						>
+							<ColorPalette
+								value={attributes.categoryValueColor}
+								onChange= { (value) => { 
+									setAttributes({categoryValueColor: value});
+									r.style.setProperty('--pd-category-value-color', value);
+								} }
+							/>
+						</BaseControl>
+
+						<Divider/>
+
+						<RangeControl
+							initialPosition={ attributes.categoryValueFontSize }
+							label={ __('Font Size', 'post-designer') }
+							max={100}
+							min={0}
+							onChange={ (value) => {
+								setAttributes({categoryValueFontSize: value});
+								r.style.setProperty('--pd-category-value-font-size', `${value}px`);
+							} }
+						/>
+					</PanelBody>
+				</Panel>
+
 			</InspectorControls>
 			<div className={`pd-card-row`}>
 				<Slider {...sliderSettings}>

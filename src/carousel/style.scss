@@ -78,6 +78,18 @@
 						font-size: var(--pd-meta-value-font-size) !important;
 					}
 				}
+				.pd-post-categories {
+					.pd-post-category-key {
+						color: var(--pd-category-label-color) !important;
+						font-size: var(--pd-category-label-font-size) !important;
+					}
+					.pd-post-category-value {
+						a {
+							color: var(--pd-category-value-color) !important;
+							font-size: var(--pd-category-value-font-size) !important;
+						}	
+					}
+				}
 				padding: 10px;
 				.pd-post-categories {
 					display: flex;

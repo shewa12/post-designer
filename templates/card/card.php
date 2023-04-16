@@ -48,10 +48,10 @@ $author_avatar_url = get_avatar_url(
 			</span>
 		</div>
 		<div class="pd-post-categories">
-			<span>
+			<span class="pd-post-category-key">
 				<?php esc_html_e( 'In:', 'post-designer' ); ?>
 			</span>
-			<div>
+			<div class="pd-post-category-value">
 				<?php the_category( ',' ); ?>
 			</div>
 		</div>
