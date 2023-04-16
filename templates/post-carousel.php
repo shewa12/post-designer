@@ -71,5 +71,11 @@ $title_padding = implode( ' ', array_values( $attrs['titlePadding'] ) );
 	r.style.setProperty('--pd-category-value-color','<?php echo esc_attr( $attrs['categoryValueColor'] ); ?>');
 	r.style.setProperty('--pd-category-value-font-size','<?php echo esc_attr( $attrs['categoryValueFontSize'] ) . 'px'; ?>');
 
+	// Excerpt
+	r.style.setProperty('--pd-excerpt-color','<?php echo esc_attr( $attrs['excerptColor'] ); ?>');
+	r.style.setProperty('--pd-excerpt-font-size','<?php echo esc_attr( $attrs['excerptFontSize'] ) . 'px'; ?>');
+
+	r.style.setProperty('--pd-read-more-color','<?php echo esc_attr( $attrs['readMoreColor'] ); ?>');
+	r.style.setProperty('--pd-read-more-font-size','<?php echo esc_attr( $attrs['readMoreFontSize'] ) . 'px'; ?>');
 
 </script>

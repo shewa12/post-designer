@@ -18,6 +18,7 @@ import {
 	BaseControl,
 	RangeControl,
 	__experimentalBoxControl as BoxControl,
+	__experimentalInputControl as InputControl,
 } from '@wordpress/components'
 
 
@@ -53,6 +54,7 @@ export default function Edit({attributes, setAttributes}) {
 		updateOrdersBy,
 		updateTaxonomy,
 		updateLayout,
+		updateReadMoreText
 	} = usePostDesigner(attributes, setAttributes);
 
 	// Attributes
@@ -109,7 +111,7 @@ export default function Edit({attributes, setAttributes}) {
 
 		// Card
 		r.style.setProperty('--pd-card-background-color', attributes.cardBackgroundColor);
-		r.style.setProperty('--pd-card-border', attributes.cardBorder);
+		r.style.setProperty('--pd-card-border', `${attributes.cardBorder}px`);
 		r.style.setProperty('--pd-card-border-radius', `${attributes.cardBorderRadius}px`);
 
 		// Title
@@ -130,6 +132,12 @@ export default function Edit({attributes, setAttributes}) {
 
 		r.style.setProperty('--pd-category-value-color', attributes.categoryValueColor);
 		r.style.setProperty('--pd-category-value-font-size', `${attributes.categoryValueFontSize}px`);
+
+		// Excerpt
+		r.style.setProperty('--pd-excerpt-color', attributes.excerptColor);
+		r.style.setProperty('--pd-excerpt-font-size', `${attributes.excerptFontSize}px`);
+		r.style.setProperty('--pd-read-more-color', attributes.readMoreColor);
+		r.style.setProperty('--pd-read-more-font-size', `${attributes.readMoreFontSize}px`);
 
 	  }, []);
 
@@ -596,6 +604,89 @@ export default function Edit({attributes, setAttributes}) {
 									onChange={ (value) => {
 										setAttributes({categoryValueFontSize: value});
 										r.style.setProperty('--pd-category-value-font-size', `${value}px`);
+									} }
+								/>
+
+							</div>
+							: ''
+						}
+					</PanelBody>
+				</Panel>
+
+				{/* Excerpt panel  */}
+				<Panel>
+					<PanelBody title={ __('Excerpt', 'post-designer') } initialOpen={false}>
+
+						<ToggleControl
+							label={ __( 'Show Excerpt', 'post-designer' ) }
+							checked={ attributes.showExcerpt }
+							onChange={
+								(value) => {
+									setAttributes( { showExcerpt: value } )
+								}
+							}
+						/>
+
+						{
+							attributes.showExcerpt ?
+							<div>
+								<RangeControl
+									initialPosition={ attributes.excerptLength }
+									label={ __('Length', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({excerptLength: value});
+									} }
+								/>
+
+								<BaseControl label={ __('Color', 'post-designer') }>
+									<ColorPalette
+										value={attributes.excerptColor}
+										onChange= { (value) => { 
+											setAttributes({excerptColor: value});
+											r.style.setProperty('--pd-excerpt-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.excerptFontSize }
+									label={ __('Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({excerptFontSize: value});
+										r.style.setProperty('--pd-excerpt-font-size', `${value}px`);
+									} }
+								/>
+
+								<Divider />
+
+								<InputControl
+									label={ __('Read More Text', 'post-designer') }
+									value={ attributes.readMoreText }
+									onChange={ updateReadMoreText }
+								/>
+
+								<BaseControl label={ __('Read More Color', 'post-designer') }>
+									<ColorPalette
+										value={attributes.readMoreColor}
+										onChange= { (value) => { 
+											setAttributes({readMoreColor: value});
+											r.style.setProperty('--pd-read-more-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.readMoreFontSize }
+									label={ __('Read More Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({readMoreFontSize: value});
+										r.style.setProperty('--pd-read-more-font-size', `${value}px`);
 									} }
 								/>
 

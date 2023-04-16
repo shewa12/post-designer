@@ -51,11 +51,16 @@ const PostCard = ( {post, attributes} ) => {
 					: ''
 				}
 
-				<div className="pd-post-content">
-					<p dangerouslySetInnerHTML={ {__html: post.post_excerpt} }>
-                        
-					</p>
-				</div>
+				{
+					attributes.showExcerpt ?
+					<div className="pd-post-content">
+						<p dangerouslySetInnerHTML={ {__html: post.post_excerpt} }>
+							
+						</p>
+					</div>
+					: ''
+				}
+
 	        </div>
 	        <div className="pd-card-footer">
 				<div className="pd-post-author">

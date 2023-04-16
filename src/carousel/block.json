@@ -199,11 +199,15 @@
 		},
 		"readMoreColor": {
 			"type": "string",
-			"default": "#000"
+			"default": "#037fff"
 		},
 		"readMoreFontSize": {
 			"type": "number",
 			"default": 12
+		},
+		"readMoreText": {
+			"type": "string",
+			"default": "Read More..."
 		},
 		"showAvatar": {
 			"type": "boolean",

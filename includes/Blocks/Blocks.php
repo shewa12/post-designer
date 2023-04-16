@@ -111,7 +111,7 @@ class Blocks {
 	 * @return string
 	 */
 	public static function render_carousel( $attrs ) {
-		self::excerpt_filter( $attrs['excerptLength'] );
+		self::excerpt_filter( $attrs['excerptLength'], $attrs['readMoreText'] );
 
 		$post_carousel_template = trailingslashit( self::$plugin_data['templates'] ) . 'post-carousel.php';
 		ob_start();
@@ -136,7 +136,11 @@ class Blocks {
 	 *
 	 * @return void
 	 */
-	public static function excerpt_filter( $length = 20 ) {
+	public static function excerpt_filter( $length = 20, $read_more_text = '' ) {
+		if ( '' === $read_more_text ) {
+			$read_more_text = __( 'Read More...', 'post_designer' );
+		}
+
 		add_filter(
 			'excerpt_length',
 			function() use ( $length ) {
@@ -144,7 +148,7 @@ class Blocks {
 			}
 		);
 
-		self::read_more_filter();
+		self::read_more_filter( $read_more_text );
 	}
 
 	/**
@@ -152,16 +156,18 @@ class Blocks {
 	 *
 	 * @since 1.0.0
 	 *
+	 * @param string $read_more_text read more text.
+	 *
 	 * @return void
 	 */
-	public static function read_more_filter() {
+	public static function read_more_filter( $read_more_text ) {
 		add_filter(
 			'excerpt_more',
-			function ( $more ) {
+			function ( $more ) use ( $read_more_text ) {
 				if ( ! is_single() ) {
-					$more = sprintf( '<a class="pd-read-more" href="%1$s">%2$s</a>',
+					$more = sprintf( '<a class="pd-read-more" href="%1$s"> %2$s</a>',
 						get_permalink( get_the_ID() ),
-						__( ' Read More...', 'post-designer' )
+						$read_more_text
 					);
 				}
 				return $more;

@@ -71,7 +71,7 @@ class Posts {
 		$thumbnail_placeholder = $plugin_data['assets'] . 'images/thumbnail.svg';
 
 		// Filter excerpt's read more.
-		Blocks::excerpt_filter( $query_params['excerpt_length'] );
+		Blocks::excerpt_filter( $query_params['excerpt_length'], $query_params['read_more_text'] );
 
 		$posts     = array();
 		$the_query = new WP_Query( $args );

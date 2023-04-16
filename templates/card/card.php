@@ -61,12 +61,16 @@ $author_avatar_url = get_avatar_url(
 			</div>
 		<?php endif; ?>
 
-		<div class="pd-post-content">
-			<p>
-			  <?php the_excerpt(); ?>  
-			</p>
-		</div>
+		<?php if ( $attrs['showExcerpt'] ) : ?>
+			<div class="pd-post-content">
+				<p>
+				<?php the_excerpt(); ?>  
+				</p>
+			</div>
+		<?php endif; ?>
+
 	</div>
+
 	<div class="pd-card-footer">
 		<div class="pd-post-author">
 			<a href="#" class="pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block " target="_self">
