@@ -22,6 +22,7 @@ function usePostDesigner(attributes, setAttributes) {
 		dateTo,
 		layout,
 		columnPerRow,
+		excerptLength
 	} = attributes;
 
 	// States
@@ -82,6 +83,7 @@ function usePostDesigner(attributes, setAttributes) {
 				no_pagination: noPagination,
 				post_per_page: postPerPage,
 				paged: currentPage,
+				excerpt_length: excerptLength
 			},
 		});
 		if (response.statusText === "OK") {
@@ -210,6 +212,10 @@ function usePostDesigner(attributes, setAttributes) {
 		setAttributes({ columnPerRow: value });
 	};
 
+	const updateExcerptLength = (value) => {
+		setAttributes({ excerptLength: value });
+	}
+
 	// Get terms.
 	useEffect(() => {
 		getTerms();
@@ -230,7 +236,7 @@ function usePostDesigner(attributes, setAttributes) {
 	// Get posts whenever these args get update.
 	useEffect(() => {
 		getPosts();
-	}, [authors, selectedTerms, taxonomy, order, orderBy, noPagination, postPerPage, currentPage]);
+	}, [authors, selectedTerms, taxonomy, order, orderBy, noPagination, postPerPage, currentPage, excerptLength]);
 
 	return {
 		posts,
@@ -248,6 +254,7 @@ function usePostDesigner(attributes, setAttributes) {
 		updateTaxonomy,
 		updateLayout,
 		updateColumnPerRow,
+		updateExcerptLength
 	};
 }
 

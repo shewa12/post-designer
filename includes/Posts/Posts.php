@@ -10,6 +10,7 @@
 namespace PostDesigner\Posts;
 
 use PostDesigner;
+use PostDesigner\Blocks\Blocks;
 use PostDesigner\Validation\Validation;
 use WP_Query;
 use WP_REST_Request;
@@ -68,6 +69,9 @@ class Posts {
 
 		$plugin_data           = PostDesigner::plugin_data();
 		$thumbnail_placeholder = $plugin_data['assets'] . 'images/thumbnail.svg';
+
+		// Filter excerpt's read more.
+		Blocks::excerpt_filter( $query_params['excerpt_length'] );
 
 		$posts     = array();
 		$the_query = new WP_Query( $args );

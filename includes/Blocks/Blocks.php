@@ -111,7 +111,7 @@ class Blocks {
 	 * @return string
 	 */
 	public static function render_carousel( $attrs ) {
-		self::excerpt_filter();
+		self::excerpt_filter( $attrs['excerptLength'] );
 
 		$post_carousel_template = trailingslashit( self::$plugin_data['templates'] ) . 'post-carousel.php';
 		ob_start();
@@ -129,19 +129,32 @@ class Blocks {
 
 	/**
 	 * Filter excerpt length & read more text
-	 * 
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int $length excerpt word length.
+	 *
+	 * @return void
+	 */
+	public static function excerpt_filter( $length = 20 ) {
+		add_filter(
+			'excerpt_length',
+			function() use ( $length ) {
+				return $length;
+			}
+		);
+
+		self::read_more_filter();
+	}
+
+	/**
+	 * Filter read more text on excerpt
+	 *
 	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
-	public static function excerpt_filter() {
-		add_filter(
-			'excerpt_length',
-			function() {
-				return 20;
-			}
-		);
-
+	public static function read_more_filter() {
 		add_filter(
 			'excerpt_more',
 			function ( $more ) {

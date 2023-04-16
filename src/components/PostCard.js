@@ -45,9 +45,6 @@ const PostCard = ( {post, attributes} ) => {
 					<p dangerouslySetInnerHTML={ {__html: post.post_excerpt} }>
                         
 					</p>
-					<a href="#">
-                        { __( 'Read more...', 'post-designer' ) }
-                    </a>
 				</div>
 	        </div>
 	        <div className="pd-card-footer">

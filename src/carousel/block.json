@@ -185,6 +185,10 @@
 			"type": "boolean",
 			"default": true
 		},
+		"excerptLength": {
+			"type": "number",
+			"default": 20
+		},
 		"excerptColor": {
 			"type": "string",
 			"default": "#000"
