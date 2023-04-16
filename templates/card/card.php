@@ -38,23 +38,29 @@ $author_avatar_url = get_avatar_url(
 				</a>
 			</h3>
 		<?php endif; ?>
-
-		<div class="pd-post-meta">
-			<span class='pd-post-meta-key'>
-				<?php esc_html_e( 'Post Date:', 'post-designer' ); ?>
-			</span>
-			<span class='pd-post-meta-value'>
-				<?php the_time(); ?>
-			</span>
-		</div>
-		<div class="pd-post-categories">
-			<span class="pd-post-category-key">
-				<?php esc_html_e( 'In:', 'post-designer' ); ?>
-			</span>
-			<div class="pd-post-category-value">
-				<?php the_category( ',' ); ?>
+		
+		<?php if ( $attrs['showMeta'] ) : ?>
+			<div class="pd-post-meta">
+				<span class='pd-post-meta-key'>
+					<?php esc_html_e( 'Post Date:', 'post-designer' ); ?>
+				</span>
+				<span class='pd-post-meta-value'>
+					<?php the_time(); ?>
+				</span>
 			</div>
-		</div>
+		<?php endif; ?>
+
+		<?php if ( $attrs['showCategory'] ) : ?>
+			<div class="pd-post-categories">
+				<span class="pd-post-category-key">
+					<?php esc_html_e( 'In:', 'post-designer' ); ?>
+				</span>
+				<div class="pd-post-category-value">
+					<?php the_category( ',' ); ?>
+				</div>
+			</div>
+		<?php endif; ?>
+
 		<div class="pd-post-content">
 			<p>
 			  <?php the_excerpt(); ?>  

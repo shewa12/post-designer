@@ -29,18 +29,28 @@ const PostCard = ( {post, attributes} ) => {
 				: ''
 				}
 
-				<div className="pd-post-meta">
-					<span className='pd-post-meta-key'>
-						{ __( 'Post Date: ', 'post-designer' ) }
-					</span>
-					<span className='pd-post-meta-value'>
-						{ post.post_date }
-					</span>
-				</div>
-				<div className="pd-post-categories">
-					<span className='pd-post-category-key'>{ __( 'In:', 'post-designer' ) } </span>
-					<div className='pd-post-category-value' dangerouslySetInnerHTML={ { __html: post.categories } }></div>
-				</div>
+				{
+					attributes.showMeta ?
+					<div className="pd-post-meta">
+						<span className='pd-post-meta-key'>
+							{ __( 'Post Date: ', 'post-designer' ) }
+						</span>
+						<span className='pd-post-meta-value'>
+							{ post.post_date }
+						</span>
+					</div>
+					: ''
+				}
+
+				{
+					attributes.showCategory ?
+					<div className="pd-post-categories">
+						<span className='pd-post-category-key'>{ __( 'In:', 'post-designer' ) } </span>
+						<div className='pd-post-category-value' dangerouslySetInnerHTML={ { __html: post.categories } }></div>
+					</div>
+					: ''
+				}
+
 				<div className="pd-post-content">
 					<p dangerouslySetInnerHTML={ {__html: post.post_excerpt} }>
                         

@@ -107,16 +107,30 @@ export default function Edit({attributes, setAttributes}) {
 	useEffect(() => {
 		let titlePadding = Object.values(attributes.titlePadding);
 
+		// Card
 		r.style.setProperty('--pd-card-background-color', attributes.cardBackgroundColor);
 		r.style.setProperty('--pd-card-border', attributes.cardBorder);
-		r.style.setProperty('--pd-card-border-radius', attributes.cardBorderRadius);
+		r.style.setProperty('--pd-card-border-radius', `${attributes.cardBorderRadius}px`);
 
+		// Title
 		r.style.setProperty('--pd-title-color', attributes.titleColor);
 		r.style.setProperty('--pd-title-font-size', `${attributes.titleFontSize}px`);
 		r.style.setProperty('--pd-title-padding', titlePadding);
 
+		// Meta
 		r.style.setProperty('--pd-meta-key-color', attributes.metaKeyColor);
+		r.style.setProperty('--pd-meta-key-font-size', `${attributes.metaKeyFontSize}px`);
+
 		r.style.setProperty('--pd-meta-value-color', attributes.metaValueColor);
+		r.style.setProperty('--pd-meta-value-font-size', `${attributes.metaValueFontSize}px`);
+
+		// Category
+		r.style.setProperty('--pd-category-label-color', attributes.categoryLabelColor);
+		r.style.setProperty('--pd-category-label-font-size', `${attributes.categoryLabelFontSize}px`);
+
+		r.style.setProperty('--pd-category-value-color', attributes.categoryValueColor);
+		r.style.setProperty('--pd-category-value-font-size', `${attributes.categoryValueFontSize}px`);
+
 	  }, []);
 
 	return (
@@ -454,119 +468,140 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 				<Panel>
-					<PanelBody title={__('Meta Key', 'post-designer')} initialOpen={ false }>
-						<BaseControl
-						label={ __('Color', 'post-designer') }
-						>
-							<ColorPalette
-								value={attributes.metaKeyColor}
-								onChange= { (value) => { 
-									setAttributes({metaKeyColor: value});
-									r.style.setProperty('--pd-meta-key-color', value);
-								} }
-							/>
-						</BaseControl>
+					<PanelBody title={__('Meta', 'post-designer')} initialOpen={ false }>
 
-						<Divider/>
-
-						<RangeControl
-							initialPosition={ attributes.metaKeyFontSize }
-							label={ __('Font Size', 'post-designer') }
-							max={100}
-							min={0}
-							onChange={ (value) => {
-								setAttributes({metaKeyFontSize: value});
-								r.style.setProperty('--pd-meta-key-font-size', `${value}px`);
-							} }
+						<ToggleControl
+							label={ __( 'Show Meta', 'post-designer' ) }
+							help={ __( 'Show post meta', 'post-designer' ) }
+							checked={ attributes.showMeta }
+							onChange={
+								(value) => {
+									setAttributes( { showMeta: value } )
+								}
+							}
 						/>
+
+						{
+							attributes.showMeta ?
+							<div>					
+								<BaseControl
+								label={ __('Label Color', 'post-designer') }
+								>
+									<ColorPalette
+										value={attributes.metaKeyColor}
+										onChange= { (value) => { 
+											setAttributes({metaKeyColor: value});
+											r.style.setProperty('--pd-meta-key-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.metaKeyFontSize }
+									label={ __('Label Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({metaKeyFontSize: value});
+										r.style.setProperty('--pd-meta-key-font-size', `${value}px`);
+									} }
+								/>
+
+								<Divider />
+
+								<BaseControl
+								label={ __('Value Color', 'post-designer') }
+								>
+									<ColorPalette
+										value={attributes.metaValueColor}
+										onChange= { (value) => { 
+											setAttributes({metaValueColor: value});
+											r.style.setProperty('--pd-meta-value-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.metaValueFontSize }
+									label={ __('Value Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({metaValueFontSize: value});
+										r.style.setProperty('--pd-meta-value-font-size', `${value}px`);
+									} }
+								/>
+							</div>
+							: ''
+						}
 					</PanelBody>
 
 				</Panel>
-
-				<Panel>
-					<PanelBody title={ __('Meta Value', 'post-designer') } initialOpen={ false }>
-						<BaseControl
-						label={ __('Color', 'post-designer') }
-						>
-							<ColorPalette
-								value={attributes.metaValueColor}
-								onChange= { (value) => { 
-									setAttributes({metaValueColor: value});
-									r.style.setProperty('--pd-meta-value-color', value);
-								} }
-							/>
-						</BaseControl>
-
-						<Divider/>
-
-						<RangeControl
-							initialPosition={ attributes.metaValueFontSize }
-							label={ __('Font Size', 'post-designer') }
-							max={100}
-							min={0}
-							onChange={ (value) => {
-								setAttributes({metaValueFontSize: value});
-								r.style.setProperty('--pd-meta-value-font-size', `${value}px`);
-							} }
-						/>
-					</PanelBody>
-				</Panel>
-
-				<Panel>
-					<PanelBody title={ __('Category Label', 'post-designer') } initialOpen={false}>
-					<BaseControl
-						label={ __('Color', 'post-designer') }
-						>
-							<ColorPalette
-								value={attributes.categoryLabelColor}
-								onChange= { (value) => { 
-									setAttributes({categoryLabelColor: value});
-									r.style.setProperty('--pd-category-label-color', value);
-								} }
-							/>
-						</BaseControl>
-
-						<Divider/>
-
-						<RangeControl
-							initialPosition={ attributes.categoryLabelFontSize }
-							label={ __('Font Size', 'post-designer') }
-							max={100}
-							min={0}
-							onChange={ (value) => {
-								setAttributes({categoryLabelFontSize: value});
-								r.style.setProperty('--pd-category-label-font-size', `${value}px`);
-							} }
-						/>
-					</PanelBody>
-				</Panel>
-
+				
+				{/* Category panel  */}
 				<Panel>
 					<PanelBody title={ __('Category', 'post-designer') } initialOpen={false}>
-					<BaseControl
-						label={ __('Color', 'post-designer') }
-						>
-							<ColorPalette
-								value={attributes.categoryValueColor}
-								onChange= { (value) => { 
-									setAttributes({categoryValueColor: value});
-									r.style.setProperty('--pd-category-value-color', value);
-								} }
-							/>
-						</BaseControl>
 
-						<Divider/>
-
-						<RangeControl
-							initialPosition={ attributes.categoryValueFontSize }
-							label={ __('Font Size', 'post-designer') }
-							max={100}
-							min={0}
-							onChange={ (value) => {
-								setAttributes({categoryValueFontSize: value});
-								r.style.setProperty('--pd-category-value-font-size', `${value}px`);
-							} }
+						<ToggleControl
+							label={ __( 'Show Category', 'post-designer' ) }
+							checked={ attributes.showCategory }
+							onChange={
+								(value) => {
+									setAttributes( { showCategory: value } )
+								}
+							}
 						/>
+
+						{
+							attributes.showCategory ?
+							<div>
+								<BaseControl label={ __('Label Color', 'post-designer') }>
+									<ColorPalette
+										value={attributes.categoryLabelColor}
+										onChange= { (value) => { 
+											setAttributes({categoryLabelColor: value});
+											r.style.setProperty('--pd-category-label-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.categoryLabelFontSize }
+									label={ __('Label Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({categoryLabelFontSize: value});
+										r.style.setProperty('--pd-category-label-font-size', `${value}px`);
+									} }
+								/>
+
+								<Divider />
+
+								<BaseControl label={ __('Category Color', 'post-designer') }>
+									<ColorPalette
+										value={attributes.categoryValueColor}
+										onChange= { (value) => { 
+											setAttributes({categoryValueColor: value});
+											r.style.setProperty('--pd-category-value-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.categoryValueFontSize }
+									label={ __('Category Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({categoryValueFontSize: value});
+										r.style.setProperty('--pd-category-value-font-size', `${value}px`);
+									} }
+								/>
+
+							</div>
+							: ''
+						}
 					</PanelBody>
 				</Panel>
 
