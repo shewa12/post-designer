@@ -217,6 +217,35 @@
 			"type": "number",
 			"default": 50
 		},
+		"avatarBorder": {
+			"type": "object",
+			"default": {
+				"top": {
+					"width": "1px",
+					"style": "solid",
+					"color": "#e3e3e3"
+				},
+				"left": {
+					"width": "1px",
+					"style": "solid",
+					"color": "#e3e3e3"
+				},
+				"right": {
+					"width": "1px",
+					"style": "solid",
+					"color": "#e3e3e3"
+				},
+				"bottom": {
+					"width": "1px",
+					"style": "solid",
+					"color": "#e3e3e3"
+				}
+			}
+		},
+		"avatarBorderRadius": {
+			"type": "number",
+			"default": 100
+		},
 		"showAuthor": {
 			"type": "boolean",
 			"default": true

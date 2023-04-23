@@ -19,6 +19,7 @@ import {
 	RangeControl,
 	__experimentalBoxControl as BoxControl,
 	__experimentalInputControl as InputControl,
+	__experimentalBorderBoxControl as BorderBoxControl,
 } from '@wordpress/components'
 
 
@@ -106,9 +107,32 @@ export default function Edit({attributes, setAttributes}) {
 		})
 	};
 
+	const prepareAvatarBorder = (border) => {
+
+		let avatarBorderTop = border.top ?
+			`border-top: ${border.top.width ? border.top.width : '' } ${border.top.style ? border.top.style : ''} ${border.top.color ? border.top.color: ''}` : '';
+
+		let avatarBorderRight = border.right ?
+			`border-right: ${border.right.width ? border.right.width : '' } ${border.right.style ? border.right.style : ''} ${border.right.color ? border.right.color: ''}` : '';
+
+		let avatarBorderBottom = attributes.avatarBorder.bottom ?
+			`border-bottom: ${border.bottom.width ? border.bottom.width : '' } ${border.bottom.style ? border.bottom.style : ''} ${border.bottom.color ? border.bottom.color: ''}` : '';
+
+		let avatarBorderLeft = border.left ?
+			`border-left: ${border.left.width ? border.left.width : '' } ${border.left.style ? border.left.style : ''} ${border.left.color ? border.left.color: ''}` : '';
+		
+		return {
+			top: avatarBorderTop,
+			left: avatarBorderLeft,
+			right: avatarBorderRight,
+			bottom: avatarBorderBottom
+		}
+	}
+
 	useEffect(() => {
 		let titlePadding = Object.values(attributes.titlePadding);
-
+		let avatarBorder = prepareAvatarBorder(attributes.avatarBorder);
+		
 		// Card
 		r.style.setProperty('--pd-card-background-color', attributes.cardBackgroundColor);
 		r.style.setProperty('--pd-card-border', `${attributes.cardBorder}px`);
@@ -139,7 +163,21 @@ export default function Edit({attributes, setAttributes}) {
 		r.style.setProperty('--pd-read-more-color', attributes.readMoreColor);
 		r.style.setProperty('--pd-read-more-font-size', `${attributes.readMoreFontSize}px`);
 
+		// Avatar & Author
+		r.style.setProperty('--pd-avatar-size', `${attributes.avatarSize}px`);
+
+		r.style.setProperty('--pd-avatar-border-top', avatarBorder.top);
+		r.style.setProperty('--pd-avatar-border-right', avatarBorder.right);
+		r.style.setProperty('--pd-avatar-border-left', avatarBorder.left);
+		r.style.setProperty('--pd-avatar-border-bottom', avatarBorder.bottom);
+
+		r.style.setProperty('--pd-avatar-border-radius', `${attributes.avatarBorderRadius}%`);
+		r.style.setProperty('--pd-author-name-color', attributes.authorNameColor);
+		r.style.setProperty('--pd-author-name-font-size', `${attributes.authorNameFontSize}px`);
+
 	  }, []);
+
+
 
 	return (
 		loading ?
@@ -693,6 +731,104 @@ export default function Edit({attributes, setAttributes}) {
 							</div>
 							: ''
 						}
+					</PanelBody>
+				</Panel>
+
+				{/* Author panel  */}
+				<Panel>
+					<PanelBody title={ __('Author', 'post-designer') } initialOpen={false}>
+
+						<ToggleControl
+							label={ __( 'Show Avatar', 'post-designer' ) }
+							checked={ attributes.showAvatar }
+							onChange={
+								(value) => {
+									setAttributes( { showAvatar: value } )
+								}
+							}
+						/>
+
+						{
+							attributes.showAvatar ?
+							<div>
+								<RangeControl
+									initialPosition={ attributes.avatarSize }
+									label={ __('Avatar Size', 'post-designer') }
+									max={500}
+									min={10}
+									onChange={ (value) => {
+										setAttributes({avatarSize: value});
+										r.style.setProperty('--pd-avatar-size', `${value}px`);
+									} }
+								/>
+
+								<BorderBoxControl
+									label={ __( 'Borders', 'post-signer' ) }
+									onChange={ (value) => {
+										setAttributes( {avatarBorder: value} );
+										let avatarBorder = prepareAvatarBorder(value);
+										r.style.setProperty('--pd-avatar-border-top', avatarBorder.top);
+										r.style.setProperty('--pd-avatar-border-left', avatarBorder.left);
+										r.style.setProperty('--pd-avatar-border-right', avatarBorder.right);
+										r.style.setProperty('--pd-avatar-border-bottom', avatarBorder.bottom);
+									} }
+									value={ attributes.avatarBorder }
+								/>
+
+								<RangeControl
+									initialPosition={ attributes.avatarBorderRadius }
+									label={ __('Border Radius (%)', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({avatarBorderRadius: value});
+										r.style.setProperty('--pd-avatar-border-radius', `${value}%`);
+									} }
+								/>
+
+							</div>
+							: ''
+						}
+
+						<Divider />
+
+						<ToggleControl
+							label={ __( 'Show Name', 'post-designer' ) }
+							checked={ attributes.showAuthor }
+							onChange={
+								(value) => {
+									setAttributes( { showAuthor: value } )
+								}
+							}
+						/>
+
+						{
+							attributes.showAuthor ?
+							<div>
+								<BaseControl label={ __('Name Color', 'post-designer') }>
+									<ColorPalette
+										value={attributes.authorNameColor}
+										onChange= { (value) => { 
+											setAttributes({authorNameColor: value});
+											r.style.setProperty('--pd-author-name-color', value);
+										} }
+									/>
+								</BaseControl>
+		
+								<RangeControl
+									initialPosition={ attributes.authorNameFontSize }
+									label={ __('Name Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({authorNameFontSize: value});
+										r.style.setProperty('--pd-author-name-font-size', `${value}px`);
+									} }
+								/>
+							</div>
+						: ''
+						}
+
 					</PanelBody>
 				</Panel>
 

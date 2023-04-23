@@ -62,21 +62,34 @@ const PostCard = ( {post, attributes} ) => {
 				}
 
 	        </div>
-	        <div className="pd-card-footer">
-				<div className="pd-post-author">
-					<a href="#" className="pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block " target="_self">
-						<img src={ avatar } alt={ display_name } />
-					</a>
-					<div className="pd-post-author-info">
-						<strong>
-                            { display_name ? display_name : user_login }
-                        </strong>
-						<p>
-						{ description }
-						</p>
+			{
+				attributes.showAvatar || attributes.showAuthor ?
+				<div className="pd-card-footer">
+					<div className="pd-post-author">
+						{
+							attributes.showAvatar ?
+							<a href="#" className="pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block " target="_self">
+								<img src={ avatar } alt={ display_name } />
+							</a>
+							: ''
+						}
+						{
+							attributes.showAuthor ?
+							<div className="pd-post-author-info">
+								<strong>
+									{ display_name ? display_name : user_login }
+								</strong>
+								<p>
+								{ description }
+								</p>
+							</div>
+							:''
+						}
 					</div>
 				</div>
-	        </div>
+			: ''
+			}
+
 	    </div>
     );
 }

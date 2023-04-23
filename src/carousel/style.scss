@@ -133,10 +133,19 @@
 				column-gap: 20px;
 			}
 			.pd-post-author img {
-				max-width: 50px;
-				max-height: 50px;
-				border: 1px solid #e3e3e3;
-				border-radius: 100%;
+				max-width: var(--pd-avatar-size) !important;
+				max-height: var(--pd-avatar-size) !important;
+				border-top: var(--pd-avatar-border-top) !important;
+				border-left: var(--pd-avatar-border-left) !important;
+				border-right: var(--pd-avatar-border-right) !important;
+				border-bottom: var(--pd-avatar-border-bottom) !important;
+				border-radius: var(--pd-avatar-border-radius) !important;
+			}
+			.pd-post-author-info {
+				strong {
+					color: var(--pd-author-name-color) !important;
+					font-size: var(--pd-author-name-font-size) !important;
+				}
 			}
 		}
 		.pd-ratio-16x9 {
