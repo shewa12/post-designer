@@ -10,7 +10,10 @@ $meta_data         = PostDesigner::plugin_data();
 $default_thumbnail = $meta_data['assets'] . 'images/thumbnail.svg';
 $author_avatar_url = get_avatar_url(
 	get_the_author_meta( 'ID' ),
-	array( 'size' => 50, 'default' => 'mysteryman' )
+	array(
+		'size'    => 50,
+		'default' => 'mysteryman',
+	)
 );
 ?>
 <div class="pd-card">
@@ -70,17 +73,24 @@ $author_avatar_url = get_avatar_url(
 		<?php endif; ?>
 
 	</div>
-
+	
+	<?php if ( $attrs['showAvatar'] || $attrs['showAuthor'] ) : ?>
 	<div class="pd-card-footer">
 		<div class="pd-post-author">
-			<a href="#" class="pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block " target="_self">
-				<img src="<?php echo esc_url( $author_avatar_url ) ?>" alt="<?php the_author(); ?>">
-			</a>
-			<div class="pd-post-author-info">
-				<strong>
-					<?php the_author(); ?>
-				</strong>
-			</div>
+			<?php if ( $attrs['showAvatar'] ) : ?>
+				<a href="#" class="pd-btn pd-btn-outline-primary pd-btn-md pd-btn-block " target="_self">
+					<img src="<?php echo esc_url( $author_avatar_url ); ?>" alt="<?php the_author(); ?>">
+				</a>
+			<?php endif; ?>
+
+			<?php if ( $attrs['showAuthor'] ) : ?>
+				<div class="pd-post-author-info">
+					<strong>
+						<?php the_author(); ?>
+					</strong>
+				</div>
+			<?php endif; ?>
 		</div>
 	</div>
+	<?php endif; ?>
 </div>

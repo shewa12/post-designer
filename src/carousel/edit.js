@@ -108,19 +108,49 @@ export default function Edit({attributes, setAttributes}) {
 	};
 
 	const prepareAvatarBorder = (border) => {
-
+		
 		let avatarBorderTop = border.top ?
-			`border-top: ${border.top.width ? border.top.width : '' } ${border.top.style ? border.top.style : ''} ${border.top.color ? border.top.color: ''}` : '';
+			`${border.top.width ? border.top.width : '' } ${border.top.style ? border.top.style : ''} ${border.top.color ? border.top.color: ''}` : '';
+
+		if (avatarBorderTop === '') {
+			avatarBorderTop = border.width ? border.width : '';
+			if (avatarBorderTop !== '') {
+				avatarBorderTop = `${avatarBorderTop} ${border.style ? border.style : 'solid'} ${border.color ? border.color : ''}`;
+			}
+		}
 
 		let avatarBorderRight = border.right ?
-			`border-right: ${border.right.width ? border.right.width : '' } ${border.right.style ? border.right.style : ''} ${border.right.color ? border.right.color: ''}` : '';
+			`${border.right.width ? border.right.width : '' } ${border.right.style ? border.right.style : ''} ${border.right.color ? border.right.color: ''}` : '';
+
+		if (avatarBorderRight === '') {
+			avatarBorderRight = border.width ? border.width : '';
+			if (avatarBorderRight !== '') {
+				avatarBorderRight = `${avatarBorderRight} ${border.style ? border.style : 'solid'} ${border.color ? border.color : ''}`;
+			}
+		}
 
 		let avatarBorderBottom = attributes.avatarBorder.bottom ?
-			`border-bottom: ${border.bottom.width ? border.bottom.width : '' } ${border.bottom.style ? border.bottom.style : ''} ${border.bottom.color ? border.bottom.color: ''}` : '';
+			`${border.bottom.width ? border.bottom.width : '' } ${border.bottom.style ? border.bottom.style : ''} ${border.bottom.color ? border.bottom.color: ''}` : '';
 
-		let avatarBorderLeft = border.left ?
-			`border-left: ${border.left.width ? border.left.width : '' } ${border.left.style ? border.left.style : ''} ${border.left.color ? border.left.color: ''}` : '';
+		if (avatarBorderBottom === '') {
+			avatarBorderBottom = border.width ? border.width : '';
+			if (avatarBorderBottom !== '') {
+				avatarBorderBottom = `${avatarBorderBottom} ${border.style ? border.style : 'solid'} ${border.color ? border.color : ''}`;
+			}
+		}
+	
 		
+		let avatarBorderLeft = border.left ?
+			`${border.left.width ? border.left.width : '' } ${border.left.style ? border.left.style : ''} ${border.left.color ? border.left.color: ''}` : '';
+		
+		
+		if (avatarBorderLeft === '') {
+			avatarBorderLeft = border.width ? border.width : '';
+			if (avatarBorderLeft !== '') {
+				avatarBorderLeft = `${avatarBorderLeft} ${border.style ? border.style : 'solid'} ${border.color ? border.color : ''}`;
+			}
+		}	
+
 		return {
 			top: avatarBorderTop,
 			left: avatarBorderLeft,

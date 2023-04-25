@@ -43,6 +43,43 @@ endif;
 wp_reset_postdata();
 
 $title_padding = implode( ' ', array_values( $attrs['titlePadding'] ) );
+
+$border        = $attrs['avatarBorder'];
+$avatar_border = new stdClass();
+
+if ( isset( $border['top'] ) ) {
+
+	$avatar_border->top    = $border['top']['width'];
+	$avatar_border->right  = $border['right']['width'];
+	$avatar_border->bottom = $border['bottom']['width'];
+	$avatar_border->left   = $border['left']['width'];
+
+	if ( '' !== $avatar_border->top ) {
+		$avatar_border->top = $avatar_border->top . ' ' . ( $border['top']['style'] . ' ' ?? '' ) . ( $border['top']['color'] ?? '' );
+	}
+
+	if ( '' !== $avatar_border->right ) {
+		$avatar_border->right = $avatar_border->right . ' ' . ( $border['right']['style'] . ' ' ?? '' ) . ( $border['right']['color'] ?? '' );
+	}
+
+	if ( '' !== $avatar_border->bottom ) {
+		$avatar_border->bottom = $avatar_border->bottom . ' ' . ( $border['bottom']['style'] . ' ' ?? '' ) . ( $border['bottom']['color'] ?? '' );
+	}
+
+	if ( '' !== $avatar_border->left ) {
+		$avatar_border->left = $avatar_border->left . ' ' . ( $border['left']['style'] . '' ?? '' ) . ( $border['left']['color'] ?? '' );
+	}
+} else {
+
+	$avatar_border->top = $border['width'] ?? '';
+
+	if ( '' !== $avatar_border->top ) {
+		$avatar_border->top    = $avatar_border->top . $border['style'] ?? '' . $border['color'] ?? '';
+		$avatar_border->right  = $avatar_border->top;
+		$avatar_border->bottom = $avatar_border->top;
+		$avatar_border->left   = $avatar_border->top;
+	}
+}
 ?>
 <script>
 	var r = document.querySelector(':root');
@@ -77,5 +114,17 @@ $title_padding = implode( ' ', array_values( $attrs['titlePadding'] ) );
 
 	r.style.setProperty('--pd-read-more-color','<?php echo esc_attr( $attrs['readMoreColor'] ); ?>');
 	r.style.setProperty('--pd-read-more-font-size','<?php echo esc_attr( $attrs['readMoreFontSize'] ) . 'px'; ?>');
+
+	// Author
+	r.style.setProperty('--pd-avatar-size', '<?php echo esc_attr( $attrs['avatarSize'] . 'px' ); ?>');
+
+	r.style.setProperty('--pd-avatar-border-top', '<?php echo esc_attr( $avatar_border->top ); ?>');
+	r.style.setProperty('--pd-avatar-border-right', '<?php echo esc_attr( $avatar_border->right ); ?>');
+	r.style.setProperty('--pd-avatar-border-left', '<?php echo esc_attr( $avatar_border->left ); ?>');
+	r.style.setProperty('--pd-avatar-border-bottom','<?php echo esc_attr( $avatar_border->bottom ); ?>');
+	
+	r.style.setProperty('--pd-avatar-border-radius', '<?php echo esc_attr( $attrs['avatarBorderRadius'] . '%' ); ?>');
+	r.style.setProperty('--pd-author-name-color','<?php echo esc_attr( $attrs['authorNameColor'] ); ?>');
+	r.style.setProperty('--pd-author-name-font-size', '<?php echo esc_attr( $attrs['authorNameFontSize'] . 'px' ); ?>');
 
 </script>
