@@ -74,7 +74,7 @@ if ( isset( $border['top'] ) ) {
 	$avatar_border->top = $border['width'] ?? '';
 
 	if ( '' !== $avatar_border->top ) {
-		$avatar_border->top    = $avatar_border->top . $border['style'] ?? '' . $border['color'] ?? '';
+		$avatar_border->top    = $avatar_border->top . ' ' . $border['style'] . ' ' ?? '' . $border['color'] ?? '';
 		$avatar_border->right  = $avatar_border->top;
 		$avatar_border->bottom = $avatar_border->top;
 		$avatar_border->left   = $avatar_border->top;
@@ -85,46 +85,46 @@ if ( isset( $border['top'] ) ) {
 	var r = document.querySelector(':root');
 
 	// Card
-	r.style.setProperty('--pd-card-background-color', '<?php echo esc_attr( $attrs['cardBackgroundColor'] ); ?>');
-	r.style.setProperty('--pd-card-border','<?php echo esc_attr( $attrs['cardBorder'] ) . 'px'; ?>');
-	r.style.setProperty('--pd-card-border-radius','<?php echo esc_attr( $attrs['cardBorderRadius'] ) . 'px'; ?>');
+	r.style.setProperty('--pd-carousel-card-background-color', '<?php echo esc_attr( $attrs['cardBackgroundColor'] ); ?>');
+	r.style.setProperty('--pd-carousel-card-border','<?php echo esc_attr( $attrs['cardBorder'] ) . 'px'; ?>');
+	r.style.setProperty('--pd-carousel-card-border-radius','<?php echo esc_attr( $attrs['cardBorderRadius'] ) . 'px'; ?>');
 
 	// Title
-	r.style.setProperty('--pd-title-color','<?php echo esc_attr( $attrs['titleColor'] ); ?>');
-	r.style.setProperty('--pd-title-padding','<?php echo esc_attr( $title_padding ); ?>');
-	r.style.setProperty('--pd-title-font-size','<?php echo esc_attr( $attrs['titleFontSize'] ) . 'px'; ?>');
+	r.style.setProperty('--pd-carousel-title-color','<?php echo esc_attr( $attrs['titleColor'] ); ?>');
+	r.style.setProperty('--pd-carousel-title-padding','<?php echo esc_attr( $title_padding ); ?>');
+	r.style.setProperty('--pd-carousel-title-font-size','<?php echo esc_attr( $attrs['titleFontSize'] ) . 'px'; ?>');
 
 	// Meta
-	r.style.setProperty('--pd-meta-key-color','<?php echo esc_attr( $attrs['metaKeyColor'] ); ?>');
-	r.style.setProperty('--pd-meta-key-font-size','<?php echo esc_attr( $attrs['metaKeyFontSize'] ) . 'px'; ?>');
+	r.style.setProperty('--pd-carousel-meta-key-color','<?php echo esc_attr( $attrs['metaKeyColor'] ); ?>');
+	r.style.setProperty('--pd-carousel-meta-key-font-size','<?php echo esc_attr( $attrs['metaKeyFontSize'] ) . 'px'; ?>');
 
-	r.style.setProperty('--pd-meta-value-color','<?php echo esc_attr( $attrs['metaValueColor'] ); ?>');
-	r.style.setProperty('--pd-meta-value-font-size','<?php echo esc_attr( $attrs['metaValueFontSize'] ) . 'px'; ?>');
+	r.style.setProperty('--pd-carousel-meta-value-color','<?php echo esc_attr( $attrs['metaValueColor'] ); ?>');
+	r.style.setProperty('--pd-carousel-meta-value-font-size','<?php echo esc_attr( $attrs['metaValueFontSize'] ) . 'px'; ?>');
 
 	// Category
-	r.style.setProperty('--pd-category-label-color','<?php echo esc_attr( $attrs['categoryLabelColor'] ); ?>');
-	r.style.setProperty('--pd-category-label-font-size','<?php echo esc_attr( $attrs['categoryLabelFontSize'] ) . 'px'; ?>');
+	r.style.setProperty('--pd-carousel-category-label-color','<?php echo esc_attr( $attrs['categoryLabelColor'] ); ?>');
+	r.style.setProperty('--pd-carousel-category-label-font-size','<?php echo esc_attr( $attrs['categoryLabelFontSize'] ) . 'px'; ?>');
 
-	r.style.setProperty('--pd-category-value-color','<?php echo esc_attr( $attrs['categoryValueColor'] ); ?>');
-	r.style.setProperty('--pd-category-value-font-size','<?php echo esc_attr( $attrs['categoryValueFontSize'] ) . 'px'; ?>');
+	r.style.setProperty('--pd-carousel-category-value-color','<?php echo esc_attr( $attrs['categoryValueColor'] ); ?>');
+	r.style.setProperty('--pd-carousel-category-value-font-size','<?php echo esc_attr( $attrs['categoryValueFontSize'] ) . 'px'; ?>');
 
 	// Excerpt
-	r.style.setProperty('--pd-excerpt-color','<?php echo esc_attr( $attrs['excerptColor'] ); ?>');
-	r.style.setProperty('--pd-excerpt-font-size','<?php echo esc_attr( $attrs['excerptFontSize'] ) . 'px'; ?>');
+	r.style.setProperty('--pd-carousel-excerpt-color','<?php echo esc_attr( $attrs['excerptColor'] ); ?>');
+	r.style.setProperty('--pd-carousel-excerpt-font-size','<?php echo esc_attr( $attrs['excerptFontSize'] ) . 'px'; ?>');
 
-	r.style.setProperty('--pd-read-more-color','<?php echo esc_attr( $attrs['readMoreColor'] ); ?>');
-	r.style.setProperty('--pd-read-more-font-size','<?php echo esc_attr( $attrs['readMoreFontSize'] ) . 'px'; ?>');
+	r.style.setProperty('--pd-carousel-read-more-color','<?php echo esc_attr( $attrs['readMoreColor'] ); ?>');
+	r.style.setProperty('--pd-carousel-read-more-font-size','<?php echo esc_attr( $attrs['readMoreFontSize'] ) . 'px'; ?>');
 
 	// Author
-	r.style.setProperty('--pd-avatar-size', '<?php echo esc_attr( $attrs['avatarSize'] . 'px' ); ?>');
+	r.style.setProperty('--pd-carousel-avatar-size', '<?php echo esc_attr( $attrs['avatarSize'] . 'px' ); ?>');
 
-	r.style.setProperty('--pd-avatar-border-top', '<?php echo esc_attr( $avatar_border->top ); ?>');
-	r.style.setProperty('--pd-avatar-border-right', '<?php echo esc_attr( $avatar_border->right ); ?>');
-	r.style.setProperty('--pd-avatar-border-left', '<?php echo esc_attr( $avatar_border->left ); ?>');
-	r.style.setProperty('--pd-avatar-border-bottom','<?php echo esc_attr( $avatar_border->bottom ); ?>');
+	r.style.setProperty('--pd-carousel-avatar-border-top', '<?php echo esc_attr( $avatar_border->top ); ?>');
+	r.style.setProperty('--pd-carousel-avatar-border-right', '<?php echo esc_attr( $avatar_border->right ); ?>');
+	r.style.setProperty('--pd-carousel-avatar-border-left', '<?php echo esc_attr( $avatar_border->left ); ?>');
+	r.style.setProperty('--pd-carousel-avatar-border-bottom','<?php echo esc_attr( $avatar_border->bottom ); ?>');
 	
-	r.style.setProperty('--pd-avatar-border-radius', '<?php echo esc_attr( $attrs['avatarBorderRadius'] . '%' ); ?>');
-	r.style.setProperty('--pd-author-name-color','<?php echo esc_attr( $attrs['authorNameColor'] ); ?>');
-	r.style.setProperty('--pd-author-name-font-size', '<?php echo esc_attr( $attrs['authorNameFontSize'] . 'px' ); ?>');
+	r.style.setProperty('--pd-carousel-avatar-border-radius', '<?php echo esc_attr( $attrs['avatarBorderRadius'] . '%' ); ?>');
+	r.style.setProperty('--pd-carousel-author-name-color','<?php echo esc_attr( $attrs['authorNameColor'] ); ?>');
+	r.style.setProperty('--pd-carousel-author-name-font-size', '<?php echo esc_attr( $attrs['authorNameFontSize'] . 'px' ); ?>');
 
 </script>

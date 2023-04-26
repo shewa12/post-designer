@@ -164,46 +164,46 @@ export default function Edit({attributes, setAttributes}) {
 		let avatarBorder = prepareAvatarBorder(attributes.avatarBorder);
 		
 		// Card
-		r.style.setProperty('--pd-card-background-color', attributes.cardBackgroundColor);
-		r.style.setProperty('--pd-card-border', `${attributes.cardBorder}px`);
-		r.style.setProperty('--pd-card-border-radius', `${attributes.cardBorderRadius}px`);
+		r.style.setProperty('--pd-carousel-card-background-color', attributes.cardBackgroundColor);
+		r.style.setProperty('--pd-carousel-card-border', `${attributes.cardBorder}px`);
+		r.style.setProperty('--pd-carousel-card-border-radius', `${attributes.cardBorderRadius}px`);
 
 		// Title
-		r.style.setProperty('--pd-title-color', attributes.titleColor);
-		r.style.setProperty('--pd-title-font-size', `${attributes.titleFontSize}px`);
-		r.style.setProperty('--pd-title-padding', titlePadding);
+		r.style.setProperty('--pd-carousel-title-color', attributes.titleColor);
+		r.style.setProperty('--pd-carousel-title-font-size', `${attributes.titleFontSize}px`);
+		r.style.setProperty('--pd-carousel-title-padding', titlePadding);
 
 		// Meta
-		r.style.setProperty('--pd-meta-key-color', attributes.metaKeyColor);
-		r.style.setProperty('--pd-meta-key-font-size', `${attributes.metaKeyFontSize}px`);
+		r.style.setProperty('--pd-carousel-meta-key-color', attributes.metaKeyColor);
+		r.style.setProperty('--pd-carousel-meta-key-font-size', `${attributes.metaKeyFontSize}px`);
 
-		r.style.setProperty('--pd-meta-value-color', attributes.metaValueColor);
-		r.style.setProperty('--pd-meta-value-font-size', `${attributes.metaValueFontSize}px`);
+		r.style.setProperty('--pd-carousel-meta-value-color', attributes.metaValueColor);
+		r.style.setProperty('--pd-carousel-meta-value-font-size', `${attributes.metaValueFontSize}px`);
 
 		// Category
-		r.style.setProperty('--pd-category-label-color', attributes.categoryLabelColor);
-		r.style.setProperty('--pd-category-label-font-size', `${attributes.categoryLabelFontSize}px`);
+		r.style.setProperty('--pd-carousel-category-label-color', attributes.categoryLabelColor);
+		r.style.setProperty('--pd-carousel-category-label-font-size', `${attributes.categoryLabelFontSize}px`);
 
-		r.style.setProperty('--pd-category-value-color', attributes.categoryValueColor);
-		r.style.setProperty('--pd-category-value-font-size', `${attributes.categoryValueFontSize}px`);
+		r.style.setProperty('--pd-carousel-category-value-color', attributes.categoryValueColor);
+		r.style.setProperty('--pd-carousel-category-value-font-size', `${attributes.categoryValueFontSize}px`);
 
 		// Excerpt
-		r.style.setProperty('--pd-excerpt-color', attributes.excerptColor);
-		r.style.setProperty('--pd-excerpt-font-size', `${attributes.excerptFontSize}px`);
-		r.style.setProperty('--pd-read-more-color', attributes.readMoreColor);
-		r.style.setProperty('--pd-read-more-font-size', `${attributes.readMoreFontSize}px`);
+		r.style.setProperty('--pd-carousel-excerpt-color', attributes.excerptColor);
+		r.style.setProperty('--pd-carousel-excerpt-font-size', `${attributes.excerptFontSize}px`);
+		r.style.setProperty('--pd-carousel-read-more-color', attributes.readMoreColor);
+		r.style.setProperty('--pd-carousel-read-more-font-size', `${attributes.readMoreFontSize}px`);
 
 		// Avatar & Author
-		r.style.setProperty('--pd-avatar-size', `${attributes.avatarSize}px`);
+		r.style.setProperty('--pd-carousel-avatar-size', `${attributes.avatarSize}px`);
 
-		r.style.setProperty('--pd-avatar-border-top', avatarBorder.top);
-		r.style.setProperty('--pd-avatar-border-right', avatarBorder.right);
-		r.style.setProperty('--pd-avatar-border-left', avatarBorder.left);
-		r.style.setProperty('--pd-avatar-border-bottom', avatarBorder.bottom);
+		r.style.setProperty('--pd-carousel-avatar-border-top', avatarBorder.top);
+		r.style.setProperty('--pd-carousel-avatar-border-right', avatarBorder.right);
+		r.style.setProperty('--pd-carousel-avatar-border-left', avatarBorder.left);
+		r.style.setProperty('--pd-carousel-avatar-border-bottom', avatarBorder.bottom);
 
-		r.style.setProperty('--pd-avatar-border-radius', `${attributes.avatarBorderRadius}%`);
-		r.style.setProperty('--pd-author-name-color', attributes.authorNameColor);
-		r.style.setProperty('--pd-author-name-font-size', `${attributes.authorNameFontSize}px`);
+		r.style.setProperty('--pd-carousel-avatar-border-radius', `${attributes.avatarBorderRadius}%`);
+		r.style.setProperty('--pd-carousel-author-name-color', attributes.authorNameColor);
+		r.style.setProperty('--pd-carousel-author-name-font-size', `${attributes.authorNameFontSize}px`);
 
 	  }, []);
 
@@ -430,7 +430,7 @@ export default function Edit({attributes, setAttributes}) {
 							onChange={ ( color ) => {
 								console.log(`color: ${color}`);
 								setAttributes({cardBackgroundColor: color})
-								r.style.setProperty('--pd-card-background-color', color);
+								r.style.setProperty('--pd-carousel-card-background-color', color);
 							} }
 							/>
 						</BaseControl>
@@ -445,7 +445,7 @@ export default function Edit({attributes, setAttributes}) {
 							onChange={
 								(value) => {
 									setAttributes({cardBorder: value});
-									r.style.setProperty('--pd-card-border', `${value}px`);
+									r.style.setProperty('--pd-carousel-card-border', `${value}px`);
 								}
 							}
 						/>
@@ -460,7 +460,7 @@ export default function Edit({attributes, setAttributes}) {
 							onChange={
 								(value) => {
 									setAttributes({cardBorderRadius: value});
-									r.style.setProperty('--pd-card-border-radius', `${value}px`);
+									r.style.setProperty('--pd-carousel-card-border-radius', `${value}px`);
 								}
 							}
 						/>
@@ -510,7 +510,7 @@ export default function Edit({attributes, setAttributes}) {
 								value={attributes.titleColor}
 								onChange= { (value) => { 
 									setAttributes({titleColor: value});
-									r.style.setProperty('--pd-title-color', value);
+									r.style.setProperty('--pd-carousel-title-color', value);
 								} }
 							/>
 						</BaseControl>
@@ -524,7 +524,7 @@ export default function Edit({attributes, setAttributes}) {
 							min={0}
 							onChange={ (value) => {
 								setAttributes({titleFontSize: value});
-								r.style.setProperty('--pd-title-font-size', `${value}px`);
+								r.style.setProperty('--pd-carousel-title-font-size', `${value}px`);
 							} }
 						/>
 
@@ -536,7 +536,7 @@ export default function Edit({attributes, setAttributes}) {
 								let values = Object.values(nextValues).filter(v => v)
 								
 								setAttributes({titlePadding: nextValues})
-								r.style.setProperty('--pd-title-padding', Object.values(values));
+								r.style.setProperty('--pd-carousel-title-padding', Object.values(values));
 							} }
 						/>
 
@@ -567,7 +567,7 @@ export default function Edit({attributes, setAttributes}) {
 										value={attributes.metaKeyColor}
 										onChange= { (value) => { 
 											setAttributes({metaKeyColor: value});
-											r.style.setProperty('--pd-meta-key-color', value);
+											r.style.setProperty('--pd-carousel-meta-key-color', value);
 										} }
 									/>
 								</BaseControl>
@@ -579,7 +579,7 @@ export default function Edit({attributes, setAttributes}) {
 									min={0}
 									onChange={ (value) => {
 										setAttributes({metaKeyFontSize: value});
-										r.style.setProperty('--pd-meta-key-font-size', `${value}px`);
+										r.style.setProperty('--pd-carousel-meta-key-font-size', `${value}px`);
 									} }
 								/>
 
@@ -592,7 +592,7 @@ export default function Edit({attributes, setAttributes}) {
 										value={attributes.metaValueColor}
 										onChange= { (value) => { 
 											setAttributes({metaValueColor: value});
-											r.style.setProperty('--pd-meta-value-color', value);
+											r.style.setProperty('--pd-carousel-meta-value-color', value);
 										} }
 									/>
 								</BaseControl>
@@ -604,7 +604,7 @@ export default function Edit({attributes, setAttributes}) {
 									min={0}
 									onChange={ (value) => {
 										setAttributes({metaValueFontSize: value});
-										r.style.setProperty('--pd-meta-value-font-size', `${value}px`);
+										r.style.setProperty('--pd-carousel-meta-value-font-size', `${value}px`);
 									} }
 								/>
 							</div>
@@ -636,7 +636,7 @@ export default function Edit({attributes, setAttributes}) {
 										value={attributes.categoryLabelColor}
 										onChange= { (value) => { 
 											setAttributes({categoryLabelColor: value});
-											r.style.setProperty('--pd-category-label-color', value);
+											r.style.setProperty('--pd-carousel-category-label-color', value);
 										} }
 									/>
 								</BaseControl>
@@ -648,7 +648,7 @@ export default function Edit({attributes, setAttributes}) {
 									min={0}
 									onChange={ (value) => {
 										setAttributes({categoryLabelFontSize: value});
-										r.style.setProperty('--pd-category-label-font-size', `${value}px`);
+										r.style.setProperty('--pd-carousel-category-label-font-size', `${value}px`);
 									} }
 								/>
 
@@ -659,7 +659,7 @@ export default function Edit({attributes, setAttributes}) {
 										value={attributes.categoryValueColor}
 										onChange= { (value) => { 
 											setAttributes({categoryValueColor: value});
-											r.style.setProperty('--pd-category-value-color', value);
+											r.style.setProperty('--pd-carousel-category-value-color', value);
 										} }
 									/>
 								</BaseControl>
@@ -671,7 +671,7 @@ export default function Edit({attributes, setAttributes}) {
 									min={0}
 									onChange={ (value) => {
 										setAttributes({categoryValueFontSize: value});
-										r.style.setProperty('--pd-category-value-font-size', `${value}px`);
+										r.style.setProperty('--pd-carousel-category-value-font-size', `${value}px`);
 									} }
 								/>
 
@@ -713,7 +713,7 @@ export default function Edit({attributes, setAttributes}) {
 										value={attributes.excerptColor}
 										onChange= { (value) => { 
 											setAttributes({excerptColor: value});
-											r.style.setProperty('--pd-excerpt-color', value);
+											r.style.setProperty('--pd-carousel-excerpt-color', value);
 										} }
 									/>
 								</BaseControl>
@@ -725,7 +725,7 @@ export default function Edit({attributes, setAttributes}) {
 									min={0}
 									onChange={ (value) => {
 										setAttributes({excerptFontSize: value});
-										r.style.setProperty('--pd-excerpt-font-size', `${value}px`);
+										r.style.setProperty('--pd-carousel-excerpt-font-size', `${value}px`);
 									} }
 								/>
 
@@ -742,7 +742,7 @@ export default function Edit({attributes, setAttributes}) {
 										value={attributes.readMoreColor}
 										onChange= { (value) => { 
 											setAttributes({readMoreColor: value});
-											r.style.setProperty('--pd-read-more-color', value);
+											r.style.setProperty('--pd-carousel-read-more-color', value);
 										} }
 									/>
 								</BaseControl>
@@ -754,7 +754,7 @@ export default function Edit({attributes, setAttributes}) {
 									min={0}
 									onChange={ (value) => {
 										setAttributes({readMoreFontSize: value});
-										r.style.setProperty('--pd-read-more-font-size', `${value}px`);
+										r.style.setProperty('--pd-carousel-read-more-font-size', `${value}px`);
 									} }
 								/>
 
@@ -788,7 +788,7 @@ export default function Edit({attributes, setAttributes}) {
 									min={10}
 									onChange={ (value) => {
 										setAttributes({avatarSize: value});
-										r.style.setProperty('--pd-avatar-size', `${value}px`);
+										r.style.setProperty('--pd-carousel-avatar-size', `${value}px`);
 									} }
 								/>
 
@@ -797,10 +797,10 @@ export default function Edit({attributes, setAttributes}) {
 									onChange={ (value) => {
 										setAttributes( {avatarBorder: value} );
 										let avatarBorder = prepareAvatarBorder(value);
-										r.style.setProperty('--pd-avatar-border-top', avatarBorder.top);
-										r.style.setProperty('--pd-avatar-border-left', avatarBorder.left);
-										r.style.setProperty('--pd-avatar-border-right', avatarBorder.right);
-										r.style.setProperty('--pd-avatar-border-bottom', avatarBorder.bottom);
+										r.style.setProperty('--pd-carousel-avatar-border-top', avatarBorder.top);
+										r.style.setProperty('--pd-carousel-avatar-border-left', avatarBorder.left);
+										r.style.setProperty('--pd-carousel-avatar-border-right', avatarBorder.right);
+										r.style.setProperty('--pd-carousel-avatar-border-bottom', avatarBorder.bottom);
 									} }
 									value={ attributes.avatarBorder }
 								/>
@@ -812,7 +812,7 @@ export default function Edit({attributes, setAttributes}) {
 									min={0}
 									onChange={ (value) => {
 										setAttributes({avatarBorderRadius: value});
-										r.style.setProperty('--pd-avatar-border-radius', `${value}%`);
+										r.style.setProperty('--pd-carousel-avatar-border-radius', `${value}%`);
 									} }
 								/>
 
@@ -840,7 +840,7 @@ export default function Edit({attributes, setAttributes}) {
 										value={attributes.authorNameColor}
 										onChange= { (value) => { 
 											setAttributes({authorNameColor: value});
-											r.style.setProperty('--pd-author-name-color', value);
+											r.style.setProperty('--pd-carousel-author-name-color', value);
 										} }
 									/>
 								</BaseControl>
@@ -852,7 +852,7 @@ export default function Edit({attributes, setAttributes}) {
 									min={0}
 									onChange={ (value) => {
 										setAttributes({authorNameFontSize: value});
-										r.style.setProperty('--pd-author-name-font-size', `${value}px`);
+										r.style.setProperty('--pd-carousel-author-name-font-size', `${value}px`);
 									} }
 								/>
 							</div>

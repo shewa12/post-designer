@@ -2,7 +2,7 @@
  * The following styles get applied both editor & frontend.
  */
 @import "../scss/pagination.scss";
-@import "../scss/vars";
+@import "../scss/post-carousel-vars";
 
 .wp-block-post-designer-carousel {
 	.pd-card-row {
@@ -55,9 +55,9 @@
 			gap: 10px;
 		}
 		.pd-card {
-			border: var(--pd-card-border) solid #e3e3e3;
-			border-radius: var(--pd-card-border-radius);
-			background-color: var(--pd-card-background-color) !important;
+			border: var(--pd-carousel-card-border) solid #e3e3e3;
+			border-radius: var(--pd-carousel-card-border-radius);
+			background-color: var(--pd-carousel-card-background-color) !important;
 			& img {
 				border-top-left-radius: 10px;
 				border-top-right-radius: 10px;
@@ -66,9 +66,9 @@
 				.pd-post-title {
 					margin: 20px 0px !important;
 					a {
-						color: var(--pd-title-color) !important;
-						padding: var(--pd-title-padding) !important;
-						font-size: var(--pd-title-font-size) !important;
+						color: var(--pd-carousel-title-color) !important;
+						padding: var(--pd-carousel-title-padding) !important;
+						font-size: var(--pd-carousel-title-font-size) !important;
 						
 					}
 				}
@@ -88,23 +88,23 @@
 				}
 				.pd-post-meta {
 					.pd-post-meta-key {
-						color: var(--pd-meta-key-color) !important;
-						font-size: var(--pd-meta-key-font-size) !important;
+						color: var(--pd-carousel-meta-key-color) !important;
+						font-size: var(--pd-carousel-meta-key-font-size) !important;
 					}
 					.pd-post-meta-value {
-						color: var(--pd-meta-value-color) !important;
-						font-size: var(--pd-meta-value-font-size) !important;
+						color: var(--pd-carousel-meta-value-color) !important;
+						font-size: var(--pd-carousel-meta-value-font-size) !important;
 					}
 				}
 				.pd-post-categories {
 					.pd-post-category-key {
-						color: var(--pd-category-label-color) !important;
-						font-size: var(--pd-category-label-font-size) !important;
+						color: var(--pd-carousel-category-label-color) !important;
+						font-size: var(--pd-carousel-category-label-font-size) !important;
 					}
 					.pd-post-category-value {
 						a {
-							color: var(--pd-category-value-color) !important;
-							font-size: var(--pd-category-value-font-size) !important;
+							color: var(--pd-carousel-category-value-color) !important;
+							font-size: var(--pd-carousel-category-value-font-size) !important;
 						}	
 					}
 					div {
@@ -115,11 +115,11 @@
 				.pd-post-content {
 					margin: 20px 0px !important;
 					p {
-						color: var(--pd-excerpt-color) !important;
-						font-size: var(--pd-excerpt-font-size) !important;
+						color: var(--pd-carousel-excerpt-color) !important;
+						font-size: var(--pd-carousel-excerpt-font-size) !important;
 						a {
-							color: var(--pd-read-more-color) !important;
-							font-size: var(--pd-read-more-font-size) !important;
+							color: var(--pd-carousel-read-more-color) !important;
+							font-size: var(--pd-carousel-read-more-font-size) !important;
 						}
 					}
 
@@ -133,18 +133,18 @@
 				column-gap: 20px;
 			}
 			.pd-post-author img {
-				max-width: var(--pd-avatar-size) !important;
-				max-height: var(--pd-avatar-size) !important;
-				border-top: var(--pd-avatar-border-top) !important;
-				border-left: var(--pd-avatar-border-left) !important;
-				border-right: var(--pd-avatar-border-right) !important;
-				border-bottom: var(--pd-avatar-border-bottom) !important;
-				border-radius: var(--pd-avatar-border-radius) !important;
+				max-width: var(--pd-carousel-avatar-size) !important;
+				max-height: var(--pd-carousel-avatar-size) !important;
+				border-top: var(--pd-carousel-avatar-border-top) !important;
+				border-left: var(--pd-carousel-avatar-border-left) !important;
+				border-right: var(--pd-carousel-avatar-border-right) !important;
+				border-bottom: var(--pd-carousel-avatar-border-bottom) !important;
+				border-radius: var(--pd-carousel-avatar-border-radius) !important;
 			}
 			.pd-post-author-info {
 				strong {
-					color: var(--pd-author-name-color) !important;
-					font-size: var(--pd-author-name-font-size) !important;
+					color: var(--pd-carousel-author-name-color) !important;
+					font-size: var(--pd-carousel-author-name-font-size) !important;
 				}
 			}
 		}
