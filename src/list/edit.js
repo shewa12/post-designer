@@ -1,5 +1,6 @@
 
 import { __ } from '@wordpress/i18n';
+import { useEffect } from 'react';
 import {
 	useBlockProps,
 	InspectorControls,
@@ -14,6 +15,12 @@ import {
 	SelectControl,
 	__experimentalText as Text,
 	__experimentalDivider as Divider,
+	ColorPalette,
+	BaseControl,
+	RangeControl,
+	__experimentalBoxControl as BoxControl,
+	__experimentalInputControl as InputControl,
+	__experimentalBorderBoxControl as BorderBoxControl,
 } from '@wordpress/components'
 
 
@@ -29,6 +36,9 @@ import usePostDesigner from '../hooks/usePostDesigner';
 import Pagination from '../components/Pagination';
 
 export default function Edit({attributes, setAttributes}) {
+
+	const r = document.querySelector(':root');
+
 	// States
 	const blockProps = { ...useBlockProps() };
 
@@ -48,6 +58,7 @@ export default function Edit({attributes, setAttributes}) {
 		updateTaxonomy,
 		updateLayout,
 		updateColumnPerRow,
+		updateReadMoreText
 	} = usePostDesigner(attributes, setAttributes);
 
 	// Attributes
@@ -75,6 +86,106 @@ export default function Edit({attributes, setAttributes}) {
 			return <PostCard post={post} attributes={attributes}/>
 		})
 	};
+
+	const prepareAvatarBorder = (border) => {
+		
+		let avatarBorderTop = border.top ?
+			`${border.top.width ? border.top.width : '' } ${border.top.style ? border.top.style : ''} ${border.top.color ? border.top.color: ''}` : '';
+
+		if (avatarBorderTop === '') {
+			avatarBorderTop = border.width ? border.width : '';
+			if (avatarBorderTop !== '') {
+				avatarBorderTop = `${avatarBorderTop} ${border.style ? border.style : 'solid'} ${border.color ? border.color : ''}`;
+			}
+		}
+
+		let avatarBorderRight = border.right ?
+			`${border.right.width ? border.right.width : '' } ${border.right.style ? border.right.style : ''} ${border.right.color ? border.right.color: ''}` : '';
+
+		if (avatarBorderRight === '') {
+			avatarBorderRight = border.width ? border.width : '';
+			if (avatarBorderRight !== '') {
+				avatarBorderRight = `${avatarBorderRight} ${border.style ? border.style : 'solid'} ${border.color ? border.color : ''}`;
+			}
+		}
+
+		let avatarBorderBottom = attributes.avatarBorder.bottom ?
+			`${border.bottom.width ? border.bottom.width : '' } ${border.bottom.style ? border.bottom.style : ''} ${border.bottom.color ? border.bottom.color: ''}` : '';
+
+		if (avatarBorderBottom === '') {
+			avatarBorderBottom = border.width ? border.width : '';
+			if (avatarBorderBottom !== '') {
+				avatarBorderBottom = `${avatarBorderBottom} ${border.style ? border.style : 'solid'} ${border.color ? border.color : ''}`;
+			}
+		}
+	
+		
+		let avatarBorderLeft = border.left ?
+			`${border.left.width ? border.left.width : '' } ${border.left.style ? border.left.style : ''} ${border.left.color ? border.left.color: ''}` : '';
+		
+		
+		if (avatarBorderLeft === '') {
+			avatarBorderLeft = border.width ? border.width : '';
+			if (avatarBorderLeft !== '') {
+				avatarBorderLeft = `${avatarBorderLeft} ${border.style ? border.style : 'solid'} ${border.color ? border.color : ''}`;
+			}
+		}	
+
+		return {
+			top: avatarBorderTop,
+			left: avatarBorderLeft,
+			right: avatarBorderRight,
+			bottom: avatarBorderBottom
+		}
+	}
+
+	useEffect(() => {
+		let titlePadding = Object.values(attributes.titlePadding);
+		let avatarBorder = prepareAvatarBorder(attributes.avatarBorder);
+		
+		// Card
+		r.style.setProperty('--pd-card-background-color', attributes.cardBackgroundColor);
+		r.style.setProperty('--pd-card-border', `${attributes.cardBorder}px`);
+		r.style.setProperty('--pd-card-border-radius', `${attributes.cardBorderRadius}px`);
+
+		// Title
+		r.style.setProperty('--pd-title-color', attributes.titleColor);
+		r.style.setProperty('--pd-title-font-size', `${attributes.titleFontSize}px`);
+		r.style.setProperty('--pd-title-padding', titlePadding);
+
+		// Meta
+		r.style.setProperty('--pd-meta-key-color', attributes.metaKeyColor);
+		r.style.setProperty('--pd-meta-key-font-size', `${attributes.metaKeyFontSize}px`);
+
+		r.style.setProperty('--pd-meta-value-color', attributes.metaValueColor);
+		r.style.setProperty('--pd-meta-value-font-size', `${attributes.metaValueFontSize}px`);
+
+		// Category
+		r.style.setProperty('--pd-category-label-color', attributes.categoryLabelColor);
+		r.style.setProperty('--pd-category-label-font-size', `${attributes.categoryLabelFontSize}px`);
+
+		r.style.setProperty('--pd-category-value-color', attributes.categoryValueColor);
+		r.style.setProperty('--pd-category-value-font-size', `${attributes.categoryValueFontSize}px`);
+
+		// Excerpt
+		r.style.setProperty('--pd-excerpt-color', attributes.excerptColor);
+		r.style.setProperty('--pd-excerpt-font-size', `${attributes.excerptFontSize}px`);
+		r.style.setProperty('--pd-read-more-color', attributes.readMoreColor);
+		r.style.setProperty('--pd-read-more-font-size', `${attributes.readMoreFontSize}px`);
+
+		// Avatar & Author
+		r.style.setProperty('--pd-avatar-size', `${attributes.avatarSize}px`);
+
+		r.style.setProperty('--pd-avatar-border-top', avatarBorder.top);
+		r.style.setProperty('--pd-avatar-border-right', avatarBorder.right);
+		r.style.setProperty('--pd-avatar-border-left', avatarBorder.left);
+		r.style.setProperty('--pd-avatar-border-bottom', avatarBorder.bottom);
+
+		r.style.setProperty('--pd-avatar-border-radius', `${attributes.avatarBorderRadius}%`);
+		r.style.setProperty('--pd-author-name-color', attributes.authorNameColor);
+		r.style.setProperty('--pd-author-name-font-size', `${attributes.authorNameFontSize}px`);
+
+	  }, []);
 
 	return (
 		loading ?
@@ -164,8 +275,450 @@ export default function Edit({attributes, setAttributes}) {
 					</PanelBody>
 				</Panel>
 
+				{/* style controls */}
 				<Panel>
-					<PanelBody title={__('Styles', 'post-designer')} initialOpen={ false }>
+					<PanelBody
+					initialOpen={ false }
+					title={ __('Card', 'post-designer') }
+					>
+
+						<BaseControl
+						label={ __('Background Color', 'post-designer') }
+						>
+							<ColorPalette
+							value={ attributes.cardBackgroundColor }
+							onChange={ ( color ) => {
+								console.log(`color: ${color}`);
+								setAttributes({cardBackgroundColor: color})
+								r.style.setProperty('--pd-card-background-color', color);
+							} }
+							/>
+						</BaseControl>
+
+						<Divider />
+
+						<RangeControl
+							initialPosition={attributes.cardBorder}
+							label={ __('Border', 'post-designer') } 
+							max={100}
+							min={0}
+							onChange={
+								(value) => {
+									setAttributes({cardBorder: value});
+									r.style.setProperty('--pd-card-border', `${value}px`);
+								}
+							}
+						/>
+
+						<Divider />
+
+						<RangeControl
+							initialPosition={attributes.cardBorderRadius}
+							label={ __('Border Radius', 'post-designer') } 
+							max={100}
+							min={0}
+							onChange={
+								(value) => {
+									setAttributes({cardBorderRadius: value});
+									r.style.setProperty('--pd-card-border-radius', `${value}px`);
+								}
+							}
+						/>
+
+					</PanelBody>
+				</Panel>
+
+				<Panel>
+					<PanelBody
+					initialOpen={false}
+					title={ __('Thumbnail', 'post-designer') }
+					>
+						<ToggleControl
+							checked={attributes.showThumbnail}
+							label={ __('Show Thumbnail', 'post-designer') }
+							onChange={
+								(value) => {
+									setAttributes({showThumbnail: value})
+								}
+							}
+						/>
+
+					</PanelBody>
+				</Panel>
+
+				<Panel>
+					<PanelBody
+					title={ __('Title', 'post-designer') }
+					initialOpen={ false }>
+
+						<ToggleControl
+							checked={attributes.showTitle}
+							label={ __('Show', 'post-designer') }
+							onChange={
+								(value) => {
+									setAttributes({showTitle: value})
+								}
+							}
+						/>
+
+						<Divider/>
+
+						<BaseControl
+						label={ __('Color', 'post-designer') }
+						>
+							<ColorPalette
+								value={attributes.titleColor}
+								onChange= { (value) => { 
+									setAttributes({titleColor: value});
+									r.style.setProperty('--pd-title-color', value);
+								} }
+							/>
+						</BaseControl>
+
+						<Divider />
+
+						<RangeControl
+							initialPosition={ attributes.titleFontSize }
+							label={ __('Font Size', 'post-designer') }
+							max={100}
+							min={0}
+							onChange={ (value) => {
+								setAttributes({titleFontSize: value});
+								r.style.setProperty('--pd-title-font-size', `${value}px`);
+							} }
+						/>
+
+						<Divider />
+
+						<BoxControl
+							values={ attributes.titlePadding }
+							onChange={ ( nextValues ) => {
+								let values = Object.values(nextValues).filter(v => v)
+								
+								setAttributes({titlePadding: nextValues})
+								r.style.setProperty('--pd-title-padding', Object.values(values));
+							} }
+						/>
+
+					</PanelBody>
+				</Panel>
+
+				<Panel>
+					<PanelBody title={__('Meta', 'post-designer')} initialOpen={ false }>
+
+						<ToggleControl
+							label={ __( 'Show Meta', 'post-designer' ) }
+							help={ __( 'Show post meta', 'post-designer' ) }
+							checked={ attributes.showMeta }
+							onChange={
+								(value) => {
+									setAttributes( { showMeta: value } )
+								}
+							}
+						/>
+
+						{
+							attributes.showMeta ?
+							<div>					
+								<BaseControl
+								label={ __('Label Color', 'post-designer') }
+								>
+									<ColorPalette
+										value={attributes.metaKeyColor}
+										onChange= { (value) => { 
+											setAttributes({metaKeyColor: value});
+											r.style.setProperty('--pd-meta-key-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.metaKeyFontSize }
+									label={ __('Label Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({metaKeyFontSize: value});
+										r.style.setProperty('--pd-meta-key-font-size', `${value}px`);
+									} }
+								/>
+
+								<Divider />
+
+								<BaseControl
+								label={ __('Value Color', 'post-designer') }
+								>
+									<ColorPalette
+										value={attributes.metaValueColor}
+										onChange= { (value) => { 
+											setAttributes({metaValueColor: value});
+											r.style.setProperty('--pd-meta-value-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.metaValueFontSize }
+									label={ __('Value Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({metaValueFontSize: value});
+										r.style.setProperty('--pd-meta-value-font-size', `${value}px`);
+									} }
+								/>
+							</div>
+							: ''
+						}
+					</PanelBody>
+
+				</Panel>
+				
+				{/* Category panel  */}
+				<Panel>
+					<PanelBody title={ __('Category', 'post-designer') } initialOpen={false}>
+
+						<ToggleControl
+							label={ __( 'Show Category', 'post-designer' ) }
+							checked={ attributes.showCategory }
+							onChange={
+								(value) => {
+									setAttributes( { showCategory: value } )
+								}
+							}
+						/>
+
+						{
+							attributes.showCategory ?
+							<div>
+								<BaseControl label={ __('Label Color', 'post-designer') }>
+									<ColorPalette
+										value={attributes.categoryLabelColor}
+										onChange= { (value) => { 
+											setAttributes({categoryLabelColor: value});
+											r.style.setProperty('--pd-category-label-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.categoryLabelFontSize }
+									label={ __('Label Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({categoryLabelFontSize: value});
+										r.style.setProperty('--pd-category-label-font-size', `${value}px`);
+									} }
+								/>
+
+								<Divider />
+
+								<BaseControl label={ __('Category Color', 'post-designer') }>
+									<ColorPalette
+										value={attributes.categoryValueColor}
+										onChange= { (value) => { 
+											setAttributes({categoryValueColor: value});
+											r.style.setProperty('--pd-category-value-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.categoryValueFontSize }
+									label={ __('Category Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({categoryValueFontSize: value});
+										r.style.setProperty('--pd-category-value-font-size', `${value}px`);
+									} }
+								/>
+
+							</div>
+							: ''
+						}
+					</PanelBody>
+				</Panel>
+
+				{/* Excerpt panel  */}
+				<Panel>
+					<PanelBody title={ __('Excerpt', 'post-designer') } initialOpen={false}>
+
+						<ToggleControl
+							label={ __( 'Show Excerpt', 'post-designer' ) }
+							checked={ attributes.showExcerpt }
+							onChange={
+								(value) => {
+									setAttributes( { showExcerpt: value } )
+								}
+							}
+						/>
+
+						{
+							attributes.showExcerpt ?
+							<div>
+								<RangeControl
+									initialPosition={ attributes.excerptLength }
+									label={ __('Length', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({excerptLength: value});
+									} }
+								/>
+
+								<BaseControl label={ __('Color', 'post-designer') }>
+									<ColorPalette
+										value={attributes.excerptColor}
+										onChange= { (value) => { 
+											setAttributes({excerptColor: value});
+											r.style.setProperty('--pd-excerpt-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.excerptFontSize }
+									label={ __('Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({excerptFontSize: value});
+										r.style.setProperty('--pd-excerpt-font-size', `${value}px`);
+									} }
+								/>
+
+								<Divider />
+
+								<InputControl
+									label={ __('Read More Text', 'post-designer') }
+									value={ attributes.readMoreText }
+									onChange={ updateReadMoreText }
+								/>
+
+								<BaseControl label={ __('Read More Color', 'post-designer') }>
+									<ColorPalette
+										value={attributes.readMoreColor}
+										onChange= { (value) => { 
+											setAttributes({readMoreColor: value});
+											r.style.setProperty('--pd-read-more-color', value);
+										} }
+									/>
+								</BaseControl>
+
+								<RangeControl
+									initialPosition={ attributes.readMoreFontSize }
+									label={ __('Read More Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({readMoreFontSize: value});
+										r.style.setProperty('--pd-read-more-font-size', `${value}px`);
+									} }
+								/>
+
+							</div>
+							: ''
+						}
+					</PanelBody>
+				</Panel>
+
+				{/* Author panel  */}
+				<Panel>
+					<PanelBody title={ __('Author', 'post-designer') } initialOpen={false}>
+
+						<ToggleControl
+							label={ __( 'Show Avatar', 'post-designer' ) }
+							checked={ attributes.showAvatar }
+							onChange={
+								(value) => {
+									setAttributes( { showAvatar: value } )
+								}
+							}
+						/>
+
+						{
+							attributes.showAvatar ?
+							<div>
+								<RangeControl
+									initialPosition={ attributes.avatarSize }
+									label={ __('Avatar Size', 'post-designer') }
+									max={500}
+									min={10}
+									onChange={ (value) => {
+										setAttributes({avatarSize: value});
+										r.style.setProperty('--pd-avatar-size', `${value}px`);
+									} }
+								/>
+
+								<BorderBoxControl
+									label={ __( 'Borders', 'post-signer' ) }
+									onChange={ (value) => {
+										setAttributes( {avatarBorder: value} );
+										let avatarBorder = prepareAvatarBorder(value);
+										r.style.setProperty('--pd-avatar-border-top', avatarBorder.top);
+										r.style.setProperty('--pd-avatar-border-left', avatarBorder.left);
+										r.style.setProperty('--pd-avatar-border-right', avatarBorder.right);
+										r.style.setProperty('--pd-avatar-border-bottom', avatarBorder.bottom);
+									} }
+									value={ attributes.avatarBorder }
+								/>
+
+								<RangeControl
+									initialPosition={ attributes.avatarBorderRadius }
+									label={ __('Border Radius (%)', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({avatarBorderRadius: value});
+										r.style.setProperty('--pd-avatar-border-radius', `${value}%`);
+									} }
+								/>
+
+							</div>
+							: ''
+						}
+
+						<Divider />
+
+						<ToggleControl
+							label={ __( 'Show Name', 'post-designer' ) }
+							checked={ attributes.showAuthor }
+							onChange={
+								(value) => {
+									setAttributes( { showAuthor: value } )
+								}
+							}
+						/>
+
+						{
+							attributes.showAuthor ?
+							<div>
+								<BaseControl label={ __('Name Color', 'post-designer') }>
+									<ColorPalette
+										value={attributes.authorNameColor}
+										onChange= { (value) => { 
+											setAttributes({authorNameColor: value});
+											r.style.setProperty('--pd-author-name-color', value);
+										} }
+									/>
+								</BaseControl>
+		
+								<RangeControl
+									initialPosition={ attributes.authorNameFontSize }
+									label={ __('Name Font Size', 'post-designer') }
+									max={100}
+									min={0}
+									onChange={ (value) => {
+										setAttributes({authorNameFontSize: value});
+										r.style.setProperty('--pd-author-name-font-size', `${value}px`);
+									} }
+								/>
+							</div>
+						: ''
+						}
+
 					</PanelBody>
 				</Panel>
 

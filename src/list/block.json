@@ -68,9 +68,159 @@
 			"type": "string",
 			"default": 3
 		},
+		"cardBackgroundColor": {
+			"type": "string",
+			"default": "#fff"
+		},
+		"cardBorder": {
+			"type": "number",
+			"default": 1
+		},
+		"cardBorderRadius": {
+			"type": "number",
+			"default": 10
+		},
+		"showThumbnail": {
+			"type": "boolean",
+			"default": true
+		},
+		"showTitle": {
+			"type": "boolean",
+			"default": true
+		},
 		"titleColor": {
 			"type": "string",
 			"default": "#000"
+		},
+		"titlePadding": {
+			"type": "object",
+			"default": {
+				"top": "0px",
+				"left": "0px",
+				"right": "0px",
+				"bottom": "0px"
+			}
+		},
+		"titleFontSize": {
+			"type": "number",
+			"default": 24
+		},
+		"showMeta": {
+			"type": "boolean",
+			"default": true
+		},
+		"metaKeyColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"metaKeyFontSize": {
+			"type": "number",
+			"default": 12
+		},
+		"metaValueColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"metaValueFontSize": {
+			"type": "number",
+			"default": 12
+		},
+		"showCategory": {
+			"type": "boolean",
+			"default": true
+		},
+		"categoryLabelColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"categoryLabelFontSize": {
+			"type": "number",
+			"default": 12
+		},
+		"categoryValueColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"categoryValueFontSize": {
+			"type": "number",
+			"default": 12
+		},
+		"showExcerpt": {
+			"type": "boolean",
+			"default": true
+		},
+		"excerptLength": {
+			"type": "number",
+			"default": 20
+		},
+		"excerptColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"excerptFontSize": {
+			"type": "number",
+			"default": 14
+		},
+		"readMoreColor": {
+			"type": "string",
+			"default": "#037fff"
+		},
+		"readMoreFontSize": {
+			"type": "number",
+			"default": 12
+		},
+		"readMoreText": {
+			"type": "string",
+			"default": "Read More..."
+		},
+		"showAvatar": {
+			"type": "boolean",
+			"default": true
+		},
+		"avatarSize": {
+			"type": "number",
+			"default": 50
+		},
+		"avatarBorder": {
+			"type": "object",
+			"default": {
+				"top": {
+					"width": "1px",
+					"style": "solid",
+					"color": "#e3e3e3"
+				},
+				"left": {
+					"width": "1px",
+					"style": "solid",
+					"color": "#e3e3e3"
+				},
+				"right": {
+					"width": "1px",
+					"style": "solid",
+					"color": "#e3e3e3"
+				},
+				"bottom": {
+					"width": "1px",
+					"style": "solid",
+					"color": "#e3e3e3"
+				}
+			}
+		},
+		"avatarBorderRadius": {
+			"type": "number",
+			"default": 100
+		},
+		"showAuthor": {
+			"type": "boolean",
+			"default": true
+		},
+		"authorNameColor": {
+			"type": "string",
+			"default": "#000"
+		},
+		"authorNameFontSize": {
+			"type": "number",
+			"default": 14
 		}
 	},
 	"editorScript": "file:./index.js",
