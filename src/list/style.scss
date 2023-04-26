@@ -2,6 +2,7 @@
  * The following styles get applied both editor & frontend.
  */
 @import "../scss/pagination.scss";
+@import "../scss/post-list-vars";
 
 .wp-block-post-designer-list {
 	.pd-card-row {
@@ -54,24 +55,72 @@
 			gap: 10px;
 		}
 		.pd-card {
-			border: 1px solid #e3e3e3;
-			border-radius: 10px;
+			border: var(--pd-list-card-border) solid #e3e3e3;
+			border-radius: var(--pd-list-card-border-radius);
+			background-color: var(--pd-list-card-background-color) !important;
 			& img {
 				border-top-left-radius: 10px;
 				border-top-right-radius: 10px;
 			}
 			.pd-card-body {
+				.pd-post-title {
+					margin: 20px 0px !important;
+					a {
+						color: var(--pd-list-title-color) !important;
+						padding: var(--pd-list-title-padding) !important;
+						font-size: var(--pd-list-title-font-size) !important;
+					}
+				}
 				padding: 10px;
 				.pd-post-categories {
 					display: flex;
 					column-gap: 10px;
 				}
-				.pd-post-meta, .pd-post-categories, .pd-post-categories a {
+				.pd-post-meta,
+				.pd-post-categories,
+				.pd-post-categories a {
 					font-style: italic;
 					font-size: 13px;
 				}
 				.pd-post-categories a:not(last-child) {
 					padding-right: 5px;
+				}
+				.pd-post-meta {
+					.pd-post-meta-key {
+						color: var(--pd-list-meta-key-color) !important;
+						font-size: var(--pd-list-meta-key-font-size) !important;
+					}
+					.pd-post-meta-value {
+						color: var(--pd-list-meta-value-color) !important;
+						font-size: var(--pd-list-meta-value-font-size) !important;
+					}
+				}
+				.pd-post-categories {
+					.pd-post-category-key {
+						color: var(--pd-list-category-label-color) !important;
+						font-size: var(--pd-list-category-label-font-size) !important;
+					}
+					.pd-post-category-value {
+						a {
+							color: var(--pd-list-category-value-color) !important;
+							font-size: var(--pd-list-category-value-font-size) !important;
+						}
+					}
+					div {
+						display: flex;
+						flex-wrap: wrap;
+					}
+				}
+				.pd-post-content {
+					margin: 20px 0px !important;
+					p {
+						color: var(--pd-list-excerpt-color) !important;
+						font-size: var(--pd-list-excerpt-font-size) !important;
+						a {
+							color: var(--pd-list-read-more-color) !important;
+							font-size: var(--pd-list-read-more-font-size) !important;
+						}
+					}
 				}
 			}
 			.pd-card-footer {
@@ -82,15 +131,18 @@
 				column-gap: 20px;
 			}
 			.pd-post-author img {
-				max-width: 50px;
-				max-height: 50px;
-				border: 1px solid #e3e3e3;
-				border-radius: 100%;
+				max-width: var(--pd-list-avatar-size) !important;
+				max-height: var(--pd-list-avatar-size) !important;
+				border-top: var(--pd-list-avatar-border-top) !important;
+				border-left: var(--pd-list-avatar-border-left) !important;
+				border-right: var(--pd-list-avatar-border-right) !important;
+				border-bottom: var(--pd-list-avatar-border-bottom) !important;
+				border-radius: var(--pd-list-avatar-border-radius) !important;
 			}
-			.pd-post-categories {
-				div {
-					display: flex;
-					flex-wrap: wrap;
+			.pd-post-author-info {
+				strong {
+					color: var(--pd-list-author-name-color) !important;
+					font-size: var(--pd-list-author-name-font-size) !important;
 				}
 			}
 		}
@@ -102,7 +154,7 @@
 			}
 		}
 		.pd-ratio {
-			content: ' ';
+			content: " ";
 			position: relative;
 			width: 100%;
 			display: block;
@@ -119,7 +171,6 @@
 	.Select.is-open {
 		z-index: 1000 !important;
 	}
-
 }
 
 .pd-gb-label {
