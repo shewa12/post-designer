@@ -5,8 +5,7 @@
 	"version": "0.1.0",
 	"title": "Post Lists",
 	"category": "post-designer",
-	"icon": "smiley",
-	"description": "Design any kind of Posts",
+	"description": "Transform your WordPress posts into stunning showcases with  Post List block!",
 	"supports": {
 		"html": false
 	},

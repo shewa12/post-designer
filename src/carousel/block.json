@@ -3,10 +3,9 @@
 	"apiVersion": 2,
 	"name": "post-designer/carousel",
 	"version": "0.1.0",
-	"title": "Carousel",
+	"title": "Post Carousel",
 	"category": "post-designer",
-	"icon": "smiley",
-	"description": "Make a carousel by using Posts",
+	"description": "Transform your WordPress posts into stunning showcases with  Post Carousel block!",
 	"supports": {
 		"html": false
 	},
