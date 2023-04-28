@@ -6,6 +6,8 @@
  * @package PostDesigner\Templates
  */
 
+use PostDesigner\Posts\Posts;
+
 $meta_data         = PostDesigner::plugin_data();
 $default_thumbnail = $meta_data['assets'] . 'images/thumbnail.svg';
 $author_avatar_url = get_avatar_url(
@@ -59,7 +61,29 @@ $author_avatar_url = get_avatar_url(
 					<?php esc_html_e( 'In:', 'post-designer' ); ?>
 				</span>
 				<div class="pd-post-category-value">
-					<?php the_category( ',' ); ?>
+					<?php
+						if ( 'post' === get_post_type() ) {
+							the_category( ',' );
+						} else {
+							$args = array(
+								'object_type' => array( get_post_type() ),
+								'public'      => true,
+								'show_ui'     => true,
+							);
+
+							$categories = Posts::get_custom_post_categories( $args );
+							echo wp_kses(
+								$categories,
+								array(
+									'a' => array(
+										'href'  => true,
+										'class' => true,
+										'id'    => true,
+									),
+								)
+							);
+						}
+					?>
 				</div>
 			</div>
 		<?php endif; ?>

@@ -47,6 +47,7 @@ export default function Edit({attributes, setAttributes}) {
 	// Attributes from hook
 	const { 
 		posts,
+		postTypes,
 		updatePostType,
 		termsTemplate,
 		authorsTemplate,
@@ -82,7 +83,6 @@ export default function Edit({attributes, setAttributes}) {
 		postAuthors,
 		dateFrom, 
 		dateTo,
-		postTypes,
 		loading,
 		layout,
 		} = attributes;
@@ -211,25 +211,27 @@ export default function Edit({attributes, setAttributes}) {
 
 	return (
 		loading ?
-		
 		<PostPlaceholder /> :
 		<div {...blockProps}>
 			<InspectorControls key={"settings"}>
 				<Panel>
 					<PanelBody title={__('General', 'post-designer')} initialOpen={ true }>
-					<SelectControl
-						label={ __('Post Type', 'post-designer') }
-						value={ postType }
-						options={ postTypes }
-						onChange={ updatePostType }
-					/>
-					<Divider></Divider>
-					<SelectControl
-						label={ __('Layouts', 'post-designer') }
-						value={ layout }
-						options={ layouts }
-						onChange={ updateLayout }
-					/>
+						<SelectControl
+							label={ __('Post Type', 'post-designer') }
+							value={ postType }
+							options={ postTypes }
+							onChange={ updatePostType }
+						/>
+
+						<Divider></Divider>
+
+						<SelectControl
+							label={ __('Layouts', 'post-designer') }
+							value={ layout }
+							options={ layouts }
+							onChange={ updateLayout }
+						/>
+
 					</PanelBody>
 				</Panel>
 

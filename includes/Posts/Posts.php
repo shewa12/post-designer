@@ -101,9 +101,24 @@ class Posts {
 					'post_date'    => get_the_date( get_option( 'date_format' ) ),
 					'thumbnail'    => false === get_the_post_thumbnail_url() ? $thumbnail_placeholder : get_the_post_thumbnail_url(),
 					'author'       => $author,
-					'categories'   => get_the_category_list( ',' ),
-					'tags'         => get_the_tag_list( '<span class="pd-post-tag">', ',', '<span>' ),
+
 				);
+
+				// If WP post.
+				if ( 'post' === get_post_type() ) {
+					$post['categories'] = get_the_category_list( ',' );
+					$post['tags'] = get_the_tag_list( '<span class="pd-post-tag">', ',', '<span>' );
+				} else {
+					$args = array(
+						'object_type' => array( $query_params['post-type'] ),
+						'public'      => true,
+						'show_ui'     => true,
+					);
+
+					$post['categories'] = self::get_custom_post_categories( $args, ',' );
+					
+				}
+
 				array_push( $posts, $post );
 			}
 
@@ -264,6 +279,47 @@ class Posts {
 			return is_array( $users ) ? $users : array();
 		} else {
 			return rest_ensure_response( $validate->errors );
+		}
+	}
+
+	/**
+	 * Get categories for custom post type
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array  $args arguments to retrieve taxonomies.
+	 * @param string $separator separator between cats.
+	 *
+	 * @return string|void
+	 */
+	public static function get_custom_post_categories( array $args, $separator = ',' ) {
+		$taxonomies = get_taxonomies( $args, 'object' );
+		foreach ( $taxonomies as $taxonomy ) {
+			$tax_name = $taxonomy->name;
+			if ( strpos( $tax_name, 'cat' ) ) {
+				$post_id = get_the_ID();
+				$categories = get_terms(
+					array(
+						'taxonomy'   => 'course-category',
+						'object_ids' => $post_id,
+					)
+				);
+
+				$cat_html = '';
+				$last_cat = end( $categories );
+				if ( is_array( $categories ) && count( $categories ) ) {
+					foreach ( $categories as $category ) {
+						$name = $category->name;
+						
+						if ( $last_cat !== $category ) {
+							$name .= "{$separator}" . ' ';
+						}
+
+						$cat_html .= '<a href="' . get_term_link( $category->term_id ) . '">' . $name . '</a>';
+					}
+				}
+				return $cat_html;
+			}
 		}
 	}
 

@@ -43,7 +43,8 @@ export default function Edit({attributes, setAttributes}) {
 	const blockProps = { ...useBlockProps() };
 
 	// Attributes from hook
-	const { 
+	const {
+		postTypes,
 		posts,
 		maxNumPages,
 		currentPage,
@@ -75,7 +76,6 @@ export default function Edit({attributes, setAttributes}) {
 		postAuthors,
 		dateFrom, 
 		dateTo,
-		postTypes,
 		loading,
 		layout,
 		columnPerRow } = attributes;

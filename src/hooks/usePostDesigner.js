@@ -249,6 +249,7 @@ function usePostDesigner(attributes, setAttributes) {
 
 	return {
 		posts,
+		postTypes,
 		maxNumPages,
 		currentPage,
 		setCurrentPage,
