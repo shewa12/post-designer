@@ -9,6 +9,7 @@
 	"supports": {
 		"html": false
 	},
+	"example": {},
 	"textdomain": "post-designer",
 	"attributes": {
 		"postType": {
