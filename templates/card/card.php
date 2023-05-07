@@ -17,6 +17,23 @@ $author_avatar_url = get_avatar_url(
 		'default' => 'mysteryman',
 	)
 );
+
+// Get custom categories.
+$custom_categories = '';
+$post_type         = get_post_type();
+
+if ( 'post' !== $post_type ) {
+	$args = array(
+		'object_type' => array( get_post_type() ),
+		'public'      => true,
+		'show_ui'     => true,
+	);
+	
+	$custom_categories = Posts::get_custom_post_categories( $args );
+}
+
+$has_category = 'post' === $post_type ? has_category() : '' !== $custom_categories;
+
 ?>
 <div class="pd-card">
 
@@ -55,7 +72,7 @@ $author_avatar_url = get_avatar_url(
 			</div>
 		<?php endif; ?>
 
-		<?php if ( $attrs['showCategory'] ) : ?>
+		<?php if ( $attrs['showCategory'] && $has_category ) : ?>
 			<div class="pd-post-categories">
 				<span class="pd-post-category-key">
 					<?php esc_html_e( 'In:', 'post-designer' ); ?>
@@ -65,15 +82,8 @@ $author_avatar_url = get_avatar_url(
 						if ( 'post' === get_post_type() ) {
 							the_category( ',' );
 						} else {
-							$args = array(
-								'object_type' => array( get_post_type() ),
-								'public'      => true,
-								'show_ui'     => true,
-							);
-
-							$categories = Posts::get_custom_post_categories( $args );
 							echo wp_kses(
-								$categories,
+								$custom_categories,
 								array(
 									'a' => array(
 										'href'  => true,

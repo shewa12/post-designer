@@ -37,6 +37,7 @@ import usePostDesigner from '../hooks/usePostDesigner';
 import Slider from "react-slick";
 import "./edit.scss";
 import { useEffect } from 'react';
+import NotFound from '../components/NotFound';
 
 export default function Edit({attributes, setAttributes}) {
 	const r = document.querySelector(':root');
@@ -104,7 +105,7 @@ export default function Edit({attributes, setAttributes}) {
 	const renderPostList = () => {
 		return posts.map((post) => {
 			return <PostCard post={post} attributes={attributes}/>
-		})
+		});
 	};
 
 	const prepareAvatarBorder = (border) => {
@@ -866,9 +867,14 @@ export default function Edit({attributes, setAttributes}) {
 
 			</InspectorControls>
 			<div className={`pd-card-row`}>
-				<Slider {...sliderSettings}>
-					{ renderPostList() }
-				</Slider>
+				{
+					posts.length ?
+					<Slider {...sliderSettings}>
+						{ renderPostList() }
+					</Slider>
+					:
+					<NotFound text={ __('No posts found', 'post-designer') }></NotFound>
+				}
 			</div>
 
 		</div>

@@ -34,6 +34,7 @@ import defaultOrders, { showColumnPerRow, defaultOrderBy, layouts }  from '../ut
 // Custom hooks
 import usePostDesigner from '../hooks/usePostDesigner';
 import Pagination from '../components/Pagination';
+import NotFound from '../components/NotFound';
 
 export default function Edit({attributes, setAttributes}) {
 
@@ -82,9 +83,13 @@ export default function Edit({attributes, setAttributes}) {
 	
 		
 	const renderPostList = () => {
-		return posts.map((post) => {
-			return <PostCard post={post} attributes={attributes}/>
-		})
+		if (posts.length) {
+			return posts.map((post) => {
+				return <PostCard post={post} attributes={attributes}/>
+			})
+		} else {
+			return <NotFound text={ __( 'No posts found', 'post-designer') }></NotFound>
+		}
 	};
 
 	const prepareAvatarBorder = (border) => {
@@ -723,7 +728,7 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 			</InspectorControls>
-			<div className={`pd-card-row pd-${columnPerRow}-col`}>
+			<div className={`pd-card-row ${ posts.length ? `pd-${columnPerRow}-col` : '' }`}>
 				{ renderPostList() }
 			</div>
 

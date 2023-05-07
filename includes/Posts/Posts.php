@@ -300,7 +300,7 @@ class Posts {
 				$post_id = get_the_ID();
 				$categories = get_terms(
 					array(
-						'taxonomy'   => 'course-category',
+						'taxonomy'   => $tax_name,
 						'object_ids' => $post_id,
 					)
 				);
