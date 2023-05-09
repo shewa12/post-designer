@@ -90,6 +90,12 @@ const PostCard = ( {post, attributes} ) => {
 			: ''
 			}
 
+			{
+				post.after_footer ?
+				<div dangerouslySetInnerHTML={ {__html: post.after_footer} }></div>
+				: ''
+			}
+
 	    </div>
     );
 }

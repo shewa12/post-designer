@@ -28,7 +28,7 @@ if ( 'post' !== $post_type ) {
 		'public'      => true,
 		'show_ui'     => true,
 	);
-	
+
 	$custom_categories = Posts::get_custom_post_categories( $args );
 }
 
@@ -79,20 +79,20 @@ $has_category = 'post' === $post_type ? has_category() : '' !== $custom_categori
 				</span>
 				<div class="pd-post-category-value">
 					<?php
-						if ( 'post' === get_post_type() ) {
-							the_category( ',' );
-						} else {
-							echo wp_kses(
-								$custom_categories,
-								array(
-									'a' => array(
-										'href'  => true,
-										'class' => true,
-										'id'    => true,
-									),
-								)
-							);
-						}
+					if ( 'post' === get_post_type() ) {
+						the_category( ',' );
+					} else {
+						echo wp_kses(
+							$custom_categories,
+							array(
+								'a' => array(
+									'href'  => true,
+									'class' => true,
+									'id'    => true,
+								),
+							)
+						);
+					}
 					?>
 				</div>
 			</div>
@@ -130,7 +130,7 @@ $has_category = 'post' === $post_type ? has_category() : '' !== $custom_categori
 
 	<?php
 		// Extends post designer.
-	    $after_footer_content = apply_filters( 'pd_post_after_footer', '', get_the_ID() );
-		echo $after_footer_content;
+		$after_footer_content = apply_filters( 'pd_post_after_footer', '', get_the_ID() );
+		echo $after_footer_content; // phpcs:ignore --contains WC price & cart button
 	?>
 </div>

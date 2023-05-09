@@ -103,6 +103,7 @@ export default function Edit({attributes, setAttributes}) {
 	};
 
 	const renderPostList = () => {
+		console.log(posts);
 		return posts.map((post) => {
 			return <PostCard post={post} attributes={attributes}/>
 		});

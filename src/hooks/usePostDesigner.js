@@ -5,7 +5,7 @@ import Select from "react-select";
 import { __ } from "@wordpress/i18n";
 
 function usePostDesigner(attributes, setAttributes) {
-	console.log(attributes);
+
 	// Attributes
 	const {
 		postType,

@@ -293,7 +293,7 @@ export default function Edit({attributes, setAttributes}) {
 							<ColorPalette
 							value={ attributes.cardBackgroundColor }
 							onChange={ ( color ) => {
-								console.log(`color: ${color}`);
+								
 								setAttributes({cardBackgroundColor: color})
 								r.style.setProperty('--pd-list-card-background-color', color);
 							} }
