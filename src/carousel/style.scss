@@ -173,6 +173,26 @@
 	.Select.is-open {
 		z-index: 1000 !important;
 	}
+
+	.pd-wc-product-info {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10px;
+		border-top: 1px solid #e3e3e3;
+		form, .woocommerce-variation-add-to-cart {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 10px;
+		}
+		input {
+			max-width: 50px !important;
+		}
+		table {
+			display: none;
+		}
+	}
 }
 
 .pd-gb-label {

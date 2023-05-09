@@ -13,6 +13,7 @@
  * @package           post-designer
  */
 
+use PostDesigner\Addons\InitAddons;
 use PostDesigner\API\Routes;
 use PostDesigner\Blocks\Blocks;
 use PostDesigner\Enqueue\Enqueue;
@@ -138,6 +139,7 @@ if ( ! class_exists( 'PostDesigner' ) ) {
 			new Routes();
 			new Utilities();
 			new Enqueue();
+			new InitAddons();
 		}
 	}
 	// trigger.

@@ -119,6 +119,19 @@ class Posts {
 					
 				}
 
+				/**
+				 * Add additional HTML content after wrapper
+				 *
+				 * Content could be anything, it is for extending list or
+				 * carousel card.
+				 *
+				 * For ex: if post is WC product then we can show product price
+				 * & add to cart button using below filter hook
+				 *
+				 * @since 1.0.0
+				 */
+				$post['after_footer'] = apply_filters( 'pd_post_after_footer', '', get_the_ID() );
+
 				array_push( $posts, $post );
 			}
 

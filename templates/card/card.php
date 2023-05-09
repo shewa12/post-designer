@@ -127,4 +127,10 @@ $has_category = 'post' === $post_type ? has_category() : '' !== $custom_categori
 		</div>
 	</div>
 	<?php endif; ?>
+
+	<?php
+		// Extends post designer.
+	    $after_footer_content = apply_filters( 'pd_post_after_footer', '', get_the_ID() );
+		echo $after_footer_content;
+	?>
 </div>
