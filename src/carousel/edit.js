@@ -57,7 +57,8 @@ export default function Edit({attributes, setAttributes}) {
 		updateOrdersBy,
 		updateTaxonomy,
 		updateLayout,
-		updateReadMoreText
+		updateReadMoreText,
+		loading,
 	} = usePostDesigner(attributes, setAttributes);
 
 	// Attributes
@@ -84,7 +85,6 @@ export default function Edit({attributes, setAttributes}) {
 		postAuthors,
 		dateFrom, 
 		dateTo,
-		loading,
 		layout,
 		} = attributes;
 	

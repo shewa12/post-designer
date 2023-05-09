@@ -45,6 +45,7 @@ export default function Edit({attributes, setAttributes}) {
 
 	// Attributes from hook
 	const {
+		
 		postTypes,
 		posts,
 		maxNumPages,
@@ -60,7 +61,8 @@ export default function Edit({attributes, setAttributes}) {
 		updateTaxonomy,
 		updateLayout,
 		updateColumnPerRow,
-		updateReadMoreText
+		updateReadMoreText,
+		loading,
 	} = usePostDesigner(attributes, setAttributes);
 
 	// Attributes
@@ -77,7 +79,6 @@ export default function Edit({attributes, setAttributes}) {
 		postAuthors,
 		dateFrom, 
 		dateTo,
-		loading,
 		layout,
 		columnPerRow } = attributes;
 	
@@ -195,7 +196,8 @@ export default function Edit({attributes, setAttributes}) {
 	return (
 		loading ?
 		
-		<PostPlaceholder /> :
+		<PostPlaceholder /> 
+		:
 		<div {...blockProps}>
 			<InspectorControls key={"settings"}>
 				<Panel>

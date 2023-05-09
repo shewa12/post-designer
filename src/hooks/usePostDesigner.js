@@ -248,6 +248,7 @@ function usePostDesigner(attributes, setAttributes) {
 	}, [authors, selectedTerms, taxonomy, order, orderBy, noPagination, postPerPage, currentPage, excerptLength, readMoreText]);
 
 	return {
+		loading,
 		posts,
 		postTypes,
 		maxNumPages,

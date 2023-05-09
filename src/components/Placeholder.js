@@ -3,7 +3,7 @@ import { Placeholder, Spinner } from '@wordpress/components';
 
 const PostPlaceholder = () => {
     return(
-        <Placeholder label={ __( 'Please wait...', 'post-designer' ) }>
+        <Placeholder>
             <Spinner />
         </Placeholder>
     )
