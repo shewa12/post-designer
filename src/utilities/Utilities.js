@@ -17,8 +17,8 @@ const defaultOrderBy =  [
 // Default layouts & columns
 const layouts = [
     { label: __('Card', 'post-designer'), value: 'card' }, 
-    { label: __('Overlay', 'post-designer'), value: 'overlay' },
-    { label: __('Masonry', 'post-designer'), value: 'masonry' },
+    // { label: __('Overlay', 'post-designer'), value: 'overlay' },
+    // { label: __('Masonry', 'post-designer'), value: 'masonry' },
 ];
 const rows = [1,2,3,4,5,6,7,8,9,10];
 

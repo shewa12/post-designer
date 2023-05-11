@@ -94,7 +94,7 @@
 		},
 		"focusOnSelect": {
 			"type": "boolean",
-			"default": true
+			"default": false
 		},
 		"initialSlide": {
 			"type": "string",

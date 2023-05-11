@@ -119,6 +119,9 @@ $has_category = 'post' === $post_type ? has_category() : '' !== $custom_categori
 
 			<?php if ( $attrs['showAuthor'] ) : ?>
 				<div class="pd-post-author-info">
+					<span>
+						<?php esc_html_e( 'By ', 'post-designer' ); ?>
+					</span>
 					<strong>
 						<?php the_author(); ?>
 					</strong>

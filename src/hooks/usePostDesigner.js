@@ -225,6 +225,11 @@ function usePostDesigner(attributes, setAttributes) {
 		
 	}
 
+	// Get posts whenever these args get update.
+	useEffect(() => {
+		getPosts();
+	}, [authors, selectedTerms, taxonomy, order, orderBy, noPagination, postPerPage, currentPage, excerptLength, readMoreText]);
+
 	// Get terms.
 	useEffect(() => {
 		getTerms();
@@ -232,6 +237,7 @@ function usePostDesigner(attributes, setAttributes) {
 
 	// Get post types.
 	useEffect(() => {
+		console.log(`get post types`);
 		getPostTypes();
 	}, []);
 
@@ -241,11 +247,6 @@ function usePostDesigner(attributes, setAttributes) {
 		getPostAuthors();
 		getTaxonomies();
 	}, [postType]);
-
-	// Get posts whenever these args get update.
-	useEffect(() => {
-		getPosts();
-	}, [authors, selectedTerms, taxonomy, order, orderBy, noPagination, postPerPage, currentPage, excerptLength, readMoreText]);
 
 	return {
 		loading,

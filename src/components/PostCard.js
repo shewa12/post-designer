@@ -22,8 +22,7 @@ const PostCard = ( {post, attributes} ) => {
 				{
 					attributes.showTitle ?
 					<h3 className="pd-post-title" title={ post.post_title }>
-						<a href="#" target="_parent" style={ {color: attributes.titleColor} }>
-							{ post.post_title }
+						<a href="#" target="_parent" style={ {color: attributes.titleColor} } dangerouslySetInnerHTML={ {__html: post.post_title} }>
 						</a>
 	            	</h3>
 				: ''
@@ -76,6 +75,7 @@ const PostCard = ( {post, attributes} ) => {
 						{
 							attributes.showAuthor ?
 							<div className="pd-post-author-info">
+								<span>{ __( 'By ', 'post-designer' ) }</span>
 								<strong>
 									{ display_name ? display_name : user_login }
 								</strong>
