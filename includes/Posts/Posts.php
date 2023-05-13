@@ -107,7 +107,7 @@ class Posts {
 				// If WP post.
 				if ( 'post' === get_post_type() ) {
 					$post['categories'] = get_the_category_list( ',' );
-					$post['tags'] = get_the_tag_list( '<span class="pd-post-tag">', ',', '<span>' );
+					$post['tags']       = get_the_tag_list( '<span class="pd-post-tag">', ',', '<span>' );
 				} else {
 					$args = array(
 						'object_type' => array( $query_params['post-type'] ),
@@ -116,7 +116,7 @@ class Posts {
 					);
 
 					$post['categories'] = self::get_custom_post_categories( $args, ',' );
-					
+
 				}
 
 				/**
@@ -136,7 +136,7 @@ class Posts {
 			}
 
 			$posts[] = array(
-				'found_posts' => $the_query->found_posts,
+				'found_posts'   => $the_query->found_posts,
 				'max_num_pages' => $the_query->max_num_pages,
 			);
 			wp_reset_postdata();
@@ -310,7 +310,7 @@ class Posts {
 		foreach ( $taxonomies as $taxonomy ) {
 			$tax_name = $taxonomy->name;
 			if ( strpos( $tax_name, 'cat' ) ) {
-				$post_id = get_the_ID();
+				$post_id    = get_the_ID();
 				$categories = get_terms(
 					array(
 						'taxonomy'   => $tax_name,
@@ -323,7 +323,7 @@ class Posts {
 				if ( is_array( $categories ) && count( $categories ) ) {
 					foreach ( $categories as $category ) {
 						$name = $category->name;
-						
+
 						if ( $last_cat !== $category ) {
 							$name .= "{$separator}" . ' ';
 						}

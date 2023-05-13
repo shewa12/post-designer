@@ -16,15 +16,15 @@ $args      = Utilities::prepare_args( $attrs );
 $the_query = new WP_Query( $args );
 
 if ( $the_query->have_posts() ) :
-?>
+	?>
 
 <div class="wp-block-post-designer-list">
 
 	<div class='pd-card-row pd-<?php echo esc_attr( $attrs['columnPerRow'] ); ?>-col'>
 		<?php
-			while ( $the_query->have_posts() ) :
+		while ( $the_query->have_posts() ) :
 			$the_query->the_post();
-		?>
+			?>
 
 			<?php require trailingslashit( __DIR__ ) . 'card/card.php'; ?>
 
@@ -33,18 +33,18 @@ if ( $the_query->have_posts() ) :
 
 	<!-- pagination -->
 	<?php
-		$big = PHP_INT_MAX;
+		$big             = PHP_INT_MAX;
 		$pagination_args = array(
-			'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-			'format'    => '?paged=%#%',
-			'current'   => max( 1, get_query_var( 'paged' ) ),
-			'total'     => $the_query->max_num_pages
+			'base'    => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+			'format'  => '?paged=%#%',
+			'current' => max( 1, get_query_var( 'paged' ) ),
+			'total'   => $the_query->max_num_pages,
 		);
 
 		$wp_query->max_num_pages = $the_query->max_num_pages;
-	?>
+		?>
 	<div class="pd-pagination">
-		<?php echo paginate_links( $args ); ?>
+		<?php echo wp_kses_post( paginate_links( $args ) ); ?>
 	</div>
 	<!-- pagination end -->
 	
@@ -54,7 +54,7 @@ if ( $the_query->have_posts() ) :
 	<p>
 		<?php esc_html_e( 'No posts found', 'post-designer' ); ?>
 	</p>
-<?php
+	<?php
 endif;
 wp_reset_postdata();
 
