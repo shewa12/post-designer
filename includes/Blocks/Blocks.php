@@ -85,7 +85,7 @@ class Blocks {
 	 * @return string
 	 */
 	public static function render_list( $attrs ) {
-		self::excerpt_filter();
+		self::excerpt_filter( $attrs['excerptLength'], $attrs['readMoreText'] );
 
 		$post_list_template = trailingslashit( self::$plugin_data['templates'] ) . 'post-list.php';
 		ob_start();

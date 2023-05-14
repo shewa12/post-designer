@@ -127,7 +127,7 @@ if ( ! class_exists( 'PostDesigner' ) ) {
 		 * @return void
 		 */
 		public static function load_textdomain() {
-			load_plugin_textdomain( 'post-designer', false, dirname( plugin_basename( __FILE__ ) ) . '/assets/languages' );
+			load_plugin_textdomain( 'post-designer', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 		}
 
 		/**
