@@ -237,7 +237,6 @@ function usePostDesigner(attributes, setAttributes) {
 
 	// Get post types.
 	useEffect(() => {
-		console.log(`get post types`);
 		getPostTypes();
 	}, []);
 

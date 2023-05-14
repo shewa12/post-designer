@@ -2,7 +2,9 @@
     display: flex;
     justify-content: center;
     margin: 50px 0;
-  
+    a {
+      text-decoration: none !important;
+    }
     a, span {
       padding: 5px 10px;
       border: none;

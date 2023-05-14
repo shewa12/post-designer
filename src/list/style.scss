@@ -8,7 +8,7 @@
 	.pd-card-row {
 		display: grid;
 		a {
-			text-decoration: none;
+			text-decoration: none !important;
 		}
 		&.pd-1-col {
 			grid-template-columns: repeat(1, 1fr);

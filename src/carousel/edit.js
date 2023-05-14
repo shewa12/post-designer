@@ -103,7 +103,6 @@ export default function Edit({attributes, setAttributes}) {
 	};
 
 	const renderPostList = () => {
-		console.log(posts);
 		return posts.map((post) => {
 			return <PostCard post={post} attributes={attributes}/>
 		});
@@ -432,7 +431,6 @@ export default function Edit({attributes, setAttributes}) {
 							<ColorPalette
 							value={ attributes.cardBackgroundColor }
 							onChange={ ( color ) => {
-								console.log(`color: ${color}`);
 								setAttributes({cardBackgroundColor: color})
 								r.style.setProperty('--pd-carousel-card-background-color', color);
 							} }
