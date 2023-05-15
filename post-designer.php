@@ -9,7 +9,6 @@
  * Author URI:        https://shewazone.com
  * Text Domain:       post-designer
  * Domain Path:       /languages
- * Version:           1.0.0
  *
  * @package           post-designer
  */
