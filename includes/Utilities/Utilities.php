@@ -45,9 +45,12 @@ class Utilities {
 			$term_ids = array_column( $attrs['selectedTerms'], 'term_id' );
 
 			$args['tax_query'] = array(
-				'taxonomy' => sanitize_text_field( $attrs['taxonomy'] ),
-				'field'    => 'term_id',
-				'terms'    => $term_ids,
+				'relation' => 'AND',
+				array(
+					'taxonomy' => sanitize_text_field( $attrs['taxonomy'] ),
+					'field'    => 'term_id',
+					'terms'    => $term_ids,
+				)
 			);
 		}
 		return $args;

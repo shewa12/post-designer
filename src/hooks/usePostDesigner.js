@@ -100,6 +100,8 @@ function usePostDesigner(attributes, setAttributes) {
 
 			// Set posts
 			setPosts(data);
+			getPostAuthors();
+
 		} else {
 			alert(response.statusText);
 		}
@@ -107,7 +109,7 @@ function usePostDesigner(attributes, setAttributes) {
 	};
 
 	// Get taxonomies
-	const getTaxonomies = async () => {
+	const getTaxonomies = async (postType) => {
 		setLoading(true);
 		const response = await postDesigner.get(EndPoints.getPostTaxonomies, {
 			params: {
@@ -183,6 +185,8 @@ function usePostDesigner(attributes, setAttributes) {
 	// Manage attributes
 	const updatePostType = (value) => {
 		setAttributes({ postType: value });
+		getPostAuthors();
+		getTaxonomies(value);
 	};
 
 	const updatePostPerPage = (value) => {
@@ -235,6 +239,7 @@ function usePostDesigner(attributes, setAttributes) {
 		getTerms();
 	}, [taxonomy]);
 
+
 	// Get post types.
 	useEffect(() => {
 		getPostTypes();
@@ -243,8 +248,8 @@ function usePostDesigner(attributes, setAttributes) {
 	// Get posts, authors & taxonomies whenever post type get update.
 	useEffect(() => {
 		getPosts();
-		getPostAuthors();
-		getTaxonomies();
+		//getPostAuthors();
+		//getTaxonomies();
 	}, [postType]);
 
 	return {

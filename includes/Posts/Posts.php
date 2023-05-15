@@ -50,6 +50,7 @@ class Posts {
 		// Set taxonomy & terms args.
 		if ( ! empty( $query_params['terms'] ) ) {
 			$args['tax_query'] = array(
+				'relation' => 'AND',
 				array(
 					'taxonomy' => sanitize_text_field( $query_params['taxonomy'] ),
 					'field'    => 'term_id',
