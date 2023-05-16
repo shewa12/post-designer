@@ -13,6 +13,14 @@ Post Designer is a WordPress plugin that adds two new Gutenberg blocks: Post Lis
 - Tested up to: 6.2
 - Requires PHP: 7.0
 
+## Installation
+
+- Clone repository with `git clone`
+- Head to the root directory
+- run `npm i`
+- run `npm run plugin-build`
+
+You are all good to go
 
 ## What can be designed using this plugin?
 
@@ -110,4 +118,4 @@ Post Designer is a WordPress plugin that adds two new Gutenberg blocks: Post Lis
 
 ## Screenshots
 
-![Alt Text](https://plus.unsplash.com/premium_photo-1680127402006-3a21c93da392?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80)
+![Alt Text](https://drive.google.com/file/d/14FZd_m7L8WVyyKKhpA17V_PAxR7tkgGl/view?usp=sharing)
