@@ -1,4 +1,4 @@
-=== Post Designer - Gutenberg post list & carousel blocks ===
+=== Post Designer - Unleash Your Creativity with Post Designer Blocks ===
 Contributors: shewa12
 Donate link: https://www.buymeacoffee.com/shewa
 Tags: WordPress design plugin, Gutenberg blocks, Post Lists, Post Carousels, Post customization, Content carousel, Creative post layouts, Custom post lists, Visual WordPress editor, Enhanced post display, Easy post design, Dynamic blocks

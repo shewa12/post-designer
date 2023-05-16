@@ -1,25 +1,25 @@
 # Copyright (C) 2023 Shewa
-# This file is distributed under the same license as the Post Designer - Gutenberg post list & carousel blocks plugin.
+# This file is distributed under the same license as the Post Designer - Unleash Your Creativity with Post Designer Blocks plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Post Designer - Gutenberg post list & carousel blocks 1.0.0\n"
+"Project-Id-Version: Post Designer - Unleash Your Creativity with Post Designer Blocks 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/post-designer\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-05-15T17:57:01+00:00\n"
+"POT-Creation-Date: 2023-05-16T15:48:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: post-designer\n"
 
 #. Plugin Name of the plugin
-msgid "Post Designer - Gutenberg post list & carousel blocks"
+msgid "Post Designer - Unleash Your Creativity with Post Designer Blocks"
 msgstr ""
 
 #. Description of the plugin
-msgid "Post Designer is a WordPress plugin that adds two new Gutenberg blocks: Post List and Post Carousel. The Post List block allows you to display a list of posts, while the Post Carousel block allows you to display a carousel of posts.≈"
+msgid "Post Designer is a WordPress plugin that adds two new Gutenberg blocks: Post List and Post Carousel. The Post List block allows you to display a list of posts, while the Post Carousel block allows you to display a carousel of posts."
 msgstr ""
 
 #. Author of the plugin

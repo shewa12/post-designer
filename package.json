@@ -1,8 +1,8 @@
 {
 	"name": "post-designer",
 	"version": "1.0.0",
-	"description": "Example block scaffolded with Create Block tool.",
-	"author": "The WordPress Contributors",
+	"description": "Post Designer is a WordPress plugin that adds two new Gutenberg blocks: Post List and Post Carousel. The Post List block allows you to display a list of posts, while the Post Carousel block allows you to display a carousel of posts.",
+	"author": "shewa12",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
@@ -15,7 +15,7 @@
 		"start": "wp-scripts start",
 		"build:css": "sass src/list/style.scss build/list/style-index.css",
 		"make-pot": "wp i18n make-pot . languages/post-designer.pot --exclude=.git,node_modules,vendor,src,build --include=build/carousel/index.js,build/list/index.js",
-		"plugin-build": "npm run build && npm run make-pot && node create-zip.js"
+		"plugin-build": "composer install --no-dev && npm run build && npm run make-pot && node create-zip.js"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^24.0.0",
