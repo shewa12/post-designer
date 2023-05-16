@@ -119,6 +119,6 @@ You are all good to go
 ## Screenshots
 
 ![Post list editor view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-1.png)
-![Post list frontend view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-1.png)
-![Post carousel editor view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-1.png)
-![Post carousel frontend view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-1.png)
+![Post list frontend view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-2.png)
+![Post carousel editor view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-3.png)
+![Post carousel frontend view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-4.png)
