@@ -118,4 +118,7 @@ You are all good to go
 
 ## Screenshots
 
-![Alt Text](https://drive.google.com/file/d/14FZd_m7L8WVyyKKhpA17V_PAxR7tkgGl/view?usp=sharing)
+![Post list editor view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-1.png)
+![Post list frontend view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-1.png)
+![Post carousel editor view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-1.png)
+![Post carousel frontend view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-1.png)
