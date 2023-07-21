@@ -134,6 +134,52 @@ $has_category = 'post' === $post_type ? has_category() : '' !== $custom_categori
 	<?php
 		// Extends post designer.
 		$after_footer_content = apply_filters( 'pd_post_after_footer', '', get_the_ID() );
-		echo $after_footer_content; // phpcs:ignore --contains WC price & cart button
-	?>
+
+		$allowed_tags = array(
+			'div'    => array(
+				'class' => array(),
+			),
+			'del'    => array(
+				'aria-hidden' => array(),
+			),
+			'span'   => array(
+				'class'       => array(),
+				'aria-hidden' => array(),
+			),
+			'bdi'    => array(),
+			'ins'    => array(),
+			'form'   => array(
+				'class'   => array(),
+				'action'  => array(),
+				'method'  => array(),
+				'enctype' => array(),
+			),
+			'input'  => array(
+				'type'         => array(),
+				'id'           => array(),
+				'class'        => array(),
+				'name'         => array(),
+				'value'        => array(),
+				'title'        => array(),
+				'size'         => array(),
+				'min'          => array(),
+				'max'          => array(),
+				'step'         => array(),
+				'placeholder'  => array(),
+				'inputmode'    => array(),
+				'autocomplete' => array(),
+			),
+			'label'  => array(
+				'class' => array(),
+				'for'   => array(),
+			),
+			'button' => array(
+				'type'  => array(),
+				'name'  => array(),
+				'value' => array(),
+				'class' => array(),
+			),
+		);
+		echo wp_kses( $after_footer_content, $allowed_tags );
+		?>
 </div>
