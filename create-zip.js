@@ -20,7 +20,8 @@ const exclusionPatterns = [
   '.gitignore',
   '.editorconfig',
   'create-zip.js',
-  '*.zip'
+  '*.zip',
+  '*.+(png|jpg)'
 ];
 
 const files = glob.sync('**', {
