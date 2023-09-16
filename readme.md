@@ -4,14 +4,12 @@
 
 Post Designer is a WordPress plugin that adds two new Gutenberg blocks: Post List and Post Carousel. The Post List block allows you to display a list of posts, while the Post Carousel block allows you to display a carousel of posts.
 
-[Learn More](https://www.youtube.com/watch?v=SLEK4GdRXoM)
-
 
 ## System Requirements
 
 - Requires at least: 5.3
 - Tested up to: 6.2
-- Requires PHP: 7.0
+- Requires PHP: >= 7.0
 
 ## Installation
 
@@ -109,7 +107,7 @@ You are all good to go
 
 ### Is there a demo or documentation available for Post Designer?
 
-- Yes, 👉 [Learn More](https://www.wpxpo.com/postx/) 🔥
+- Yes, Yes, please see the screenshots
 
 ### How often is Post Designer updated?
 

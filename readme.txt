@@ -3,7 +3,7 @@ Contributors: shewa12
 Donate link: https://www.buymeacoffee.com/shewa
 Tags: WordPress design plugin, Gutenberg blocks, Post Lists, Post Carousels, Post customization, Content carousel, Creative post layouts, Custom post lists, Visual WordPress editor, Enhanced post display, Easy post design, Dynamic blocks
 Requires at least: 5.3
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 7.0
 Stable tag: 1.0.0
 License: GPLv3
@@ -12,8 +12,6 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 === Description ===
 
 Post Designer is a WordPress plugin that adds two new Gutenberg blocks: Post List and Post Carousel. The Post List block allows you to display a list of posts, while the Post Carousel block allows you to display a carousel of posts.
-
-[youtube https://www.youtube.com/watch?v=_GfXTvSdJTk]
 
 
 === What can be designed using this plugin? ===
@@ -87,7 +85,7 @@ Answer: Yes, it can be used on multiple sites free of cost.
 
 = Is there a demo or documentation available for Post Designer? =
 
-Answer: Yes, 👉 [Learn More](https://www.wpxpo.com/postx/) 🔥
+Answer: Yes, please see the screenshots
 
 = How often is Post Designer updated? =
 
