@@ -119,10 +119,10 @@ You are all good to go
 ## Screenshots
 
 #### Post list editor view
-![Post list editor view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-1.png)
+![Post list editor view](https://github.com/shewa12/post-designer/blob/e566d2e2aa9273f06b0c65f83d718063e864edef/screenshot-1.png)
 
 #### Post list frontend view
-![Post list frontend view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-2.png)
+![Post list frontend view](https://github.com/shewa12/post-designer/blob/e566d2e2aa9273f06b0c65f83d718063e864edef/screenshot-2.png)
 
 #### Post carousel editor view
 ![Post carousel editor view](https://github.com/shewa12/post-designer/blob/markdown-files/screenshot-3.png)
