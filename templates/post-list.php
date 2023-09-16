@@ -43,9 +43,11 @@ if ( $the_query->have_posts() ) :
 
 		$wp_query->max_num_pages = $the_query->max_num_pages;
 		?>
-	<div class="pd-pagination">
-		<?php echo wp_kses_post( paginate_links( $args ) ); ?>
-	</div>
+		<?php if ( $wp_query->max_num_pages > 1 ) : ?>
+			<div class="pd-pagination">
+				<?php echo wp_kses_post( paginate_links( $args ) ); ?>
+			</div>
+		<?php endif; ?>
 	<!-- pagination end -->
 	
 </div>
