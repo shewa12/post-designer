@@ -15,7 +15,7 @@
 		"start": "wp-scripts start",
 		"build:css": "sass src/list/style.scss build/list/style-index.css",
 		"make-pot": "wp i18n make-pot . languages/post-designer.pot --exclude=.git,node_modules,vendor,src,build --include=build/carousel/index.js,build/list/index.js",
-		"plugin-build": "composer install --no-dev && npm run build && npm run make-pot && node create-zip.js"
+		"plugin-build": "rm -rf builds && rm -rf *.zip && composer install --no-dev && npm run build && npm run make-pot && node create-zip.js"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^24.0.0",

@@ -4,7 +4,7 @@ const glob = require('glob');
 const path = require('path');
 const packageJson = require('./package.json');
 const sourceDir = './';
-const outputFilePath = `./post-designer.zip`;
+const outputFilePath = `./post-designer-${packageJson.version}.zip`;
 
 const exclusionPatterns = [
   'node_modules/**',
@@ -19,7 +19,8 @@ const exclusionPatterns = [
   '.git',
   '.gitignore',
   '.editorconfig',
-  'create-zip.js'
+  'create-zip.js',
+  '*.zip'
 ];
 
 const files = glob.sync('**', {
@@ -35,7 +36,8 @@ archive.pipe(output);
 
 for (const file of files) {
   const filePath = path.join(sourceDir, file);
-  archive.file(filePath, { name: file });
+  // Specify 'post-designer' as the destination folder name for all files
+  archive.file(filePath, { name: path.join('post-designer', file) });
 }
 
 archive.finalize();
