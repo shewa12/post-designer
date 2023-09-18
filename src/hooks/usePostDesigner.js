@@ -248,8 +248,6 @@ function usePostDesigner(attributes, setAttributes) {
 	// Get posts, authors & taxonomies whenever post type get update.
 	useEffect(() => {
 		getPosts();
-		//getPostAuthors();
-		//getTaxonomies();
 	}, [postType]);
 
 	return {
