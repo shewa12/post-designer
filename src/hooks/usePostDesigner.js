@@ -4,9 +4,9 @@ import EndPoints from "../API/EndPoints";
 import Select from "react-select";
 import { __ } from "@wordpress/i18n";
 
-
+let loading = false;
 function usePostDesigner(attributes, setAttributes) {
-	let loading = false;
+	
 
 	// Attributes
 	const {
@@ -69,7 +69,9 @@ function usePostDesigner(attributes, setAttributes) {
 	 * Get post
 	 */
 	const getPosts = async () => {
-		
+		console.log(`loading 1: ${loading}`);
+		loading = true;
+		console.log(`loading 2: ${loading}`);
 		let authorIds = authors.map((obj) => obj.id).join(",");
 		let termIds = selectedTerms.map((obj) => obj.term_id).join(",");
 
@@ -105,6 +107,8 @@ function usePostDesigner(attributes, setAttributes) {
 		} else {
 			alert(response.statusText);
 		}
+		loading = false;
+		console.log(`loading3: ${loading}`);
 	};
 
 	// Get taxonomies

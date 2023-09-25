@@ -27,17 +27,19 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
 
     useEffect(() => {
         // Enable/disable prev btn
-        if (currentPage == 1) {
-            prevBtnRef.current.setAttribute('disabled', true);
-        } else {
-            prevBtnRef.current.removeAttribute('disabled');
-        }
-
-        // Enable/disable next btn
-        if (currentPage >= pages) {
-            nextBtnRef.current.setAttribute('disabled', true);
-        } else {
-            nextBtnRef.current.removeAttribute('disabled');
+        if (pages > 1) {
+            if (currentPage == 1) {
+                prevBtnRef.current.setAttribute('disabled', true);
+            } else {
+                prevBtnRef.current.removeAttribute('disabled');
+            }
+    
+            // Enable/disable next btn
+            if (currentPage >= pages) {
+                nextBtnRef.current.setAttribute('disabled', true);
+            } else {
+                nextBtnRef.current.removeAttribute('disabled');
+            }
         }
     }, [currentPage]);
       
