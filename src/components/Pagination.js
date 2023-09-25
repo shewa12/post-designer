@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import "../scss/pagination.scss";
+import { Fragment } from '@wordpress/element';
 
 const Pagination = ({pages, currentPage, setCurrentPage}) => {
     // Ref
@@ -41,12 +42,19 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
     }, [currentPage]);
       
     return (
-       
-        <div className="pd-pagination">
-            <a className="prev page-numbers" ref={prevBtnRef} onClick={() => {setCurrentPage(currentPage - 1)}}>« Previous</a>
-            { pageMarkups() }
-            <a className="next page-numbers" ref={nextBtnRef} onClick={() => {setCurrentPage(currentPage + 1)}}>Next »</a>
-        </div>
+
+        <Fragment>
+            {
+                pages > 1 ? 
+                <div className="pd-pagination">
+                    <a className="prev page-numbers" ref={prevBtnRef} onClick={() => {setCurrentPage(currentPage - 1)}}>« Previous</a>
+                    { pageMarkups() }
+                    <a className="next page-numbers" ref={nextBtnRef} onClick={() => {setCurrentPage(currentPage + 1)}}>Next »</a>
+                </div>
+                : ''
+            }
+            
+        </Fragment>
     );
 }
 export default Pagination;
