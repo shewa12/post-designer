@@ -211,8 +211,6 @@ export default function Edit({attributes, setAttributes}) {
 
 
 	return (
-		loading ?
-		<PostPlaceholder /> :
 		<div {...blockProps}>
 			<InspectorControls key={"settings"}>
 				<Panel>
@@ -865,6 +863,9 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 			</InspectorControls>
+			{
+
+			loading ? <PostPlaceholder /> :
 			<div className={`pd-card-row`}>
 				{
 					posts.length ?
@@ -875,6 +876,7 @@ export default function Edit({attributes, setAttributes}) {
 					<NotFound text={ __('No posts found', 'post-designer') }></NotFound>
 				}
 			</div>
+			}
 
 		</div>
 	);
