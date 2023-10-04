@@ -194,10 +194,6 @@ export default function Edit({attributes, setAttributes}) {
 	  }, []);
 
 	return (
-		loading ?
-		
-		<PostPlaceholder /> 
-		:
 		<div {...blockProps}>
 			<InspectorControls key={"settings"}>
 				<Panel>
@@ -730,15 +726,18 @@ export default function Edit({attributes, setAttributes}) {
 				</Panel>
 
 			</InspectorControls>
-			<div className={`pd-card-row ${ posts.length ? `pd-${columnPerRow}-col` : '' }`}>
-				{ renderPostList() }
-			</div>
-
 			{
-				posts.length && maxNumPages > 1 ?
-				<Pagination pages={maxNumPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/> :
-				''
+				loading ?
+				<PostPlaceholder />: 
+				<>
+					<div className={`pd-card-row ${ posts.length ? `pd-${columnPerRow}-col` : '' }`}>
+					{ renderPostList() }
+					</div>
+
+					<Pagination pages={maxNumPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+				</>
 			}
+
 		</div>
 	);
 }

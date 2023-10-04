@@ -4,7 +4,9 @@ import EndPoints from "../API/EndPoints";
 import Select from "react-select";
 import { __ } from "@wordpress/i18n";
 
+let loading = false;
 function usePostDesigner(attributes, setAttributes) {
+	
 
 	// Attributes
 	const {
@@ -28,12 +30,10 @@ function usePostDesigner(attributes, setAttributes) {
 
 	// States
 	const [postTypes, setPostTypes] = useState([]);
-	const [loading, setLoading] = useState(true);
 	const [posts, setPosts] = useState([]);
 	const [postAuthors, setPostAuthors] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [maxNumPages, setMaxNumPages] = useState(1);
-
 
 	/**
 	 * Get all registered post types
@@ -69,9 +69,11 @@ function usePostDesigner(attributes, setAttributes) {
 	 * Get post
 	 */
 	const getPosts = async () => {
-		setLoading(true);
+		console.log(`loading 1: ${loading}`);
+		loading = true;
+		console.log(`loading 2: ${loading}`);
 		let authorIds = authors.map((obj) => obj.id).join(",");
-		let termIds = selectedTerms.map(obj => obj.term_id).join(",");
+		let termIds = selectedTerms.map((obj) => obj.term_id).join(",");
 
 		const response = await postDesigner.get(EndPoints.getPosts, {
 			params: {
@@ -88,12 +90,13 @@ function usePostDesigner(attributes, setAttributes) {
 				read_more_text: readMoreText,
 			},
 		});
+
 		if (response.statusText === "OK") {
 			// Set pagination
-			let {data} = response;
-			let pagination = data.length ? data[data.length - 1]: null;
-		
-			setMaxNumPages(pagination? pagination.max_num_pages : 1);
+			let { data } = response;
+			let pagination = data.length ? data[data.length - 1] : null;
+
+			setMaxNumPages(pagination ? pagination.max_num_pages : 1);
 
 			// Remove pagination object
 			data.pop();
@@ -101,16 +104,15 @@ function usePostDesigner(attributes, setAttributes) {
 			// Set posts
 			setPosts(data);
 			getPostAuthors();
-
 		} else {
 			alert(response.statusText);
 		}
-		setLoading(false);
+		loading = false;
+		console.log(`loading3: ${loading}`);
 	};
 
 	// Get taxonomies
 	const getTaxonomies = async (postType) => {
-		setLoading(true);
 		const response = await postDesigner.get(EndPoints.getPostTaxonomies, {
 			params: {
 				"post-type": postType,
@@ -124,11 +126,9 @@ function usePostDesigner(attributes, setAttributes) {
 		} else {
 			alert(response.statusText);
 		}
-		setLoading(false);
 	};
 
 	const getTerms = async () => {
-		setLoading(true);
 		const response = await postDesigner.get(EndPoints.getTerms, {
 			params: {
 				"post-type": postType,
@@ -144,7 +144,6 @@ function usePostDesigner(attributes, setAttributes) {
 		} else {
 			alert(response.statusText);
 		}
-		setLoading(false);
 	};
 
 	const termsTemplate = () => {
@@ -206,6 +205,7 @@ function usePostDesigner(attributes, setAttributes) {
 	};
 
 	const updateTaxonomy = (selected) => {
+		getTerms();
 		setAttributes({ taxonomy: selected });
 		setAttributes({ selectedTerms: [] });
 	};
@@ -220,37 +220,40 @@ function usePostDesigner(attributes, setAttributes) {
 
 	const updateExcerptLength = (value) => {
 		setAttributes({ excerptLength: value });
-	}
+	};
 
 	const updateReadMoreText = (value) => {
 		setTimeout(() => {
 			setAttributes({ readMoreText: value });
 		}, 2000);
-		
-	}
+	};
 
 	// Get posts whenever these args get update.
 	useEffect(() => {
 		getPosts();
-	}, [authors, selectedTerms, taxonomy, order, orderBy, noPagination, postPerPage, currentPage, excerptLength, readMoreText]);
+	}, [
+		postType,
+		authors,
+		selectedTerms,
+		taxonomy,
+		order,
+		orderBy,
+		noPagination,
+		postPerPage,
+		currentPage,
+		excerptLength,
+		readMoreText,
+	]);
 
 	// Get terms.
 	useEffect(() => {
 		getTerms();
 	}, [taxonomy]);
 
-
 	// Get post types.
 	useEffect(() => {
 		getPostTypes();
 	}, []);
-
-	// Get posts, authors & taxonomies whenever post type get update.
-	useEffect(() => {
-		getPosts();
-		//getPostAuthors();
-		//getTaxonomies();
-	}, [postType]);
 
 	return {
 		loading,
@@ -271,7 +274,7 @@ function usePostDesigner(attributes, setAttributes) {
 		updateLayout,
 		updateColumnPerRow,
 		updateExcerptLength,
-		updateReadMoreText
+		updateReadMoreText,
 	};
 }
 

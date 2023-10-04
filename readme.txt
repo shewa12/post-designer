@@ -5,7 +5,7 @@ Tags: WordPress design plugin, Gutenberg blocks, Post Lists, Post Carousels, Pos
 Requires at least: 5.3
 Tested up to: 6.3
 Requires PHP: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -103,6 +103,11 @@ Answer: We are committed to keeping Post Designer up to date with the latest Wor
 
 = 1.0.0 = 
 * Plugin released
+
+= 1.0.1 - 4 Oct, 2023 = 
+
+Improvements: Performance improved
+Fix: SeSidebar settings section re-rendering
 
 
 === Upgrade Notice ===

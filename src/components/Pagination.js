@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import "../scss/pagination.scss";
+import { Fragment } from '@wordpress/element';
 
 const Pagination = ({pages, currentPage, setCurrentPage}) => {
     // Ref
@@ -26,27 +27,36 @@ const Pagination = ({pages, currentPage, setCurrentPage}) => {
 
     useEffect(() => {
         // Enable/disable prev btn
-        if (currentPage == 1) {
-            prevBtnRef.current.setAttribute('disabled', true);
-        } else {
-            prevBtnRef.current.removeAttribute('disabled');
-        }
-
-        // Enable/disable next btn
-        if (currentPage >= pages) {
-            nextBtnRef.current.setAttribute('disabled', true);
-        } else {
-            nextBtnRef.current.removeAttribute('disabled');
+        if (pages > 1) {
+            if (currentPage == 1) {
+                prevBtnRef.current.setAttribute('disabled', true);
+            } else {
+                prevBtnRef.current.removeAttribute('disabled');
+            }
+    
+            // Enable/disable next btn
+            if (currentPage >= pages) {
+                nextBtnRef.current.setAttribute('disabled', true);
+            } else {
+                nextBtnRef.current.removeAttribute('disabled');
+            }
         }
     }, [currentPage]);
       
     return (
-       
-        <div className="pd-pagination">
-            <a className="prev page-numbers" ref={prevBtnRef} onClick={() => {setCurrentPage(currentPage - 1)}}>« Previous</a>
-            { pageMarkups() }
-            <a className="next page-numbers" ref={nextBtnRef} onClick={() => {setCurrentPage(currentPage + 1)}}>Next »</a>
-        </div>
+
+        <Fragment>
+            {
+                pages > 1 ? 
+                <div className="pd-pagination">
+                    <a className="prev page-numbers" ref={prevBtnRef} onClick={() => {setCurrentPage(currentPage - 1)}}>« Previous</a>
+                    { pageMarkups() }
+                    <a className="next page-numbers" ref={nextBtnRef} onClick={() => {setCurrentPage(currentPage + 1)}}>Next »</a>
+                </div>
+                : ''
+            }
+            
+        </Fragment>
     );
 }
 export default Pagination;
