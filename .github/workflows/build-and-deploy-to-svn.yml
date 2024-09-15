@@ -18,11 +18,11 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: PHP Version
-        run: php -v
-
-      - name: Install PHP Extensions
-        run: sudo apt-get install -y php-json php-mbstring
+      - name: Install PHP 8.2
+        run: |
+          sudo add-apt-repository ppa:ondrej/php -y
+          sudo apt-get update
+          sudo apt-get install php8.2 php8.2-cli php8.2-mbstring php8.2-xml php8.2-json
 
       - name: Install Composer
         run: sudo apt-get update && sudo apt-get install -y composer
