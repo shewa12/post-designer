@@ -3,7 +3,7 @@ Contributors: shewa12
 Donate link: https://www.buymeacoffee.com/shewa
 Tags: WordPress design plugin, Gutenberg blocks, Post Lists, Post Carousels, Post customization, Content carousel, Creative post layouts, Custom post lists, Visual WordPress editor, Enhanced post display, Easy post design, Dynamic blocks
 Requires at least: 5.3
-Tested up to: 6.3
+Tested up to: 6.6
 Requires PHP: 7.0
 Stable tag: 1.0.2
 License: GPLv3
