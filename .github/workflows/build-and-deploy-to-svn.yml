@@ -29,13 +29,11 @@ jobs:
           wp --info
 
       - name: Build Plugin
-        run: npm run plugin-build
+        run: npm run prod-build
 
       - name: WordPress Plugin Deploy
         id: deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
-        with:
-          generate-zip: true
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
