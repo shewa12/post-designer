@@ -22,7 +22,7 @@ jobs:
         run: |
           sudo add-apt-repository ppa:ondrej/php -y
           sudo apt-get update
-          sudo apt-get install php8.2 php8.2-cli php8.2-mbstring php8.2-xml php8.2-json
+          sudo apt-get install php8.2 php8.2-cli php8.2-mbstring php8.2-xml
 
       - name: Install Composer
         run: sudo apt-get update && sudo apt-get install -y composer
