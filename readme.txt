@@ -3,9 +3,9 @@ Contributors: shewa12
 Donate link: https://www.buymeacoffee.com/shewa
 Tags: WordPress design plugin, Gutenberg blocks, Post Lists, Post Carousels, Post customization, Content carousel, Creative post layouts, Custom post lists, Visual WordPress editor, Enhanced post display, Easy post design, Dynamic blocks
 Requires at least: 5.3
-Tested up to: 6.3
+Tested up to: 6.6
 Requires PHP: 7.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -101,13 +101,14 @@ Answer: We are committed to keeping Post Designer up to date with the latest Wor
 
 === Changelog ===
 
-= 1.0.0 = 
-* Plugin released
+= 1.0.2 - 15 Sep, 2024 = 
+Update: Compatibility with WordPress 6.6
 
 = 1.0.1 - 4 Oct, 2023 = 
-
 Improvements: Performance improved
 Fix: SeSidebar settings section re-rendering
 
+= 1.0.0 = 
+* Plugin released
 
 === Upgrade Notice ===

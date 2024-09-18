@@ -8,7 +8,7 @@ Post Designer is a WordPress plugin that adds two new Gutenberg blocks: Post Lis
 ## System Requirements
 
 - Requires at least: 5.3
-- Tested up to: 6.2
+- Tested up to WP: 6.6
 - Requires PHP: >= 7.0
 
 ## Installation
