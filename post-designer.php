@@ -74,7 +74,9 @@ if ( ! class_exists( 'PostDesigner' ) ) {
 				require_once ABSPATH . 'wp-admin/includes/plugin.php';
 			}
 			$plugin_data = get_plugin_data(
-				__FILE__
+				__FILE__,
+				true,
+				false
 			);
 			array_push( self::$plugin_data, $plugin_data );
 
