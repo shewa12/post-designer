@@ -3,11 +3,11 @@ import postDesigner from "../API/Instance";
 import EndPoints from "../API/EndPoints";
 import Select from "react-select";
 import { __ } from "@wordpress/i18n";
+import { useSelect } from "@wordpress/data";
+import { store as coreDataStore } from "@wordpress/core-data";
 
 let loading = false;
 function usePostDesigner(attributes, setAttributes) {
-	
-
 	// Attributes
 	const {
 		postType,
@@ -29,23 +29,25 @@ function usePostDesigner(attributes, setAttributes) {
 	} = attributes;
 
 	// States
-	const [postTypes, setPostTypes] = useState([]);
+	// const [postTypes, setPostTypes] = useState([]);
 	const [posts, setPosts] = useState([]);
 	const [postAuthors, setPostAuthors] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [maxNumPages, setMaxNumPages] = useState(1);
 
-	/**
-	 * Get all registered post types
-	 */
-	const getPostTypes = async () => {
-		const response = await postDesigner.get(EndPoints.getPostTypes, {});
-		if (response.statusText === "OK") {
-			setPostTypes(response.data);
-		} else {
-			alert(response.statusText);
-		}
-	};
+	const postTypes = useSelect((select) => {
+		const postTypes = select(coreDataStore).getPostTypes({
+			per_page: -1,
+			public: true,
+		});
+
+		const filter = postTypes?.filter((type) => type.viewable === true);
+
+		return filter?.map((type) => ({
+			value: type.slug,
+			label: type.name,
+		}));
+	}, []);
 
 	/**
 	 * Get post authors
@@ -57,7 +59,10 @@ function usePostDesigner(attributes, setAttributes) {
 
 		if (response.statusText === "OK") {
 			let updatedArr = response.data.map((obj) =>
-				Object.assign({}, obj, { value: obj.id, label: obj.display_name })
+				Object.assign({}, obj, {
+					value: obj.id,
+					label: obj.display_name,
+				})
 			);
 			setPostAuthors(updatedArr);
 		} else {
@@ -69,9 +74,7 @@ function usePostDesigner(attributes, setAttributes) {
 	 * Get post
 	 */
 	const getPosts = async () => {
-		console.log(`loading 1: ${loading}`);
 		loading = true;
-		console.log(`loading 2: ${loading}`);
 		let authorIds = authors.map((obj) => obj.id).join(",");
 		let termIds = selectedTerms.map((obj) => obj.term_id).join(",");
 
@@ -138,7 +141,10 @@ function usePostDesigner(attributes, setAttributes) {
 
 		if (response.statusText === "OK") {
 			let updatedArr = response.data.map((obj) =>
-				Object.assign({}, obj, { value: obj.term_id, label: obj.name })
+				Object.assign({}, obj, {
+					value: obj.term_id,
+					label: obj.name,
+				})
 			);
 			setAttributes({ terms: updatedArr });
 		} else {
@@ -152,7 +158,11 @@ function usePostDesigner(attributes, setAttributes) {
 			<Select
 				menuPortalTarget={document.body}
 				styles={{
-					menuPortal: (base) => ({ ...base, zIndex: 9999, border: 0 }),
+					menuPortal: (base) => ({
+						...base,
+						zIndex: 9999,
+						border: 0,
+					}),
 				}}
 				options={options}
 				isMulti="true"
@@ -169,7 +179,11 @@ function usePostDesigner(attributes, setAttributes) {
 			<Select
 				menuPortalTarget={document.body}
 				styles={{
-					menuPortal: (base) => ({ ...base, zIndex: 9999, border: 0 }),
+					menuPortal: (base) => ({
+						...base,
+						zIndex: 9999,
+						border: 0,
+					}),
 				}}
 				options={options}
 				isMulti="true"
@@ -251,9 +265,9 @@ function usePostDesigner(attributes, setAttributes) {
 	}, [taxonomy]);
 
 	// Get post types.
-	useEffect(() => {
-		getPostTypes();
-	}, []);
+	// useEffect(() => {
+	// 	getPostTypes();
+	// }, []);
 
 	return {
 		loading,
