@@ -15,7 +15,6 @@ function usePostDesigner(attributes, setAttributes) {
 		noPagination,
 		order,
 		orderBy,
-		taxonomies,
 		taxonomy,
 		terms,
 		selectedTerms,
@@ -29,7 +28,6 @@ function usePostDesigner(attributes, setAttributes) {
 	} = attributes;
 
 	// States
-	// const [postTypes, setPostTypes] = useState([]);
 	const [posts, setPosts] = useState([]);
 	const [postAuthors, setPostAuthors] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -48,6 +46,20 @@ function usePostDesigner(attributes, setAttributes) {
 			label: type.name,
 		}));
 	}, []);
+
+	const taxonomies = useSelect(
+		(select) => {
+			if (!postType) return [];
+			const taxonomies =
+				select(coreDataStore).getTaxonomies({ type: postType }) || [];
+
+			return taxonomies?.map((tax) => ({
+				value: tax.slug,
+				label: tax.name,
+			}));
+		},
+		[postType]
+	);
 
 	/**
 	 * Get post authors
@@ -112,23 +124,6 @@ function usePostDesigner(attributes, setAttributes) {
 		}
 		loading = false;
 		console.log(`loading3: ${loading}`);
-	};
-
-	// Get taxonomies
-	const getTaxonomies = async (postType) => {
-		const response = await postDesigner.get(EndPoints.getPostTaxonomies, {
-			params: {
-				"post-type": postType,
-			},
-		});
-		if (response.statusText === "OK") {
-			setAttributes({ taxonomies: response.data });
-			setAttributes({
-				taxonomy: response.data.length ? response.data[0].value : "",
-			});
-		} else {
-			alert(response.statusText);
-		}
 	};
 
 	const getTerms = async () => {
@@ -199,7 +194,6 @@ function usePostDesigner(attributes, setAttributes) {
 	const updatePostType = (value) => {
 		setAttributes({ postType: value });
 		getPostAuthors();
-		getTaxonomies(value);
 	};
 
 	const updatePostPerPage = (value) => {
@@ -264,14 +258,10 @@ function usePostDesigner(attributes, setAttributes) {
 		getTerms();
 	}, [taxonomy]);
 
-	// Get post types.
-	// useEffect(() => {
-	// 	getPostTypes();
-	// }, []);
-
 	return {
 		loading,
 		posts,
+		taxonomies,
 		postTypes,
 		maxNumPages,
 		currentPage,
