@@ -19,10 +19,6 @@ function usePostDesigner(attributes, setAttributes) {
 		terms,
 		selectedTerms,
 		authors,
-		dateFrom,
-		dateTo,
-		layout,
-		columnPerRow,
 		excerptLength,
 		readMoreText,
 	} = attributes;
