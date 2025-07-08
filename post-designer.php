@@ -4,7 +4,7 @@
  * Description:       Post Designer is a WordPress plugin that adds two new Gutenberg blocks: Post List and Post Carousel. The Post List block allows you to display a list of posts, while the Post Carousel block allows you to display a carousel of posts.
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            Shewa
  * Author URI:        https://shewazone.com
  * Text Domain:       post-designer
@@ -74,7 +74,9 @@ if ( ! class_exists( 'PostDesigner' ) ) {
 				require_once ABSPATH . 'wp-admin/includes/plugin.php';
 			}
 			$plugin_data = get_plugin_data(
-				__FILE__
+				__FILE__,
+				true,
+				false
 			);
 			array_push( self::$plugin_data, $plugin_data );
 

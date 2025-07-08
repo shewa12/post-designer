@@ -53,6 +53,10 @@ class Blocks {
 				)
 			);
 		}
+
+		register_block_type(
+			self::$plugin_data['plugin_path'] . 'build/test'
+		);
 	}
 
 	/**
