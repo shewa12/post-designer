@@ -5,7 +5,7 @@ Tags: WordPress design plugin, Gutenberg blocks, Post Lists, Post Carousels, Pos
 Requires at least: 5.3
 Tested up to: 6.6
 Requires PHP: 7.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -100,6 +100,10 @@ Answer: We are committed to keeping Post Designer up to date with the latest Wor
 4. Frontend view of the post carousel block
 
 === Changelog ===
+
+= 1.0.3 - 08 Jul, 2025 =
+Improve: Performance optimized to load the post faster
+Update: WordPress 6.8 compatibility
 
 = 1.0.2 - 15 Sep, 2024 = 
 Update: Compatibility with WordPress 6.6

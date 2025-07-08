@@ -14,7 +14,7 @@
 	"attributes": {
 		"postType": {
 			"type": "string",
-			"default" : "post"
+			"default": "post"
 		},
 		"authors": {
 			"type": "array",
@@ -35,10 +35,6 @@
 		"order": {
 			"type": "string",
 			"default": "DESC"
-		},
-		"taxonomies": {
-			"type": "array",
-			"default": []
 		},
 		"taxonomy": {
 			"type": "string",
