@@ -61,20 +61,23 @@ function usePostDesigner(attributes, setAttributes) {
 	 * Get post authors
 	 */
 	const getPostAuthors = async () => {
-		const response = await postDesigner.get(EndPoints.getPostAuthors, {
-			params: { "post-type": postType },
-		});
+		try {
+			const response = await postDesigner.get(EndPoints.getPostAuthors, {
+				params: { "post-type": postType },
+			});
 
-		if (response.statusText === "OK") {
-			let updatedArr = response.data.map((obj) =>
-				Object.assign({}, obj, {
+			if (response.status === 200) {
+				const updatedArr = response.data.map((obj) => ({
+					...obj,
 					value: obj.id,
 					label: obj.display_name,
-				})
-			);
-			setPostAuthors(updatedArr);
-		} else {
-			alert(response.statusText);
+				}));
+				setPostAuthors(updatedArr);
+			} else {
+				alert(__("Failed to fetch authors", "post-designer"));
+			}
+		} catch (error) {
+			alert(error.message || __("Failed to fetch authors", "post-designer"));
 		}
 	};
 
@@ -83,63 +86,63 @@ function usePostDesigner(attributes, setAttributes) {
 	 */
 	const getPosts = async () => {
 		loading = true;
-		let authorIds = authors.map((obj) => obj.id).join(",");
-		let termIds = selectedTerms.map((obj) => obj.term_id).join(",");
+		try {
+			let authorIds = authors.map((obj) => obj.id).join(",");
+			let termIds = selectedTerms.map((obj) => obj.term_id).join(",");
 
-		const response = await postDesigner.get(EndPoints.getPosts, {
-			params: {
-				"post-type": postType,
-				authors: authorIds,
-				taxonomy: taxonomy,
-				terms: termIds,
-				order: order,
-				order_by: orderBy,
-				no_pagination: noPagination,
-				post_per_page: postPerPage,
-				paged: currentPage,
-				excerpt_length: excerptLength,
-				read_more_text: readMoreText,
-			},
-		});
+			const response = await postDesigner.get(EndPoints.getPosts, {
+				params: {
+					"post-type": postType,
+					authors: authorIds,
+					taxonomy: taxonomy,
+					terms: termIds,
+					order: order,
+					order_by: orderBy,
+					no_pagination: noPagination,
+					post_per_page: postPerPage,
+					paged: currentPage,
+					excerpt_length: excerptLength,
+					read_more_text: readMoreText,
+				},
+			});
 
-		if (response.statusText === "OK") {
-			// Set pagination
+			// Safe: if request is successful, it will be here
 			let { data } = response;
 			let pagination = data.length ? data[data.length - 1] : null;
 
 			setMaxNumPages(pagination ? pagination.max_num_pages : 1);
 
-			// Remove pagination object
 			data.pop();
-
-			// Set posts
 			setPosts(data);
 			getPostAuthors();
-		} else {
-			alert(response.statusText);
+		} catch (error) {
+			alert(error.message || __("Failed to fetch posts", "post-designer"));
+		} finally {
+			loading = false;
 		}
-		loading = false;
-		console.log(`loading3: ${loading}`);
 	};
 
 	const getTerms = async () => {
-		const response = await postDesigner.get(EndPoints.getTerms, {
-			params: {
-				"post-type": postType,
-				taxonomy: taxonomy,
-			},
-		});
+		try {
+			const response = await postDesigner.get(EndPoints.getTerms, {
+				params: {
+					"post-type": postType,
+					taxonomy: taxonomy,
+				},
+			});
 
-		if (response.statusText === "OK") {
-			let updatedArr = response.data.map((obj) =>
-				Object.assign({}, obj, {
+			if (response.status === 200) {
+				const updatedArr = response.data.map((obj) => ({
+					...obj,
 					value: obj.term_id,
 					label: obj.name,
-				})
-			);
-			setAttributes({ terms: updatedArr });
-		} else {
-			alert(response.statusText);
+				}));
+				setAttributes({ terms: updatedArr });
+			} else {
+				alert(__("Failed to fetch terms", "post-designer"));
+			}
+		} catch (error) {
+			alert(error.message || __("Failed to fetch terms", "post-designer"));
 		}
 	};
 
