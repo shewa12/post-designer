@@ -35,7 +35,7 @@ jobs:
           wp --info
 
       - name: Build Plugin
-        run: npm run prod-build
+        run: npm run prod-build-no-pot
 
       - name: WordPress Plugin Deploy
         id: deploy
